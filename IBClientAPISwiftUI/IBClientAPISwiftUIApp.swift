@@ -11,7 +11,11 @@ import SwiftUI
 struct IBClientAPISwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let environmentModel = EnvironmentModel()
+            ContentView().environmentObject(environmentModel)
+                .onAppear(perform: {
+                    environmentModel.fetchData()
+                })
         }
     }
 }

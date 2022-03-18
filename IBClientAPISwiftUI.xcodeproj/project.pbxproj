@@ -11,6 +11,49 @@
 		8366FE1327E538F300082C13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE1227E538F300082C13 /* ContentView.swift */; };
 		8366FE1527E538F500082C13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8366FE1427E538F500082C13 /* Assets.xcassets */; };
 		8366FE1827E538F500082C13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8366FE1727E538F500082C13 /* Preview Assets.xcassets */; };
+		8366FE1F27E5392F00082C13 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE1E27E5392F00082C13 /* Extensions.swift */; };
+		8366FE2127E5394500082C13 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE2027E5394500082C13 /* CustomColor.swift */; };
+		8366FE2427E5398500082C13 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE2327E5398500082C13 /* NavigationBar.swift */; };
+		8366FE2627E539A500082C13 /* TicketNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE2527E539A500082C13 /* TicketNavigationBar.swift */; };
+		8366FE2827E539BF00082C13 /* SearchNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE2727E539BF00082C13 /* SearchNavigationBar.swift */; };
+		8366FE3027E53A4E00082C13 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE2F27E53A4E00082C13 /* AccountView.swift */; };
+		8366FE3227E53A6800082C13 /* AccountCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE3127E53A6800082C13 /* AccountCard.swift */; };
+		8366FE3427E53A9400082C13 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE3327E53A9400082C13 /* HomeView.swift */; };
+		8366FE3627E53AA900082C13 /* CustomerScreenItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE3527E53AA900082C13 /* CustomerScreenItem.swift */; };
+		8366FE3827E53AC700082C13 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE3727E53AC700082C13 /* PortfolioView.swift */; };
+		8366FE3A27E53AE100082C13 /* CashBalances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE3927E53AE100082C13 /* CashBalances.swift */; };
+		8366FE3C27E53AF700082C13 /* PortfolioHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE3B27E53AF700082C13 /* PortfolioHeader.swift */; };
+		8366FE3E27E53B1600082C13 /* CashBalancesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE3D27E53B1600082C13 /* CashBalancesRow.swift */; };
+		8366FE4027E53B3100082C13 /* PortfolioListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE3F27E53B3100082C13 /* PortfolioListItem.swift */; };
+		8366FE4227E53B5B00082C13 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE4127E53B5B00082C13 /* TicketView.swift */; };
+		8366FE4527E53B7D00082C13 /* TicketGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE4427E53B7D00082C13 /* TicketGraph.swift */; };
+		8366FE4727E53B9100082C13 /* MarketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE4627E53B9100082C13 /* MarketData.swift */; };
+		8366FE4927E53BA700082C13 /* PositionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE4827E53BA700082C13 /* PositionItem.swift */; };
+		8366FE4B27E53BC200082C13 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE4A27E53BC200082C13 /* SearchView.swift */; };
+		8366FE4D27E53BD900082C13 /* TicketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE4C27E53BD900082C13 /* TicketItem.swift */; };
+		8366FE5027E53C0300082C13 /* EnvironmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE4F27E53C0300082C13 /* EnvironmentModel.swift */; };
+		8366FE5227E53C1500082C13 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE5127E53C1500082C13 /* Account.swift */; };
+		8366FE5427E53C2700082C13 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE5327E53C2700082C13 /* Home.swift */; };
+		8366FE5627E53C3900082C13 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE5527E53C3900082C13 /* Portfolio.swift */; };
+		8366FE5827E53C4F00082C13 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE5727E53C4F00082C13 /* Ticket.swift */; };
+		8366FE5A27E53C6800082C13 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE5927E53C6800082C13 /* Search.swift */; };
+		8366FE5D27E53C8600082C13 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE5C27E53C8600082C13 /* AccountViewModel.swift */; };
+		8366FE5F27E53C9800082C13 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE5E27E53C9800082C13 /* HomeViewModel.swift */; };
+		8366FE6127E53CAA00082C13 /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE6027E53CAA00082C13 /* PortfolioViewModel.swift */; };
+		8366FE6327E53CBC00082C13 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE6227E53CBC00082C13 /* TicketViewModel.swift */; };
+		8366FE6527E53CD100082C13 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE6427E53CD100082C13 /* SearchViewModel.swift */; };
+		8366FE6827E53CF500082C13 /* AccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE6727E53CF500082C13 /* AccountRepository.swift */; };
+		8366FE6A27E53D0700082C13 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE6927E53D0700082C13 /* HomeRepository.swift */; };
+		8366FE6C27E53D1C00082C13 /* PortfolioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE6B27E53D1C00082C13 /* PortfolioRepository.swift */; };
+		8366FE6E27E53D3200082C13 /* TicketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE6D27E53D3200082C13 /* TicketRepository.swift */; };
+		8366FE7027E53D4B00082C13 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE6F27E53D4B00082C13 /* SearchRepository.swift */; };
+		8366FE7327E53D6B00082C13 /* AccountApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7227E53D6B00082C13 /* AccountApiService.swift */; };
+		8366FE7527E53D7D00082C13 /* HomeApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7427E53D7D00082C13 /* HomeApiService.swift */; };
+		8366FE7727E53D8F00082C13 /* PortfolioApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7627E53D8F00082C13 /* PortfolioApiService.swift */; };
+		8366FE7927E53DA100082C13 /* TickerApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7827E53DA100082C13 /* TickerApiService.swift */; };
+		8366FE7B27E53DB400082C13 /* SearchApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7A27E53DB400082C13 /* SearchApiService.swift */; };
+		8366FE7E27E53DDC00082C13 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7D27E53DDC00082C13 /* APIConstants.swift */; };
+		8366FE8127E53E0C00082C13 /* StockCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 8366FE8027E53E0C00082C13 /* StockCharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +62,48 @@
 		8366FE1227E538F300082C13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8366FE1427E538F500082C13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8366FE1727E538F500082C13 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8366FE1E27E5392F00082C13 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8366FE2027E5394500082C13 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		8366FE2327E5398500082C13 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		8366FE2527E539A500082C13 /* TicketNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketNavigationBar.swift; sourceTree = "<group>"; };
+		8366FE2727E539BF00082C13 /* SearchNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationBar.swift; sourceTree = "<group>"; };
+		8366FE2F27E53A4E00082C13 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		8366FE3127E53A6800082C13 /* AccountCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCard.swift; sourceTree = "<group>"; };
+		8366FE3327E53A9400082C13 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8366FE3527E53AA900082C13 /* CustomerScreenItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerScreenItem.swift; sourceTree = "<group>"; };
+		8366FE3727E53AC700082C13 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
+		8366FE3927E53AE100082C13 /* CashBalances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashBalances.swift; sourceTree = "<group>"; };
+		8366FE3B27E53AF700082C13 /* PortfolioHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioHeader.swift; sourceTree = "<group>"; };
+		8366FE3D27E53B1600082C13 /* CashBalancesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashBalancesRow.swift; sourceTree = "<group>"; };
+		8366FE3F27E53B3100082C13 /* PortfolioListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioListItem.swift; sourceTree = "<group>"; };
+		8366FE4127E53B5B00082C13 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
+		8366FE4427E53B7D00082C13 /* TicketGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketGraph.swift; sourceTree = "<group>"; };
+		8366FE4627E53B9100082C13 /* MarketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketData.swift; sourceTree = "<group>"; };
+		8366FE4827E53BA700082C13 /* PositionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionItem.swift; sourceTree = "<group>"; };
+		8366FE4A27E53BC200082C13 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		8366FE4C27E53BD900082C13 /* TicketItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketItem.swift; sourceTree = "<group>"; };
+		8366FE4F27E53C0300082C13 /* EnvironmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentModel.swift; sourceTree = "<group>"; };
+		8366FE5127E53C1500082C13 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		8366FE5327E53C2700082C13 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		8366FE5527E53C3900082C13 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
+		8366FE5727E53C4F00082C13 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		8366FE5927E53C6800082C13 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		8366FE5C27E53C8600082C13 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		8366FE5E27E53C9800082C13 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8366FE6027E53CAA00082C13 /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
+		8366FE6227E53CBC00082C13 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
+		8366FE6427E53CD100082C13 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		8366FE6727E53CF500082C13 /* AccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepository.swift; sourceTree = "<group>"; };
+		8366FE6927E53D0700082C13 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
+		8366FE6B27E53D1C00082C13 /* PortfolioRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioRepository.swift; sourceTree = "<group>"; };
+		8366FE6D27E53D3200082C13 /* TicketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRepository.swift; sourceTree = "<group>"; };
+		8366FE6F27E53D4B00082C13 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
+		8366FE7227E53D6B00082C13 /* AccountApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountApiService.swift; sourceTree = "<group>"; };
+		8366FE7427E53D7D00082C13 /* HomeApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeApiService.swift; sourceTree = "<group>"; };
+		8366FE7627E53D8F00082C13 /* PortfolioApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioApiService.swift; sourceTree = "<group>"; };
+		8366FE7827E53DA100082C13 /* TickerApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerApiService.swift; sourceTree = "<group>"; };
+		8366FE7A27E53DB400082C13 /* SearchApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApiService.swift; sourceTree = "<group>"; };
+		8366FE7D27E53DDC00082C13 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8366FE8127E53E0C00082C13 /* StockCharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,10 +137,19 @@
 		8366FE0F27E538F300082C13 /* IBClientAPISwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				8366FE7C27E53DC800082C13 /* Constants */,
+				8366FE7127E53D5B00082C13 /* Services */,
+				8366FE6627E53CE100082C13 /* Repositories */,
+				8366FE5B27E53C7500082C13 /* ViewModels */,
+				8366FE4E27E53BF000082C13 /* Models */,
+				8366FE2927E539CD00082C13 /* Views */,
+				8366FE2227E5396E00082C13 /* NavigationBar */,
 				8366FE1027E538F300082C13 /* IBClientAPISwiftUIApp.swift */,
 				8366FE1227E538F300082C13 /* ContentView.swift */,
 				8366FE1427E538F500082C13 /* Assets.xcassets */,
 				8366FE1627E538F500082C13 /* Preview Content */,
+				8366FE1E27E5392F00082C13 /* Extensions.swift */,
+				8366FE2027E5394500082C13 /* CustomColor.swift */,
 			);
 			path = IBClientAPISwiftUI;
 			sourceTree = "<group>";
@@ -65,6 +160,135 @@
 				8366FE1727E538F500082C13 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8366FE2227E5396E00082C13 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE2327E5398500082C13 /* NavigationBar.swift */,
+				8366FE2527E539A500082C13 /* TicketNavigationBar.swift */,
+				8366FE2727E539BF00082C13 /* SearchNavigationBar.swift */,
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		8366FE2927E539CD00082C13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE2A27E539DA00082C13 /* SearchView */,
+				8366FE2B27E539E200082C13 /* TicketView */,
+				8366FE2C27E539EE00082C13 /* PortfolioView */,
+				8366FE2D27E539F500082C13 /* HomeView */,
+				8366FE2E27E539FC00082C13 /* AccountView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8366FE2A27E539DA00082C13 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE4A27E53BC200082C13 /* SearchView.swift */,
+				8366FE4C27E53BD900082C13 /* TicketItem.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		8366FE2B27E539E200082C13 /* TicketView */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE4127E53B5B00082C13 /* TicketView.swift */,
+				8366FE4427E53B7D00082C13 /* TicketGraph.swift */,
+				8366FE4627E53B9100082C13 /* MarketData.swift */,
+				8366FE4827E53BA700082C13 /* PositionItem.swift */,
+			);
+			path = TicketView;
+			sourceTree = "<group>";
+		};
+		8366FE2C27E539EE00082C13 /* PortfolioView */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE3727E53AC700082C13 /* PortfolioView.swift */,
+				8366FE3927E53AE100082C13 /* CashBalances.swift */,
+				8366FE3B27E53AF700082C13 /* PortfolioHeader.swift */,
+				8366FE3D27E53B1600082C13 /* CashBalancesRow.swift */,
+				8366FE3F27E53B3100082C13 /* PortfolioListItem.swift */,
+			);
+			path = PortfolioView;
+			sourceTree = "<group>";
+		};
+		8366FE2D27E539F500082C13 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE3327E53A9400082C13 /* HomeView.swift */,
+				8366FE3527E53AA900082C13 /* CustomerScreenItem.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		8366FE2E27E539FC00082C13 /* AccountView */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE2F27E53A4E00082C13 /* AccountView.swift */,
+				8366FE3127E53A6800082C13 /* AccountCard.swift */,
+			);
+			path = AccountView;
+			sourceTree = "<group>";
+		};
+		8366FE4E27E53BF000082C13 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE4F27E53C0300082C13 /* EnvironmentModel.swift */,
+				8366FE5127E53C1500082C13 /* Account.swift */,
+				8366FE5327E53C2700082C13 /* Home.swift */,
+				8366FE5527E53C3900082C13 /* Portfolio.swift */,
+				8366FE5727E53C4F00082C13 /* Ticket.swift */,
+				8366FE5927E53C6800082C13 /* Search.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8366FE5B27E53C7500082C13 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE5C27E53C8600082C13 /* AccountViewModel.swift */,
+				8366FE5E27E53C9800082C13 /* HomeViewModel.swift */,
+				8366FE6027E53CAA00082C13 /* PortfolioViewModel.swift */,
+				8366FE6227E53CBC00082C13 /* TicketViewModel.swift */,
+				8366FE6427E53CD100082C13 /* SearchViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8366FE6627E53CE100082C13 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE6727E53CF500082C13 /* AccountRepository.swift */,
+				8366FE6927E53D0700082C13 /* HomeRepository.swift */,
+				8366FE6B27E53D1C00082C13 /* PortfolioRepository.swift */,
+				8366FE6D27E53D3200082C13 /* TicketRepository.swift */,
+				8366FE6F27E53D4B00082C13 /* SearchRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		8366FE7127E53D5B00082C13 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE7227E53D6B00082C13 /* AccountApiService.swift */,
+				8366FE7427E53D7D00082C13 /* HomeApiService.swift */,
+				8366FE7627E53D8F00082C13 /* PortfolioApiService.swift */,
+				8366FE7827E53DA100082C13 /* TickerApiService.swift */,
+				8366FE7A27E53DB400082C13 /* SearchApiService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8366FE7C27E53DC800082C13 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				8366FE7D27E53DDC00082C13 /* APIConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +307,9 @@
 			dependencies = (
 			);
 			name = IBClientAPISwiftUI;
+			packageProductDependencies = (
+				8366FE8027E53E0C00082C13 /* StockCharts */,
+			);
 			productName = IBClientAPISwiftUI;
 			productReference = 8366FE0D27E538F300082C13 /* IBClientAPISwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +338,9 @@
 				Base,
 			);
 			mainGroup = 8366FE0427E538F300082C13;
+			packageReferences = (
+				8366FE7F27E53E0C00082C13 /* XCRemoteSwiftPackageReference "stock-charts" */,
+			);
 			productRefGroup = 8366FE0E27E538F300082C13 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +367,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8366FE6527E53CD100082C13 /* SearchViewModel.swift in Sources */,
+				8366FE6327E53CBC00082C13 /* TicketViewModel.swift in Sources */,
+				8366FE7B27E53DB400082C13 /* SearchApiService.swift in Sources */,
+				8366FE5627E53C3900082C13 /* Portfolio.swift in Sources */,
+				8366FE2427E5398500082C13 /* NavigationBar.swift in Sources */,
+				8366FE3227E53A6800082C13 /* AccountCard.swift in Sources */,
+				8366FE6E27E53D3200082C13 /* TicketRepository.swift in Sources */,
+				8366FE2627E539A500082C13 /* TicketNavigationBar.swift in Sources */,
+				8366FE6C27E53D1C00082C13 /* PortfolioRepository.swift in Sources */,
+				8366FE3427E53A9400082C13 /* HomeView.swift in Sources */,
+				8366FE5027E53C0300082C13 /* EnvironmentModel.swift in Sources */,
+				8366FE5227E53C1500082C13 /* Account.swift in Sources */,
+				8366FE7E27E53DDC00082C13 /* APIConstants.swift in Sources */,
 				8366FE1327E538F300082C13 /* ContentView.swift in Sources */,
+				8366FE6127E53CAA00082C13 /* PortfolioViewModel.swift in Sources */,
+				8366FE3E27E53B1600082C13 /* CashBalancesRow.swift in Sources */,
+				8366FE7327E53D6B00082C13 /* AccountApiService.swift in Sources */,
+				8366FE1F27E5392F00082C13 /* Extensions.swift in Sources */,
+				8366FE3027E53A4E00082C13 /* AccountView.swift in Sources */,
+				8366FE4527E53B7D00082C13 /* TicketGraph.swift in Sources */,
+				8366FE6A27E53D0700082C13 /* HomeRepository.swift in Sources */,
+				8366FE3827E53AC700082C13 /* PortfolioView.swift in Sources */,
+				8366FE5F27E53C9800082C13 /* HomeViewModel.swift in Sources */,
+				8366FE5A27E53C6800082C13 /* Search.swift in Sources */,
+				8366FE5827E53C4F00082C13 /* Ticket.swift in Sources */,
+				8366FE4B27E53BC200082C13 /* SearchView.swift in Sources */,
+				8366FE2827E539BF00082C13 /* SearchNavigationBar.swift in Sources */,
+				8366FE3C27E53AF700082C13 /* PortfolioHeader.swift in Sources */,
+				8366FE4027E53B3100082C13 /* PortfolioListItem.swift in Sources */,
+				8366FE7527E53D7D00082C13 /* HomeApiService.swift in Sources */,
+				8366FE4D27E53BD900082C13 /* TicketItem.swift in Sources */,
+				8366FE4927E53BA700082C13 /* PositionItem.swift in Sources */,
+				8366FE4227E53B5B00082C13 /* TicketView.swift in Sources */,
+				8366FE5D27E53C8600082C13 /* AccountViewModel.swift in Sources */,
+				8366FE7927E53DA100082C13 /* TickerApiService.swift in Sources */,
+				8366FE3627E53AA900082C13 /* CustomerScreenItem.swift in Sources */,
+				8366FE2127E5394500082C13 /* CustomColor.swift in Sources */,
+				8366FE7727E53D8F00082C13 /* PortfolioApiService.swift in Sources */,
+				8366FE3A27E53AE100082C13 /* CashBalances.swift in Sources */,
+				8366FE5427E53C2700082C13 /* Home.swift in Sources */,
 				8366FE1127E538F300082C13 /* IBClientAPISwiftUIApp.swift in Sources */,
+				8366FE4727E53B9100082C13 /* MarketData.swift in Sources */,
+				8366FE6827E53CF500082C13 /* AccountRepository.swift in Sources */,
+				8366FE7027E53D4B00082C13 /* SearchRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +613,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8366FE7F27E53E0C00082C13 /* XCRemoteSwiftPackageReference "stock-charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/denniscm190/stock-charts";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8366FE8027E53E0C00082C13 /* StockCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8366FE7F27E53E0C00082C13 /* XCRemoteSwiftPackageReference "stock-charts" */;
+			productName = StockCharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8366FE0527E538F300082C13 /* Project object */;
 }

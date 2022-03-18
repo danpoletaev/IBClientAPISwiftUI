@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "StockCharts",
+        "repositoryURL": "https://github.com/denniscm190/stock-charts",
+        "state": {
+          "branch": "main",
+          "revision": "2c639e697262f60b16dddbed0d65f9b01afe7a5a",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
