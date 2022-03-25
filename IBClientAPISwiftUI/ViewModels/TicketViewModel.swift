@@ -11,6 +11,9 @@ final class TicketViewModel: ObservableObject {
     @Published var tickerInfo: TickerInfo? = nil
     @Published var graphData: [Double] = []
     @Published var dates: [String] = []
+    private let stream = WebSocketService(url: APIConstants.SOCKET_URL)
+
+
     
     private let repository: TicketRepositoryProtocol
     
@@ -31,9 +34,40 @@ final class TicketViewModel: ObservableObject {
         }
     }
     
+    func loadTickerInfoFromSocket(conid: Int) {
+        self.repository.tickle { tickle in
+            let authorizeMessageStr = "{\"session\":\"\(tickle.session)\"}"
+            self.stream.authorize(token: authorizeMessageStr)
+            
+            self.stream.sendRepeatedly(message: "smd+\(conid)+{\"fields\":\(APIConstants.STRING_FIELDS)}")
+        }
+    }
+    
+    func retrieveMessages() async {
+        do {
+            for try await message in stream {
+                do {
+                    let tickerInfo = try message.tickerInfo()
+                    DispatchQueue.main.async {
+                        self.tickerInfo = self.tickerInfo?.combine(newTicket: tickerInfo) ?? tickerInfo
+                    }
+                } catch {
+                    continue
+                }
+            }
+        } catch {
+            debugPrint("Oops something didn't go right")
+        }
+    }
+    
     func onAppear(conid: Int, period: String) {
-        getTickerInfo(conid: conid)
+        
+        loadTickerInfoFromSocket(conid: conid)
         
         getTickerHistory(conid: conid, period: period)
+    }
+    
+    func onDisappear() {
+        self.stream.close()
     }
 }

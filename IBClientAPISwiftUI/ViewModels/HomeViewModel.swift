@@ -9,7 +9,7 @@ import Foundation
 
 final class HomeViewModel: ObservableObject {
     @Published var topPortfolio: [Position] = []
-    @Published var accountPerformance: AccountPerformance = AccountPerformance(graphData: [], dates: [])
+    @Published var accountPerformance: AccountPerformance = AccountPerformance(graphData: [], dates: [], moneyChange: 0, percentChange: 0)
     @Published var secDefConids : [SecDefConid] = []
     
     private let homeRepository: HomeRepositoryProtocol
@@ -20,7 +20,6 @@ final class HomeViewModel: ObservableObject {
     
     private func getTopPositions() {
         self.homeRepository.fetchTopPositions { topPositions in
-            print(topPositions)
             self.topPortfolio = topPositions
         }
     }

@@ -9,6 +9,7 @@ import Foundation
 
 final class AccountViewModel: ObservableObject {
     @Published var account: Account? = nil
+    @Published var total: AccountTotal? = nil
     
     private let repository: AccountRepositoryProtocol
     
@@ -19,6 +20,10 @@ final class AccountViewModel: ObservableObject {
     func fetchAccount() {
         repository.fetchAccount { account in
             self.account = account
+        }
+        repository.getAccountBalances { summaryResponse in
+            print(summaryResponse)
+            self.total = summaryResponse.total
         }
     }
 }

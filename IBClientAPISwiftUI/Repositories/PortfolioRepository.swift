@@ -17,16 +17,26 @@ protocol PortfolioRepositoryProtocol {
 final class PortfolioRepository: PortfolioRepositoryProtocol {
     private let portfolioApiService: PortfolioApiServiceProtocol
     private let accountApiService: AccountApiServiceProtocol
+    private let tickerApiService: TickerApiServiceProtocol
     
-    init(portfolioApiService: PortfolioApiServiceProtocol = PortfolioApiService(), accountApiService: AccountApiServiceProtocol = AccountApiService()) {
+    init(portfolioApiService: PortfolioApiServiceProtocol = PortfolioApiService(), accountApiService: AccountApiServiceProtocol = AccountApiService(), tickerApiService: TickerApiServiceProtocol = TickerApiService()) {
         self.portfolioApiService = portfolioApiService
         self.accountApiService = accountApiService
+        self.tickerApiService = tickerApiService
     }
     
     func fetchPositions(completion: @escaping ([Position]) -> Void) {
         self.accountApiService.fetchAccount { accounts in
             self.portfolioApiService.fetchPositions(accountID: accounts[0].accountId) { positions in
-                completion(positions)
+                var tempPositions: [Position] = []
+                positions.forEach { position in
+                    var tempPosition = position
+                    self.tickerApiService.getTickerInfo(conid: position.conid) { tickerInfo in
+                        tempPosition.priceChange = tickerInfo[0].changeFromLastPrice
+                        tempPositions.append(tempPosition)
+                        completion(tempPositions)
+                    }
+                }
             }
         }
     }

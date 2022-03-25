@@ -21,6 +21,7 @@ final class PortfolioViewModel: ObservableObject {
     
     func fetchPositions() {
         self.repository.fetchPositions { positions in
+            print(positions)
             self.positions = positions
         }
     }

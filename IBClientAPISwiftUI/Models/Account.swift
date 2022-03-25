@@ -37,6 +37,8 @@ struct AccountParent: Codable {
 struct AccountPerformance {
     let graphData: [Double]
     let dates: [String]
+    let moneyChange: Double?
+    let percentChange: Double?
 }
 
 
@@ -111,4 +113,43 @@ struct StartNav: Codable {
 struct PerformancePostData: Encodable {
     let acctIds: [String]
     let freq: String
+}
+
+
+struct TickleResponse: Codable {
+    let session: String
+    let ssoExpires: Int
+    let collission: Bool
+    let userId: Int
+    let iserver: IServer
+}
+
+struct IServer: Codable {
+    let authStatus: IServerAuthStatus
+}
+
+struct IServerAuthStatus: Codable {
+    let authenticated: Bool
+    let competing: Bool
+    let connected: Bool
+    let message: String
+    let MAC: String
+}
+
+struct PASummaryResponse: Codable {
+    let rc: Int?
+    let view: String?
+    let total: AccountTotal?
+}
+
+struct AccountTotal: Codable {
+    let endVal: String
+    let startVal: String
+    let chg: String
+    let incompleteData: Bool
+    let rtn: String
+}
+
+struct SummaryPostData: Encodable {
+    let acctIds: [String]
 }

@@ -16,6 +16,7 @@ struct PortfolioView: View {
     
     @StateObject var portfolioViewModel = PortfolioViewModel()
     @EnvironmentObject var environmentModel: EnvironmentModel
+    private var timer: Timer? = nil
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -55,7 +56,7 @@ struct PortfolioView: View {
                                 NavigationLink(destination: {
                                     TicketView(tickerTitle: position.name ?? "Ticker", exchange: position.listingExchange ?? "Exchange", conid: position.conid)
                                 }, label: {
-                                    PortfolioListItem(ticker: position.contractDesc ?? "Ticker", last: position.mktPrice ?? 1, listingExchange: position.listingExchange ?? "NASDAQ", position: position.position ?? 0, unrealizedPnl: position.unrealizedPnl ?? 0)
+                                    PortfolioListItem(ticker: position.contractDesc ?? "Ticker", last: position.mktPrice ?? 1, listingExchange: position.listingExchange ?? "NASDAQ", position: position.position ?? 0, unrealizedPnl: position.unrealizedPnl ?? 0, changeFromLastPrice: position.priceChange ?? "0")
                                 })
                                 Divider()
                             }
@@ -75,7 +76,6 @@ struct PortfolioView: View {
             .padding(.top, 20)
             .onAppear(perform: {
                 portfolioViewModel.onAppear()
-                
                 environmentModel.fetchData()
             })
         }

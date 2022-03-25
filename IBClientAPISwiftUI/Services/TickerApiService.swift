@@ -94,5 +94,4 @@ final class TickerApiService: TickerApiServiceProtocol {
         }
         task.resume()
     }
-    
 }

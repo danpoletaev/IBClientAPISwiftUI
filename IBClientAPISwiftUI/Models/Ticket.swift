@@ -8,21 +8,21 @@
 import Foundation
 
 struct TickerInfo: Codable {
-    let high, low, marketValue, avgPrice: String?
-    let changeFromLastPrice: String?
-    let changeFromLastPricePercentage: Double?
-    let unrPnL, positions, dailyPnL, bid: String?
-    let ask, dayVolume, requestId, availability: String?
-    let historyVolume, avgDailyVolume, marketCap, pe: String?
-    let eps, costBasis, weekHigh52, weekLow52: String?
-    let open, close, marketValuePercent, conidEx: String?
-    let dividend, dividendYield: String?
-    let conid: Double
-    let updated: Double?
-    let serverID: String?
-    let the87_Raw, the78_Raw: Double?
-    let the7292_Raw: Double?
-    let the7282_Raw: Double?
+    var high, low, marketValue, avgPrice: String?
+    var changeFromLastPrice: String?
+    var changeFromLastPricePercentage: Double?
+    var unrPnL, positions, dailyPnL, bid: String?
+    var ask, dayVolume, requestId, availability: String?
+    var historyVolume, avgDailyVolume, marketCap, pe: String?
+    var eps, costBasis, weekHigh52, weekLow52: String?
+    var open, close, marketValuePercent, conidEx: String?
+    var dividend, dividendYield: String?
+    var conid: Double
+    var updated: Double?
+    var serverID: String?
+    var the87_Raw, the78_Raw: Double?
+    var the7292_Raw: Double?
+    var the7282_Raw: Double?
     
     enum CodingKeys: String, CodingKey {
         case high = "70"

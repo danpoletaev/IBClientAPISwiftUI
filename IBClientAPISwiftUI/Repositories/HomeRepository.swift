@@ -30,11 +30,19 @@ final class HomeRepository: HomeRepositoryProtocol {
     func fetchTopPositions(completion: @escaping ([Position]) -> Void) {
         self.accountApiService.fetchAccount { accounts in
             self.portfolioApiService.fetchPositions(accountID: accounts[0].accountId) { positions in
+                var tempPositions: [Position] = []
                 let filtered = positions.sorted {
                     $0.position ?? 0 > $1.position ?? 0
                 }
                 let slicedPositions = filtered[0...2]
-                completion(Array(slicedPositions))
+                slicedPositions.forEach { position in
+                    var tempPosition = position
+                    self.tickerApiService.getTickerInfo(conid: position.conid) { tickerInfo in
+                        tempPosition.priceChange = tickerInfo[0].changeFromLastPrice
+                        tempPositions.append(tempPosition)
+                        completion(tempPositions)
+                    }
+                }
             }
         }
     }
@@ -46,7 +54,12 @@ final class HomeRepository: HomeRepositoryProtocol {
                 performanceResponse.nav.dates.forEach { date in
                     reformatedDates.append("\(date[2])\(date[3])-\(date[4])\(date[5])-\(date[6])\(date[7])")
                 }
-                completion(AccountPerformance(graphData: performanceResponse.nav.data[0].navs, dates: reformatedDates))
+                let lastDate = performanceResponse.nav.data[0].navs[performanceResponse.nav.data[0].navs.count - 1]
+                let firstDate = performanceResponse.nav.data[0].navs[0]
+                let moneyChange = lastDate - firstDate
+                let percentChange = 100 * lastDate/firstDate
+    
+                completion(AccountPerformance(graphData: performanceResponse.nav.data[0].navs, dates: reformatedDates, moneyChange: moneyChange, percentChange: percentChange))
             }
         }
     }

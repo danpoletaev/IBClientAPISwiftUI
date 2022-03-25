@@ -15,11 +15,10 @@ struct Position: Codable {
     let position, mktPrice, mktValue: Double?
     let currency: String?
     let avgCost, avgPrice: Double?
-    let realizedPnl: Int?
+    let realizedPnl: Double?
     let unrealizedPnl: Double?
     let exchs, expiry, putOrCall: Double?
     let multiplier: Int?
-    let strike: Int?
     let exerciseStyle: String?
     let conExchMap: [String]
     let assetClass: String?
@@ -38,6 +37,7 @@ struct Position: Codable {
     let incrementRules: [IncrementRule]?
     let displayRule: DisplayRule?
     let pageSize: Int?
+    var priceChange: String?
 }
 
 // MARK: - DisplayRule

@@ -24,7 +24,7 @@ struct HomeView: View {
                             Text(environmentModel.accountViewModel.account?.accountId ?? "Fetching")
                                 .foregroundColor(Color(.secondaryLabel))
                                 .font(.system(size: 14))
-                            Text("CZK1,125")
+                            Text("\(environmentModel.accountViewModel.account?.currency ?? "USD")\(environmentModel.accountViewModel.total?.endVal ?? "0")")
                                 .foregroundColor(Color.white)
                                 .font(.system(.title2))
                         }
@@ -32,11 +32,11 @@ struct HomeView: View {
                         Spacer()
                         
                         VStack(alignment: .leading) {
-                            Text("Change(1M)")
+                            Text("Change(All Time)")
                                 .foregroundColor(Color(.secondaryLabel))
                                 .font(.system(size: 14))
-                            Text("CZK-22")
-                                .foregroundColor(Color.red)
+                            Text("\(environmentModel.accountViewModel.account?.currency ?? "USD")\(String(format: "%.2f", homeViewModel.accountPerformance.moneyChange ?? 0))")
+                                .foregroundColor(homeViewModel.accountPerformance.moneyChange ?? 0 < 0 ? Color.red : Color.green)
                                 .font(.system(.title2))
                         }
                     }
@@ -72,36 +72,76 @@ struct HomeView: View {
                     .padding(.horizontal)
                     .padding(.top, 20)
                     
+//                    ScrollView(.horizontal, showsIndicators: false) {
+//                        HStack {
+//                            Text("Instrument")
+//                                .frame(width: 150, alignment: .leading)
+//                                .foregroundColor(Color(.secondaryLabel))
+//                                .font(.system(size: 14))
+//                            Text("Last Price")
+//                                .frame(width: 100, alignment: .trailing)
+//                                .foregroundColor(Color(.secondaryLabel))
+//                                .font(.system(size: 14))
+//                            Text("Change")
+//                                .frame(width: 100, alignment: .trailing)
+//                                .foregroundColor(Color(.secondaryLabel))
+//                                .font(.system(size: 14))
+//                            Text("Market Value")
+//                                .frame(width: 100, alignment: .trailing)
+//                                .foregroundColor(Color(.secondaryLabel))
+//                                .font(.system(size: 14))
+//                        }
+//                        .padding(.horizontal)
+//                        Divider()
+//
+//                        ForEach(homeViewModel.topPortfolio, id: \.conid) { position in
+//                            NavigationLink(destination: {
+//                                TicketView(tickerTitle: position.contractDesc ?? "Ticker", exchange: position.listingExchange ?? "Exchange", conid: position.conid)
+//                            }, label: {
+//                                PortfolioListItem(ticker: position.contractDesc ?? "Ticker", last: position.mktPrice ?? 1, listingExchange: position.listingExchange ?? "NASDAQ", position: position.position ?? 0, unrealizedPnl: position.unrealizedPnl ?? 0, changeFromLastPrice: position.priceChange ?? "0")
+//                            })
+//                            Divider()
+//                        }
+//                    }
+                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            Text("Instrument")
-                                .frame(width: 150, alignment: .leading)
+                            Text("Instument")
                                 .foregroundColor(Color(.secondaryLabel))
                                 .font(.system(size: 14))
-                            Text("Last Price")
-                                .frame(width: 100, alignment: .trailing)
+                                .frame(width: 100, alignment: .leading)
+                            Text("Last")
                                 .foregroundColor(Color(.secondaryLabel))
                                 .font(.system(size: 14))
+                                .frame(width: 100, alignment: .center)
                             Text("Change")
-                                .frame(width: 100, alignment: .trailing)
                                 .foregroundColor(Color(.secondaryLabel))
                                 .font(.system(size: 14))
-                            Text("Market Value")
-                                .frame(width: 100, alignment: .trailing)
+                                .frame(width: 70, alignment: .center)
+                            Text("Position")
                                 .foregroundColor(Color(.secondaryLabel))
                                 .font(.system(size: 14))
+                                .frame(width: 70, alignment: .center)
+                            
+                            Text("P&L")
+                                .foregroundColor(Color(.secondaryLabel))
+                                .font(.system(size: 14))
+                                .frame(width: 70, alignment: .center)
                         }
-                        .padding(.horizontal)
-                        Divider()
+                        .padding(.horizontal, 10)
                         
-                        ForEach(homeViewModel.topPortfolio, id: \.conid) { position in
-                            NavigationLink(destination: {
-                                TicketView(tickerTitle: position.contractDesc ?? "Ticker", exchange: position.listingExchange ?? "Exchange", conid: position.conid)
-                            }, label: {
-                                PortfolioListItem(ticker: position.contractDesc ?? "Ticker", last: position.mktPrice ?? 1, listingExchange: position.listingExchange ?? "NASDAQ", position: position.position ?? 0, unrealizedPnl: position.unrealizedPnl ?? 0)
-                            })
+                        VStack {
                             Divider()
+                            ForEach(homeViewModel.topPortfolio, id: \.conid) { position in
+                                NavigationLink(destination: {
+                                    TicketView(tickerTitle: position.name ?? "Ticker", exchange: position.listingExchange ?? "Exchange", conid: position.conid)
+                                }, label: {
+                                    PortfolioListItem(ticker: position.contractDesc ?? "Ticker", last: position.mktPrice ?? 1, listingExchange: position.listingExchange ?? "NASDAQ", position: position.position ?? 0, unrealizedPnl: position.unrealizedPnl ?? 0, changeFromLastPrice: position.priceChange ?? "0")
+                                })
+                                Divider()
+                            }
                         }
+                        .background(CustomColor.darkBg)
                     }
                     
                     Divider()
@@ -133,6 +173,8 @@ struct HomeView: View {
         .onAppear(perform: {
             environmentModel.fetchData()
             homeViewModel.onAppear()
+
+            
         })
     }
 }

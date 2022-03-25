@@ -13,6 +13,7 @@ struct PortfolioListItem: View {
     var listingExchange: String
     var position: Double
     var unrealizedPnl: Double
+    var changeFromLastPrice: String
     
     var body: some View {
         HStack {
@@ -25,8 +26,8 @@ struct PortfolioListItem: View {
             .frame(width: 100, alignment: .leading)
             Text("\(last, specifier: "%.2f")")
                 .frame(width: 100, alignment: .center)
-            Text("+0.14")
-                .foregroundColor(Color.green)
+            Text("\(Double(changeFromLastPrice) ?? 0, specifier: "%.2f")")
+                .foregroundColor(Double(changeFromLastPrice) ?? 0 < 0 ? Color.red :Color.green)
                 .frame(width: 70, alignment: .center)
             Text("\(position, specifier: "%.2f")")
                 .frame(width: 70, alignment: .center)

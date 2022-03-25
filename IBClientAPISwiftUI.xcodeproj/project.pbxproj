@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		832A9B4827EA283800A48880 /* TransactionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9B4727EA283800A48880 /* TransactionApiService.swift */; };
+		832A9B4A27EA288000A48880 /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9B4927EA288000A48880 /* Transactions.swift */; };
+		832A9B4C27EA2E8B00A48880 /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9B4B27EA2E8B00A48880 /* TransactionRepository.swift */; };
+		832A9B4E27EA2F7800A48880 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9B4D27EA2F7800A48880 /* TransactionViewModel.swift */; };
+		8336527B27E8FBCC00587323 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8336527A27E8FBCC00587323 /* TransactionView.swift */; };
+		8336527D27E9078500587323 /* TransactionNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8336527C27E9078500587323 /* TransactionNavBar.swift */; };
+		834ACDF427ECDB3F00DA0932 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */; };
 		8366FE1127E538F300082C13 /* IBClientAPISwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE1027E538F300082C13 /* IBClientAPISwiftUIApp.swift */; };
 		8366FE1327E538F300082C13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE1227E538F300082C13 /* ContentView.swift */; };
 		8366FE1527E538F500082C13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8366FE1427E538F500082C13 /* Assets.xcassets */; };
@@ -57,6 +64,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		832A9B4727EA283800A48880 /* TransactionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionApiService.swift; sourceTree = "<group>"; };
+		832A9B4927EA288000A48880 /* Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
+		832A9B4B27EA2E8B00A48880 /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
+		832A9B4D27EA2F7800A48880 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
+		8336527A27E8FBCC00587323 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		8336527C27E9078500587323 /* TransactionNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionNavBar.swift; sourceTree = "<group>"; };
+		834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
 		8366FE0D27E538F300082C13 /* IBClientAPISwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IBClientAPISwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8366FE1027E538F300082C13 /* IBClientAPISwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBClientAPISwiftUIApp.swift; sourceTree = "<group>"; };
 		8366FE1227E538F300082C13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8336527927E8FB6A00587323 /* TransactionView */ = {
+			isa = PBXGroup;
+			children = (
+				8336527A27E8FBCC00587323 /* TransactionView.swift */,
+			);
+			path = TransactionView;
+			sourceTree = "<group>";
+		};
 		8366FE0427E538F300082C13 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +190,7 @@
 				8366FE2327E5398500082C13 /* NavigationBar.swift */,
 				8366FE2527E539A500082C13 /* TicketNavigationBar.swift */,
 				8366FE2727E539BF00082C13 /* SearchNavigationBar.swift */,
+				8336527C27E9078500587323 /* TransactionNavBar.swift */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
@@ -175,6 +198,7 @@
 		8366FE2927E539CD00082C13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8336527927E8FB6A00587323 /* TransactionView */,
 				8366FE2A27E539DA00082C13 /* SearchView */,
 				8366FE2B27E539E200082C13 /* TicketView */,
 				8366FE2C27E539EE00082C13 /* PortfolioView */,
@@ -243,6 +267,7 @@
 				8366FE5527E53C3900082C13 /* Portfolio.swift */,
 				8366FE5727E53C4F00082C13 /* Ticket.swift */,
 				8366FE5927E53C6800082C13 /* Search.swift */,
+				832A9B4927EA288000A48880 /* Transactions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,6 +280,7 @@
 				8366FE6027E53CAA00082C13 /* PortfolioViewModel.swift */,
 				8366FE6227E53CBC00082C13 /* TicketViewModel.swift */,
 				8366FE6427E53CD100082C13 /* SearchViewModel.swift */,
+				832A9B4D27EA2F7800A48880 /* TransactionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -267,6 +293,7 @@
 				8366FE6B27E53D1C00082C13 /* PortfolioRepository.swift */,
 				8366FE6D27E53D3200082C13 /* TicketRepository.swift */,
 				8366FE6F27E53D4B00082C13 /* SearchRepository.swift */,
+				832A9B4B27EA2E8B00A48880 /* TransactionRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -279,6 +306,8 @@
 				8366FE7627E53D8F00082C13 /* PortfolioApiService.swift */,
 				8366FE7827E53DA100082C13 /* TickerApiService.swift */,
 				8366FE7A27E53DB400082C13 /* SearchApiService.swift */,
+				832A9B4727EA283800A48880 /* TransactionApiService.swift */,
+				834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -369,11 +398,14 @@
 			files = (
 				8366FE6527E53CD100082C13 /* SearchViewModel.swift in Sources */,
 				8366FE6327E53CBC00082C13 /* TicketViewModel.swift in Sources */,
+				8336527D27E9078500587323 /* TransactionNavBar.swift in Sources */,
 				8366FE7B27E53DB400082C13 /* SearchApiService.swift in Sources */,
 				8366FE5627E53C3900082C13 /* Portfolio.swift in Sources */,
 				8366FE2427E5398500082C13 /* NavigationBar.swift in Sources */,
+				832A9B4A27EA288000A48880 /* Transactions.swift in Sources */,
 				8366FE3227E53A6800082C13 /* AccountCard.swift in Sources */,
 				8366FE6E27E53D3200082C13 /* TicketRepository.swift in Sources */,
+				834ACDF427ECDB3F00DA0932 /* WebSocketService.swift in Sources */,
 				8366FE2627E539A500082C13 /* TicketNavigationBar.swift in Sources */,
 				8366FE6C27E53D1C00082C13 /* PortfolioRepository.swift in Sources */,
 				8366FE3427E53A9400082C13 /* HomeView.swift in Sources */,
@@ -384,8 +416,10 @@
 				8366FE6127E53CAA00082C13 /* PortfolioViewModel.swift in Sources */,
 				8366FE3E27E53B1600082C13 /* CashBalancesRow.swift in Sources */,
 				8366FE7327E53D6B00082C13 /* AccountApiService.swift in Sources */,
+				832A9B4E27EA2F7800A48880 /* TransactionViewModel.swift in Sources */,
 				8366FE1F27E5392F00082C13 /* Extensions.swift in Sources */,
 				8366FE3027E53A4E00082C13 /* AccountView.swift in Sources */,
+				832A9B4827EA283800A48880 /* TransactionApiService.swift in Sources */,
 				8366FE4527E53B7D00082C13 /* TicketGraph.swift in Sources */,
 				8366FE6A27E53D0700082C13 /* HomeRepository.swift in Sources */,
 				8366FE3827E53AC700082C13 /* PortfolioView.swift in Sources */,
@@ -395,10 +429,12 @@
 				8366FE4B27E53BC200082C13 /* SearchView.swift in Sources */,
 				8366FE2827E539BF00082C13 /* SearchNavigationBar.swift in Sources */,
 				8366FE3C27E53AF700082C13 /* PortfolioHeader.swift in Sources */,
+				832A9B4C27EA2E8B00A48880 /* TransactionRepository.swift in Sources */,
 				8366FE4027E53B3100082C13 /* PortfolioListItem.swift in Sources */,
 				8366FE7527E53D7D00082C13 /* HomeApiService.swift in Sources */,
 				8366FE4D27E53BD900082C13 /* TicketItem.swift in Sources */,
 				8366FE4927E53BA700082C13 /* PositionItem.swift in Sources */,
+				8336527B27E8FBCC00587323 /* TransactionView.swift in Sources */,
 				8366FE4227E53B5B00082C13 /* TicketView.swift in Sources */,
 				8366FE5D27E53C8600082C13 /* AccountViewModel.swift in Sources */,
 				8366FE7927E53DA100082C13 /* TickerApiService.swift in Sources */,

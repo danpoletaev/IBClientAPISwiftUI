@@ -10,13 +10,16 @@ import Foundation
 protocol TicketRepositoryProtocol {
     func getTickerInfo(conid: Int, completion: @escaping (TickerInfo) -> Void)
     func getConidHistory(conid: Int, period: String, completion: @escaping (AccountPerformance) -> Void)
+    func tickle(completion: @escaping (TickleResponse) -> Void)
 }
 
 final class TicketRepository: TicketRepositoryProtocol {
     private let apiService: TickerApiServiceProtocol
+    private let accountApiService: AccountApiServiceProtocol
     
-    init(apiService: TickerApiServiceProtocol = TickerApiService()) {
+    init(apiService: TickerApiServiceProtocol = TickerApiService(), acccountApiService: AccountApiServiceProtocol = AccountApiService()) {
         self.apiService = apiService
+        self.accountApiService = acccountApiService
     }
     
     func getTickerInfo(conid: Int, completion: @escaping (TickerInfo) -> Void) {
@@ -37,7 +40,13 @@ final class TicketRepository: TicketRepositoryProtocol {
                 let tempDateToString = formatter.string(from: tempDate as Date)
                 tempDates.append(tempDateToString)
             }
-            completion(AccountPerformance(graphData: tempGraphData, dates: tempDates))
+            completion(AccountPerformance(graphData: tempGraphData, dates: tempDates, moneyChange: nil, percentChange: nil))
+        }
+    }
+    
+    func tickle(completion: @escaping (TickleResponse) -> Void) {
+        self.accountApiService.tickle { tickle in
+            completion(tickle)
         }
     }
 }

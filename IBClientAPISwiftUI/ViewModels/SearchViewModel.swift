@@ -21,5 +21,4 @@ final class SearchViewModel: ObservableObject {
             self.tickets = tickets
         }
     }
-    
 }
