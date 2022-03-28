@@ -61,6 +61,13 @@
 		8366FE7B27E53DB400082C13 /* SearchApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7A27E53DB400082C13 /* SearchApiService.swift */; };
 		8366FE7E27E53DDC00082C13 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7D27E53DDC00082C13 /* APIConstants.swift */; };
 		8366FE8127E53E0C00082C13 /* StockCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 8366FE8027E53E0C00082C13 /* StockCharts */; };
+		83C6FFE527F0D3490052FEFD /* HTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FFE427F0D3490052FEFD /* HTMLView.swift */; };
+		83C6FFE727F0D4430052FEFD /* TradesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FFE627F0D4430052FEFD /* TradesView.swift */; };
+		83C6FFE927F0D6930052FEFD /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FFE827F0D6930052FEFD /* OrderConfirmation.swift */; };
+		83C6FFEB27F22A180052FEFD /* Trades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FFEA27F22A180052FEFD /* Trades.swift */; };
+		83C6FFED27F22AF80052FEFD /* TradesApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FFEC27F22AF80052FEFD /* TradesApiService.swift */; };
+		83C6FFEF27F22B8C0052FEFD /* TradesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FFEE27F22B8C0052FEFD /* TradesRepository.swift */; };
+		83C6FFF127F22BF60052FEFD /* TradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FFF027F22BF60052FEFD /* TradesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +125,13 @@
 		8366FE7827E53DA100082C13 /* TickerApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerApiService.swift; sourceTree = "<group>"; };
 		8366FE7A27E53DB400082C13 /* SearchApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApiService.swift; sourceTree = "<group>"; };
 		8366FE7D27E53DDC00082C13 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		83C6FFE427F0D3490052FEFD /* HTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLView.swift; sourceTree = "<group>"; };
+		83C6FFE627F0D4430052FEFD /* TradesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesView.swift; sourceTree = "<group>"; };
+		83C6FFE827F0D6930052FEFD /* OrderConfirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
+		83C6FFEA27F22A180052FEFD /* Trades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trades.swift; sourceTree = "<group>"; };
+		83C6FFEC27F22AF80052FEFD /* TradesApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesApiService.swift; sourceTree = "<group>"; };
+		83C6FFEE27F22B8C0052FEFD /* TradesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesRepository.swift; sourceTree = "<group>"; };
+		83C6FFF027F22BF60052FEFD /* TradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +149,9 @@
 		8336527927E8FB6A00587323 /* TransactionView */ = {
 			isa = PBXGroup;
 			children = (
+				83C6FFE427F0D3490052FEFD /* HTMLView.swift */,
 				8336527A27E8FBCC00587323 /* TransactionView.swift */,
+				83C6FFE827F0D6930052FEFD /* OrderConfirmation.swift */,
 			);
 			path = TransactionView;
 			sourceTree = "<group>";
@@ -204,6 +220,7 @@
 				8366FE2C27E539EE00082C13 /* PortfolioView */,
 				8366FE2D27E539F500082C13 /* HomeView */,
 				8366FE2E27E539FC00082C13 /* AccountView */,
+				83C6FFE627F0D4430052FEFD /* TradesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +285,7 @@
 				8366FE5727E53C4F00082C13 /* Ticket.swift */,
 				8366FE5927E53C6800082C13 /* Search.swift */,
 				832A9B4927EA288000A48880 /* Transactions.swift */,
+				83C6FFEA27F22A180052FEFD /* Trades.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,6 +299,7 @@
 				8366FE6227E53CBC00082C13 /* TicketViewModel.swift */,
 				8366FE6427E53CD100082C13 /* SearchViewModel.swift */,
 				832A9B4D27EA2F7800A48880 /* TransactionViewModel.swift */,
+				83C6FFF027F22BF60052FEFD /* TradesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -294,6 +313,7 @@
 				8366FE6D27E53D3200082C13 /* TicketRepository.swift */,
 				8366FE6F27E53D4B00082C13 /* SearchRepository.swift */,
 				832A9B4B27EA2E8B00A48880 /* TransactionRepository.swift */,
+				83C6FFEE27F22B8C0052FEFD /* TradesRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -308,6 +328,7 @@
 				8366FE7A27E53DB400082C13 /* SearchApiService.swift */,
 				832A9B4727EA283800A48880 /* TransactionApiService.swift */,
 				834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */,
+				83C6FFEC27F22AF80052FEFD /* TradesApiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -403,15 +424,18 @@
 				8366FE5627E53C3900082C13 /* Portfolio.swift in Sources */,
 				8366FE2427E5398500082C13 /* NavigationBar.swift in Sources */,
 				832A9B4A27EA288000A48880 /* Transactions.swift in Sources */,
+				83C6FFF127F22BF60052FEFD /* TradesViewModel.swift in Sources */,
 				8366FE3227E53A6800082C13 /* AccountCard.swift in Sources */,
 				8366FE6E27E53D3200082C13 /* TicketRepository.swift in Sources */,
 				834ACDF427ECDB3F00DA0932 /* WebSocketService.swift in Sources */,
 				8366FE2627E539A500082C13 /* TicketNavigationBar.swift in Sources */,
 				8366FE6C27E53D1C00082C13 /* PortfolioRepository.swift in Sources */,
 				8366FE3427E53A9400082C13 /* HomeView.swift in Sources */,
+				83C6FFE727F0D4430052FEFD /* TradesView.swift in Sources */,
 				8366FE5027E53C0300082C13 /* EnvironmentModel.swift in Sources */,
 				8366FE5227E53C1500082C13 /* Account.swift in Sources */,
 				8366FE7E27E53DDC00082C13 /* APIConstants.swift in Sources */,
+				83C6FFEB27F22A180052FEFD /* Trades.swift in Sources */,
 				8366FE1327E538F300082C13 /* ContentView.swift in Sources */,
 				8366FE6127E53CAA00082C13 /* PortfolioViewModel.swift in Sources */,
 				8366FE3E27E53B1600082C13 /* CashBalancesRow.swift in Sources */,
@@ -425,10 +449,14 @@
 				8366FE3827E53AC700082C13 /* PortfolioView.swift in Sources */,
 				8366FE5F27E53C9800082C13 /* HomeViewModel.swift in Sources */,
 				8366FE5A27E53C6800082C13 /* Search.swift in Sources */,
+				83C6FFEF27F22B8C0052FEFD /* TradesRepository.swift in Sources */,
+				83C6FFED27F22AF80052FEFD /* TradesApiService.swift in Sources */,
 				8366FE5827E53C4F00082C13 /* Ticket.swift in Sources */,
+				83C6FFE927F0D6930052FEFD /* OrderConfirmation.swift in Sources */,
 				8366FE4B27E53BC200082C13 /* SearchView.swift in Sources */,
 				8366FE2827E539BF00082C13 /* SearchNavigationBar.swift in Sources */,
 				8366FE3C27E53AF700082C13 /* PortfolioHeader.swift in Sources */,
+				83C6FFE527F0D3490052FEFD /* HTMLView.swift in Sources */,
 				832A9B4C27EA2E8B00A48880 /* TransactionRepository.swift in Sources */,
 				8366FE4027E53B3100082C13 /* PortfolioListItem.swift in Sources */,
 				8366FE7527E53D7D00082C13 /* HomeApiService.swift in Sources */,

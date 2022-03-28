@@ -11,7 +11,11 @@ struct TransactionView: View {
     @State var quantity: String = ""
     @State var limitPrice: String = ""
     @State var totalPrice: Double = 0
-    @Binding var showingConfirmation: Bool
+    @State var showingConfirmation: Bool = false
+    @State private var order: Order? = nil
+
+    
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     
     var buying: Bool = true
@@ -180,7 +184,7 @@ struct TransactionView: View {
                             Text("Limit price")
                                 .font(.title3)
                                 .foregroundColor(Color(.secondaryLabel))
-                                
+                            
                             Spacer()
                             TextField("5", text: $limitPrice)
                                 .keyboardType(.numberPad)
@@ -220,18 +224,14 @@ struct TransactionView: View {
                 
                 
                 Button(action: {
-                    print("totalPrice")
-                    print(quantity)
-                    print("totalPrice")
                     
-//                    let order = Order(conid: Int(ticketViewModel.tickerInfo!.conid), secType: "\(Int(ticketViewModel.tickerInfo!.conid)):STK", cOID: "order-1", orderType: "MKT", isSingleGroup: true, outsideRTH: true, side: "BUY", ticker: ticket, tif: "GTC", quantity: Double(quantity), useAdaptive: true, isCcyConv: true)
+                    let order = Order(conid: Int(ticketViewModel.tickerInfo?.conid ?? 0), secType: "STK", orderType: selection.rawValue, side: buying ? "BUY" : "SELL", tif: timeInForce.rawValue, quantity: Double(quantity) ?? 0)
                     
-                    self.showingConfirmation = true
-                    //                    let order = Order(conid: ticketViewModel.tickerInfo?.conid, secType: "", cOID: "", orderType: "", isSingleGroup: true, outsideRTH: true, side: "BUY", ticker: ticket, tif: "GTC", useAdaptive: true, isCcyConv: true)
-                    
-//                    print(order)
-                    
-                    //                    transactionViewModel.placeOrder(order: order)
+                    transactionViewModel.placeOrder(order: order) { orders in
+                        print(orders)
+                        self.order = order
+                        self.showingConfirmation = true
+                    }
                 }) {
                     Text("Submit")
                         .font(.title3)
@@ -242,6 +242,9 @@ struct TransactionView: View {
                 }
                 
             }
+        }
+        .sheet(isPresented: $showingConfirmation) {
+            OrderConfirmation(placedOrder: $order, transactionViewModel: transactionViewModel)
         }
         .padding(.top, 20)
         .frame(width: UIScreen.screenWidth, alignment: .leading)

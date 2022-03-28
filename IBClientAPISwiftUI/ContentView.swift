@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection = 1
+    @EnvironmentObject var environmentModel: EnvironmentModel
     
     init() {
         UITabBar.appearance().barTintColor = UIColor.gray
@@ -17,7 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            TabView(selection: $selection) {
+            TabView(selection: $environmentModel.tagSelection) {
                 PortfolioView()
                     .background(CustomColor.lightBg)
                     .tabItem {
@@ -27,7 +27,7 @@ struct ContentView: View {
                     }
                     .tag(0)
                 
-                HomeView(selection: $selection)
+                HomeView()
                     .background(CustomColor.lightBg)
                     .tabItem{
                         Image(systemName: "house.fill")
@@ -45,6 +45,15 @@ struct ContentView: View {
                         Text("Account")
                     }
                     .tag(2)
+                
+                TradesView()
+                    .background(CustomColor.lightBg)
+                    .tabItem {
+                        Image(systemName: "chart.bar.doc.horizontal.fill")
+                        
+                        Text("Orders")
+                    }
+                    .tag(3)
             }
             .navigationTitle("Bar")
             .navigationBarTitleDisplayMode(.inline)
@@ -52,12 +61,6 @@ struct ContentView: View {
                 NavigationBar(title: "Interactive")
             }
         }.accentColor(Color.white)
-//        .toolbar {
-//            ToolbarItemGroup(placement: .navigationBarLeading, content: {
-//                Text("Interactive")
-//            })
-//            //                NavigationBar(title: "Interactive")
-//        }
     }
 }
 

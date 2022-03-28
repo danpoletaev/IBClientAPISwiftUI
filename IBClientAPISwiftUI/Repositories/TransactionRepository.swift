@@ -9,6 +9,7 @@ import Foundation
 
 protocol TransactionRepositoryProtocol {
     func placeOrder(order: Order, completion: @escaping ([PlaceOrderResponse]) -> ())
+    func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ())
 }
 
 final class TransactionRepository: TransactionRepositoryProtocol {
@@ -26,6 +27,12 @@ final class TransactionRepository: TransactionRepositoryProtocol {
             self.apiService.placeOrder(order: order, accountId: accounts[0].accountId) { orderResponse in
                 completion(orderResponse)
             }
+        }
+    }
+    
+    func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ()) {
+        self.apiService.confirmOrder(id: id) { replyResponse in
+            completion(replyResponse)
         }
     }
 }

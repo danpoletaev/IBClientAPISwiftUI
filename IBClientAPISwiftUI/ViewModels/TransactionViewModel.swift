@@ -17,10 +17,16 @@ final class TransactionViewModel: ObservableObject {
         self.repository = repository
     }
         
-    func placeOrder(order: Order) {
+    func placeOrder(order: Order, completion: @escaping ([PlaceOrderResponse]) -> ()) {
         self.repository.placeOrder(order: order) { orders in
             self.orders = orders
-            print(orders)
+            completion(orders)
+        }
+    }
+    
+    func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ()) {
+        self.repository.confirmOrder(id: id) { replyResponse in
+            completion(replyResponse)
         }
     }
 }
