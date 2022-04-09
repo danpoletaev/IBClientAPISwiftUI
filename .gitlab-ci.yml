@@ -1,0 +1,12 @@
+stages:
+  - build
+
+build_project:
+  stage: build
+  script:
+    - xcodebuild clean -project IBClientAPISwiftUI.xcodeproj -scheme IBClientAPISwiftUI | xcpretty
+    - xcodebuild test -project IBClientAPISwiftUI.xcodeproj -scheme IBClientAPISwiftUI -destination 'platform=iOS Simulator,name=iPhone X,OS=15.3' | xcpretty -s
+  tags:
+    - ios_15-3
+    - xcode_13-2
+    - osx_10-11

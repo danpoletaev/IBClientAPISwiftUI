@@ -61,6 +61,7 @@
 		8366FE7B27E53DB400082C13 /* SearchApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7A27E53DB400082C13 /* SearchApiService.swift */; };
 		8366FE7E27E53DDC00082C13 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7D27E53DDC00082C13 /* APIConstants.swift */; };
 		8366FE8127E53E0C00082C13 /* StockCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 8366FE8027E53E0C00082C13 /* StockCharts */; };
+		836F0EF52801DADE000D2F6D /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 836F0EF42801DADE000D2F6D /* .gitlab-ci.yml */; };
 		839A8F9628019DED00003158 /* MockSearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A8F9528019DED00003158 /* MockSearchModels.swift */; };
 		839A8F9828019E0100003158 /* MockSearchApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A8F9728019E0100003158 /* MockSearchApiService.swift */; };
 		839A8F9A2801A2D900003158 /* SearchTicketResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 839A8F992801A2D900003158 /* SearchTicketResponse.json */; };
@@ -193,6 +194,7 @@
 		8366FE7827E53DA100082C13 /* TickerApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerApiService.swift; sourceTree = "<group>"; };
 		8366FE7A27E53DB400082C13 /* SearchApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApiService.swift; sourceTree = "<group>"; };
 		8366FE7D27E53DDC00082C13 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		836F0EF42801DADE000D2F6D /* .gitlab-ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = ".gitlab-ci.yml"; sourceTree = "<group>"; };
 		839A8F9528019DED00003158 /* MockSearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchModels.swift; sourceTree = "<group>"; };
 		839A8F9728019E0100003158 /* MockSearchApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchApiService.swift; sourceTree = "<group>"; };
 		839A8F992801A2D900003158 /* SearchTicketResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchTicketResponse.json; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		8366FE0427E538F300082C13 = {
 			isa = PBXGroup;
 			children = (
+				836F0EF42801DADE000D2F6D /* .gitlab-ci.yml */,
 				8366FE0F27E538F300082C13 /* IBClientAPISwiftUI */,
 				83F8B3CC28007F6100E186D1 /* IBClientAPISwiftUITests */,
 				8366FE0E27E538F300082C13 /* Products */,
@@ -687,6 +690,7 @@
 				839A8FC82801AE6E00003158 /* AccountSummary.json in Resources */,
 				839A8FCE2801AF5700003158 /* PaSummaryResponse.json in Resources */,
 				83F56D812800AE0A009FCCCF /* HistoryConidResponse.json in Resources */,
+				836F0EF52801DADE000D2F6D /* .gitlab-ci.yml in Resources */,
 				839A8FA62801A58800003158 /* PlaceorderResponse.json in Resources */,
 				839A8FB42801A97F00003158 /* AllTradesResponse.json in Resources */,
 			);
