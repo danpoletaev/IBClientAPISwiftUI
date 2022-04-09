@@ -33,3 +33,13 @@ struct CashBalances: View {
         .background(CustomColor.darkBg)
     }
 }
+
+struct CashBalances_Previews: PreviewProvider {
+    static var previews: some View {
+        let assetListMocked = MockedAccountModels.allocationResponse.assetClass.long
+        CashBalances(isLong: true, assetList: assetListMocked)
+            .environmentObject(MockedAccountModels.mockedEvnironmentModel)
+            .background(CustomColor.lightBg)
+            .environment(\.colorScheme, .dark)
+    }
+}

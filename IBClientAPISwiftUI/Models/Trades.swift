@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct AllTradesResponse: Decodable {
+struct AllTradesResponse: Codable {
     var orders: [TickerOrderItem]
 }
 
-struct TickerOrderItem: Decodable {
+struct TickerOrderItem: Codable {
     var acct: String
     var conidex: String
     var conid: Double

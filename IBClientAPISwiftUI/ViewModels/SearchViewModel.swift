@@ -12,8 +12,8 @@ final class SearchViewModel: ObservableObject {
     
     private let repository: SearchRepositoryProtocol
     
-    init(repository: SearchRepositoryProtocol = SearchRepository()) {
-        self.repository = repository
+    init(repository: SearchRepositoryProtocol?) {
+        self.repository = repository ?? SearchRepository(apiService: nil)
     }
         
     func searchForNameSymbol(value: String) {

@@ -9,7 +9,12 @@ import SwiftUI
 
 struct SearchView: View {
     @State var searchText: String
-    @StateObject private var searchViewModel = SearchViewModel()
+    @StateObject private var searchViewModel: SearchViewModel
+    
+    init (searchViewModel: SearchViewModel?, searchText: String) {
+        _searchViewModel = StateObject(wrappedValue: searchViewModel ?? SearchViewModel(repository: nil))
+        _searchText = State(wrappedValue: searchText)
+    }
     
     var body: some View {
         VStack {
@@ -41,5 +46,18 @@ struct SearchView: View {
                 SearchNavigationBar(searchText: $searchText)
             }
         }
+    }
+}
+
+struct SearchView_Preview: PreviewProvider {
+    static var previews: some View {
+        let searchViewModel = SearchViewModel(repository: SearchRepository(apiService: MockSearchApiService(searchTicket: nil)))
+        
+        SearchView(searchViewModel: searchViewModel, searchText: "")
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.lightBg)
+            .onAppear(perform: {
+                searchViewModel.searchForNameSymbol(value: "s")
+            })
     }
 }

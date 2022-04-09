@@ -12,8 +12,8 @@ final class TradesViewModel: ObservableObject {
     
     private let repository: TradesRepositoryProtocol
     
-    init(repository: TradesRepositoryProtocol = TradesRepository()) {
-        self.repository = repository
+    init(repository: TradesRepositoryProtocol?) {
+        self.repository = repository ?? TradesRepository(apiService: nil)
     }
     
     func getAllTrades() {

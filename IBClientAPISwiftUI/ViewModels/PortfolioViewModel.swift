@@ -15,8 +15,8 @@ final class PortfolioViewModel: ObservableObject {
     
     private let repository: PortfolioRepositoryProtocol
     
-    init(repository: PortfolioRepositoryProtocol = PortfolioRepository()) {
-        self.repository = repository
+    init(repository: PortfolioRepositoryProtocol?) {
+        self.repository = repository ?? PortfolioRepository(portfolioApiService: nil, accountApiService: nil, tickerApiService: nil )
     }
     
     func fetchPositions() {

@@ -13,7 +13,7 @@ struct NavigationBar: View {
     var body: some View {
         
         HStack {
-            NavigationLink(destination: SearchView(searchText: ""), label: {
+            NavigationLink(destination: SearchView(searchViewModel: nil, searchText: ""), label: {
                 Image(systemName: "magnifyingglass.circle")
                     .resizable()
                     .foregroundColor(Color.white)

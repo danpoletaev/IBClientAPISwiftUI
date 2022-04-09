@@ -1,0 +1,54 @@
+{
+    "secdef": [
+        {
+            "conid": 317463351,
+            "currency": "USD",
+            "time": 21,
+            "chineseName": "Biolase&#x80A1;&#x4EFD;&#x6709;&#x9650;&#x516C;&#x53F8;",
+            "allExchanges": "AMEX,NYSE,PHLX,CHX,ARCA,ISLAND,ISE,IDEAL,NASDAQQ,NASDAQ,DRCTEDGE,BEX,BATS,NITEECN,EDGEA,CSFBALGO,JEFFALGO,CSFBCROSS,NYSENASD,PSX,BYX,ITG,PDQ,IBKRATS,NYSEFLOOR,CITADEL,IBDARK,CITADELDP,NASDDARK,IEX,WEDBUSH,SUMMER,WINSLOW,FINRA,LIQITG,UBSDARK,BTIG,VIRTU,LEERINK,JEFF,OPCO,COWEN,DBK,JPMC,JANE,NEEDHAM,FRACSHARE,RBCALGO,VIRTUDP,BAYCREST,FOXRIVER,MND,NITEEXST,PEARL,NITERTL,NYSENAT,IEXMID,HRT,FLOWTRADE,HRTDP,JANELP,PEAK6,IMCDP,CTDLZERO,HRTMID,JANEZERO,HRTEXST,IMCLP,LTSE,SOCGENDP,MEMX,INTELCROS,VIRTUBYIN,JUMPTRADE,NITEZERO,TPLUS1,XTXEXST,XTXDP,XTXMID,COWENLP,BARCDP,JUMPLP,OLDMCLP,RBCCMALP,WALLBETH",
+            "listingExchange": "NASDAQ",
+            "countryCode": "US",
+            "name": "BIOLASE INC",
+            "assetClass": "STK",
+            "expiry": null,
+            "lastTradingDay": null,
+            "group": "Healthcare-Products",
+            "putOrCall": null,
+            "sector": "Consumer, Non-cyclical",
+            "sectorGroup": "Medical Laser Systems",
+            "strike": "0",
+            "ticker": "BIOL",
+            "undConid": 0,
+            "multiplier": 0.0,
+            "type": "COMMON",
+            "hasOptions": false,
+            "fullName": "BIOL",
+            "isUS": true,
+            "incrementRules": [
+                {
+                    "lowerEdge": 0.0,
+                    "increment": 1.0E-4
+                },
+                {
+                    "lowerEdge": 1.0,
+                    "increment": 0.01
+                }
+            ],
+            "displayRule": {
+                "magnification": 0,
+                "displayRuleStep": [
+                    {
+                        "decimalDigits": 4,
+                        "lowerEdge": 0.0,
+                        "wholeDigits": 1
+                    },
+                    {
+                        "decimalDigits": 2,
+                        "lowerEdge": 1.0,
+                        "wholeDigits": 4
+                    }
+                ]
+            }
+        }
+    ]
+}

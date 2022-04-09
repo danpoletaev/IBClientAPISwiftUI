@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MarketData: View {
     @Binding var tickerInfo: TickerInfo?
+    
     var body: some View {
         VStack {
             HStack {
@@ -154,5 +155,15 @@ struct MarketData: View {
             
         }
         .padding(.horizontal)
+    }
+}
+
+struct MarketData_Preview: PreviewProvider {
+    @State static var tickerInfo: TickerInfo? = MockTickerModels.tickerInfo
+    
+    static var previews: some View {
+        MarketData(tickerInfo: $tickerInfo)
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.lightBg)
     }
 }

@@ -1,0 +1,27 @@
+[
+    {
+        "id": "U5625832",
+        "accountId": "U5625832",
+        "accountVan": "U5625832",
+        "accountTitle": "Daniil Poletaev",
+        "displayName": "Daniil Poletaev",
+        "accountAlias": null,
+        "accountStatus": 1614661200000,
+        "currency": "CZK",
+        "type": "INDIVIDUAL",
+        "tradingType": "STKCASH",
+        "ibEntity": "IB-CE",
+        "faclient": false,
+        "clearingStatus": "O",
+        "covestor": false,
+        "parent": {
+            "mmc": [],
+            "accountId": "",
+            "isMParent": false,
+            "isMChild": false,
+            "isMultiplex": false
+        },
+        "desc": "U5625832"
+    }
+]
+

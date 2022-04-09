@@ -14,8 +14,8 @@ protocol TradesRepositoryProtocol {
 final class TradesRepository: TradesRepositoryProtocol {
     private let apiService: TradesApiServiceProtocol
     
-    init(apiService: TradesApiServiceProtocol = TradesApiService()) {
-        self.apiService = apiService
+    init(apiService: TradesApiServiceProtocol?) {
+        self.apiService = apiService ?? TradesApiService()
     }
     
     func getAllTrades(completion: @escaping (AllTradesResponse) -> ()) {

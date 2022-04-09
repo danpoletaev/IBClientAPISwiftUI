@@ -9,12 +9,19 @@ import SwiftUI
 import StockCharts
 
 struct TicketView: View {
-    @StateObject var ticketViewModel = TicketViewModel()
-
+    @StateObject var ticketViewModel: TicketViewModel
     
     var tickerTitle: String
     var exchange: String
     var conid: Int
+    
+    init(ticketViewModel: TicketViewModel?, tickerTitle: String, exchange: String, conid: Int) {
+        _ticketViewModel = StateObject(wrappedValue: ticketViewModel ?? TicketViewModel(repository: nil))
+        self.tickerTitle = tickerTitle
+        self.exchange = exchange
+        self.conid = conid
+    }
+
     
     var body: some View {
         VStack {
@@ -68,7 +75,7 @@ struct TicketView: View {
                 HStack {
                 
                     NavigationLink(destination: {
-                        TransactionView(buying: false, ticket: tickerTitle, exchange: exchange, ticketViewModel: ticketViewModel)
+                        TransactionView(transactionViewModel: nil, ticketViewModel: ObservedObject(wrappedValue: ticketViewModel), buying: false, ticket: tickerTitle, exchange: exchange)
                     }, label: {
                         Text("Sell")
                             .foregroundColor(Color.white)
@@ -81,7 +88,7 @@ struct TicketView: View {
                     Spacer()
                     
                     NavigationLink(destination: {
-                        TransactionView(ticket: tickerTitle, exchange: exchange, ticketViewModel: ticketViewModel)
+                        TransactionView(transactionViewModel: nil, ticketViewModel: ObservedObject(wrappedValue: ticketViewModel), buying: true, ticket: tickerTitle, exchange: exchange)
                     }, label: {
                         Text("Buy")
                             .foregroundColor(Color.white)
@@ -113,6 +120,19 @@ struct TicketView: View {
         .onDisappear(perform: {
             ticketViewModel.onDisappear()
         })
+    }
+}
+
+struct TicketView_Previews: PreviewProvider {
+    static var previews: some View {
+        let ticketViewModel = TicketViewModel(repository: TicketRepository(apiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil), acccountApiService: nil))
+        
+        TicketView(ticketViewModel: ticketViewModel, tickerTitle: "BIOL", exchange: "NASDAQ", conid: 1)
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.lightBg)
+            .onAppear(perform: {
+                ticketViewModel.onAppear(conid: 1, period: "Q")
+            })
     }
 }
 

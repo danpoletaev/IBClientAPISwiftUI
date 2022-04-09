@@ -28,3 +28,19 @@ struct CashBalancesRow: View {
         .frame(width: UIScreen.screenWidth, alignment: .leading)
     }
 }
+
+struct CashBalancesRow_Preview: PreviewProvider {
+    static var previews: some View {
+        
+        let environmentModel = MockedAccountModels.mockedEvnironmentModel
+        
+        CashBalancesRow(key: "key", value: 124.2)
+            .environmentObject(environmentModel)
+            .onAppear(perform: {
+                environmentModel.fetchData()
+            })
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.lightBg)
+        
+    }
+}

@@ -13,8 +13,8 @@ final class AccountViewModel: ObservableObject {
     
     private let repository: AccountRepositoryProtocol
     
-    init(repository: AccountRepositoryProtocol = AccountRepository()) {
-        self.repository = repository
+    init(repository: AccountRepositoryProtocol?) {
+        self.repository = repository ?? AccountRepository(apiService: AccountApiService())
     }
     
     func fetchAccount() {
@@ -22,7 +22,6 @@ final class AccountViewModel: ObservableObject {
             self.account = account
         }
         repository.getAccountBalances { summaryResponse in
-            print(summaryResponse)
             self.total = summaryResponse.total
         }
     }

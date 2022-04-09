@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-struct PlaceOrderResponse: Decodable {
+struct PlaceOrderResponse: Codable {
     var id: String
     var message: [String]
 }
@@ -49,7 +49,7 @@ struct Order: Encodable {
     var quantity: Double
 }
 
-struct ReplyItem: Decodable {
+struct ReplyItem: Codable {
     var orderId: String?
     var order_status: String?
     var warning_message: String?

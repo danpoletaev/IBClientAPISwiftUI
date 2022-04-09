@@ -87,3 +87,19 @@ struct PortfolioHeader: View {
     }
 }
 
+struct PortfolioHeader_Preview: PreviewProvider {
+    static var previews: some View {
+        let environmentModel = MockedAccountModels.mockedEvnironmentModel
+        
+        let portfolioViewModel = PortfolioViewModel(repository: PortfolioRepository(portfolioApiService: MockPortfolioApiService(positions: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil), tickerApiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)))
+        
+        PortfolioHeader(accountSummary: portfolioViewModel.accountSummary, dailyPnL: portfolioViewModel.dailyPnL)
+            .environmentObject(environmentModel)
+            .onAppear(perform: {
+                environmentModel.fetchData()
+                portfolioViewModel.onAppear()
+            })
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.lightBg)
+    }
+}

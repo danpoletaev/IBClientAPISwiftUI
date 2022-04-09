@@ -14,8 +14,8 @@ final class HomeViewModel: ObservableObject {
     
     private let homeRepository: HomeRepositoryProtocol
     
-    init(homeRepository: HomeRepositoryProtocol = HomeRepository()) {
-        self.homeRepository = homeRepository
+    init(homeRepository: HomeRepositoryProtocol?) {
+        self.homeRepository = homeRepository ?? HomeRepository(homeApiService: nil, portfolioApiService: nil, tickerApiService: nil, accountApiService: nil)
     }
     
     private func getTopPositions() {

@@ -20,11 +20,11 @@ final class HomeRepository: HomeRepositoryProtocol {
     private let tickerApiService: TickerApiServiceProtocol
     private let accountApiService: AccountApiServiceProtocol
     
-    init(homeApiService: HomeApiServiceProtocol = HomeApiService(), portfolioApiService: PortfolioApiServiceProtocol = PortfolioApiService(), tickerApiService: TickerApiServiceProtocol = TickerApiService(), accountApiService: AccountApiServiceProtocol = AccountApiService()) {
-        self.homeApiService = homeApiService
-        self.portfolioApiService = portfolioApiService
-        self.tickerApiService = tickerApiService
-        self.accountApiService = accountApiService
+    init(homeApiService: HomeApiServiceProtocol?, portfolioApiService: PortfolioApiServiceProtocol?, tickerApiService: TickerApiServiceProtocol?, accountApiService: AccountApiServiceProtocol?) {
+        self.homeApiService = homeApiService ?? HomeApiService()
+        self.portfolioApiService = portfolioApiService ?? PortfolioApiService()
+        self.tickerApiService = tickerApiService ?? TickerApiService()
+        self.accountApiService = accountApiService ?? AccountApiService()
     }
     
     func fetchTopPositions(completion: @escaping ([Position]) -> Void) {

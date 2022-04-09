@@ -11,7 +11,7 @@ import SwiftUI
 struct IBClientAPISwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            let environmentModel = EnvironmentModel()
+            let environmentModel = EnvironmentModel(accountViewModel: AccountViewModel(repository: nil))
             ContentView().environmentObject(environmentModel)
                 .onAppear(perform: {
                     environmentModel.fetchData()

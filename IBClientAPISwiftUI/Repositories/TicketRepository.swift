@@ -17,9 +17,9 @@ final class TicketRepository: TicketRepositoryProtocol {
     private let apiService: TickerApiServiceProtocol
     private let accountApiService: AccountApiServiceProtocol
     
-    init(apiService: TickerApiServiceProtocol = TickerApiService(), acccountApiService: AccountApiServiceProtocol = AccountApiService()) {
-        self.apiService = apiService
-        self.accountApiService = acccountApiService
+    init(apiService: TickerApiServiceProtocol?, acccountApiService: AccountApiServiceProtocol?) {
+        self.apiService = apiService ?? TickerApiService()
+        self.accountApiService = acccountApiService ?? AccountApiService()
     }
     
     func getTickerInfo(conid: Int, completion: @escaping (TickerInfo) -> Void) {

@@ -16,8 +16,8 @@ protocol AccountRepositoryProtocol {
 final class AccountRepository: AccountRepositoryProtocol {
     private let apiService: AccountApiServiceProtocol
     
-    init(apiService: AccountApiServiceProtocol = AccountApiService()) {
-        self.apiService = apiService
+    init(apiService: AccountApiServiceProtocol? ) {
+        self.apiService = apiService ?? AccountApiService()
     }
     
     func fetchAccount(completion: @escaping (Account) -> Void) {

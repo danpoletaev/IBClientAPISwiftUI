@@ -14,7 +14,7 @@ struct TicketItem: View {
     
     var body: some View {
         NavigationLink(destination: {
-            TicketView(tickerTitle: title, exchange: exchange, conid: Int(conid))
+            TicketView(ticketViewModel: nil, tickerTitle: title, exchange: exchange, conid: Int(conid))
         }, label: {
             VStack {
                 HStack{
@@ -29,5 +29,13 @@ struct TicketItem: View {
                 }
             }
         })
+    }
+}
+
+struct TicketItem_Previews: PreviewProvider {
+    static var previews: some View {    
+        TicketItem(title: "Title", exchange: "Exchange", conid: 21)
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.lightBg)
     }
 }

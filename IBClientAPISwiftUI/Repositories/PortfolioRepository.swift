@@ -19,10 +19,10 @@ final class PortfolioRepository: PortfolioRepositoryProtocol {
     private let accountApiService: AccountApiServiceProtocol
     private let tickerApiService: TickerApiServiceProtocol
     
-    init(portfolioApiService: PortfolioApiServiceProtocol = PortfolioApiService(), accountApiService: AccountApiServiceProtocol = AccountApiService(), tickerApiService: TickerApiServiceProtocol = TickerApiService()) {
-        self.portfolioApiService = portfolioApiService
-        self.accountApiService = accountApiService
-        self.tickerApiService = tickerApiService
+    init(portfolioApiService: PortfolioApiServiceProtocol?, accountApiService: AccountApiServiceProtocol?, tickerApiService: TickerApiServiceProtocol?) {
+        self.portfolioApiService = portfolioApiService ?? PortfolioApiService()
+        self.accountApiService = accountApiService ?? AccountApiService()
+        self.tickerApiService = tickerApiService ?? TickerApiService()
     }
     
     func fetchPositions(completion: @escaping ([Position]) -> Void) {

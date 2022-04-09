@@ -12,13 +12,11 @@ final class TicketViewModel: ObservableObject {
     @Published var graphData: [Double] = []
     @Published var dates: [String] = []
     private let stream = WebSocketService(url: APIConstants.SOCKET_URL)
-
-
     
     private let repository: TicketRepositoryProtocol
     
-    init(repository: TicketRepositoryProtocol = TicketRepository()) {
-        self.repository = repository
+    init(repository: TicketRepositoryProtocol?) {
+        self.repository = repository ?? TicketRepository(apiService: nil, acccountApiService: nil)
     }
     
     func getTickerInfo(conid: Int) {

@@ -10,7 +10,11 @@ import StockCharts
 
 struct HomeView: View {
     @EnvironmentObject var environmentModel: EnvironmentModel
-    @StateObject var homeViewModel = HomeViewModel()
+    @StateObject var homeViewModel: HomeViewModel
+    
+    init(homeViewModel: HomeViewModel?) {
+        _homeViewModel = StateObject(wrappedValue: homeViewModel ?? HomeViewModel(homeRepository: nil))
+    }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -101,7 +105,7 @@ struct HomeView: View {
                             Divider()
                             ForEach(homeViewModel.topPortfolio, id: \.conid) { position in
                                 NavigationLink(destination: {
-                                    TicketView(tickerTitle: position.name ?? "Ticker", exchange: position.listingExchange ?? "Exchange", conid: position.conid)
+                                    TicketView(ticketViewModel: nil, tickerTitle: position.name ?? "Ticker", exchange: position.listingExchange ?? "Exchange", conid: position.conid)
                                 }, label: {
                                     PortfolioListItem(ticker: position.contractDesc ?? "Ticker", last: position.mktPrice ?? 1, listingExchange: position.listingExchange ?? "NASDAQ", position: position.position ?? 0, unrealizedPnl: position.unrealizedPnl ?? 0, changeFromLastPrice: position.priceChange ?? "0")
                                 })
@@ -140,8 +144,23 @@ struct HomeView: View {
         .onAppear(perform: {
             environmentModel.fetchData()
             homeViewModel.onAppear()
-
-            
         })
     }
 }
+
+struct HomeView_Preview: PreviewProvider {
+    static var previews: some View {
+        let environmentModel = MockedAccountModels.mockedEvnironmentModel
+        
+        let homeViewModel = HomeViewModel(homeRepository: HomeRepository(homeApiService: MockHomeApiService(scannerResponse: nil), portfolioApiService: nil, tickerApiService: nil, accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil)))
+        
+        HomeView(homeViewModel: homeViewModel)
+            .environmentObject(environmentModel)
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.lightBg)
+            .onAppear(perform: {
+                homeViewModel.onAppear()
+            })
+    }
+}
+

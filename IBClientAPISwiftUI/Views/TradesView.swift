@@ -9,7 +9,11 @@ import SwiftUI
 
 struct TradesView: View {
     
-    @StateObject var tradesViewModel = TradesViewModel()
+    @StateObject var tradesViewModel: TradesViewModel
+    
+    init(tradesViewModel: TradesViewModel?) {
+        _tradesViewModel = StateObject(wrappedValue: tradesViewModel ?? TradesViewModel(repository: nil))
+    }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -102,8 +106,8 @@ func parseTime(time: String) -> String {
     return "\(time[6])\(time[7]):\(time[8])\(time[9]):\(time[10])\(time[11])"
 }
 
-struct TradesView_Previews: PreviewProvider {
-    static var previews: some View {
-        TradesView()
-    }
-}
+//struct TradesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TradesView()
+//    }
+//}

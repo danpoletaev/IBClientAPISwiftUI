@@ -222,5 +222,4 @@ final class AccountApiService: AccountApiServiceProtocol {
         }
         task.resume()
     }
-    
 }

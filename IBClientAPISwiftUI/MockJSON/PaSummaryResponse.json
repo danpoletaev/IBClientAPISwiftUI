@@ -1,0 +1,67 @@
+{
+    "rc": 0,
+    "view": "all_bal",
+    "total": {
+        "endVal": "1,019.21",
+        "startVal": "1,105.58",
+        "chg": "-86.37",
+        "incompleteData": false,
+        "rtn": "-7.81%"
+    },
+    "balanceByDate": {
+        "series": [
+            {
+                "data": [
+                    [
+                        1648872000000,
+                        1105.58
+                    ],
+                    [
+                        1648958400000,
+                        1105.58
+                    ],
+                    [
+                        1649044800000,
+                        1127.83
+                    ],
+                    [
+                        1649131200000,
+                        1084.37
+                    ],
+                    [
+                        1649217600000,
+                        1047.7
+                    ],
+                    [
+                        1649304000000,
+                        1039.98
+                    ],
+                    [
+                        1649390400000,
+                        1019.21
+                    ]
+                ],
+                "groupId": "INVEST",
+                "name": "INVEST",
+                "id": "INVEST"
+            }
+        ]
+    },
+    "lastSuccessfulUpdate": "N/A",
+    "endDate": "2022-04-08",
+    "hasExternalAccounts": false,
+    "currency": "CZK",
+    "accountSummaries": [
+        {
+            "endVal": "1,019.21",
+            "hasAccounts": true,
+            "startVal": "1,105.58",
+            "chg": "-86.37",
+            "accountTypeCode": "INVEST",
+            "rtn": "-7.81%"
+        }
+    ],
+    "userId": "59771326",
+    "pm": "TWR",
+    "startDate": "2022-04-02"
+}

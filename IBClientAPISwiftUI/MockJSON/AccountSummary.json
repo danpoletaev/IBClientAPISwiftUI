@@ -1,0 +1,330 @@
+{
+    "accountcode": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "U5625832",
+        "severity": 0
+    },
+    "accountready": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "true",
+        "severity": 0
+    },
+    "accounttype": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "INDIVIDUAL",
+        "severity": 0
+    },
+    "accruedcash": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "accrueddividend": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "availablefunds": {
+        "amount": 171.72000122070312,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "availablefunds-s": {
+        "amount": 171.72000122070312,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "billable": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "buyingpower": {
+        "amount": 171.72000122070312,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "columnprio-s": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "1",
+        "severity": 0
+    },
+    "cushion": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "0.167485",
+        "severity": 0
+    },
+    "equitywithloanvalue": {
+        "amount": 171.72000122070312,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "excessliquidity": {
+        "amount": 171.72000122070312,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "excessliquidity-s": {
+        "amount": 105.08000183105469,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "fullavailablefunds": {
+        "amount": 171.72000122070312,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "fullexcessliquidity": {
+        "amount": 171.72000122070312,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "fullinitmarginreq": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "fullmaintmarginreq": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "grosspositionvalue": {
+        "amount": 853.5700073242188,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "guarantee": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "highestseverity": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "null",
+        "severity": 0
+    },
+    "indianstockhaircut": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "initmarginreq": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "leverage-s": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "0.83",
+        "severity": 0
+    },
+    "lookaheadavailablefunds": {
+        "amount": 171.72000122070312,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "lookaheadexcessliquidity": {
+        "amount": 171.72000122070312,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "lookaheadinitmarginreq": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "lookaheadmaintmarginreq": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "lookaheadnextchange": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "0",
+        "severity": 0
+    },
+    "maintmarginreq": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "netliquidation": {
+        "amount": 1025.2900390625,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "netliquidationuncertainty": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "nlvandmargininreview": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "false",
+        "severity": 0
+    },
+    "pasharesvalue": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "physicalcertificatevalue": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "postexpirationexcess": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "postexpirationmargin": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "segmenttitle-s": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "CFD",
+        "severity": 0
+    },
+    "totalcashvalue": {
+        "amount": 171.72000122070312,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "totaldebitcardpendingcharges": {
+        "amount": 0.0,
+        "currency": "CZK",
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": null,
+        "severity": 0
+    },
+    "tradingtype-s": {
+        "amount": 0.0,
+        "currency": null,
+        "isNull": false,
+        "timestamp": 1649506748000,
+        "value": "STKCASH",
+        "severity": 0
+    }
+}

@@ -102,3 +102,33 @@ extension TickerInfo {
         return TickerInfo(high: high, low: low, marketValue: marketValue, avgPrice: avgPrice, changeFromLastPrice: changeFromLastPrice, changeFromLastPricePercentage: changeFromLastPricePercentage, unrPnL: unrPnL, positions: positions, dailyPnL: dailyPnL, bid: bid, ask: ask, dayVolume: dayVolume, requestId: requestId, availability: availability, historyVolume: historyVolume, avgDailyVolume: avgDailyVolume, marketCap: marketCap, pe: pe, eps: eps, costBasis: costBasis, weekHigh52: weekHigh52, weekLow52: weekLow52, open: open, close: close, marketValuePercent: marketValuePercent, conidEx: conidEx, dividend: dividend, dividendYield: dividendYield, conid: conid, updated: updated, serverID: serverID, the87_Raw: the87_Raw, the78_Raw: the78_Raw, the7292_Raw: the7292_Raw, the7282_Raw: the7282_Raw)
     }
 }
+
+extension Bundle {
+    func decode<T: Codable>(type: T.Type, from file: String) -> T {
+        
+        guard let url = self.url(forResource: file, withExtension: nil) else {
+            fatalError("No file named: \(file) in Bundle")
+        }
+        
+        guard let data = try? Data(contentsOf: url) else {
+            fatalError("Failed to load")
+        }
+        
+        let decoder = JSONDecoder()
+        
+        
+        do {
+            return try decoder.decode(T.self, from: data)
+        } catch DecodingError.keyNotFound(let key, let context) {
+            fatalError("Failed to decode \(file) from bundel, missing file '\(key.stringValue)' - \(context.debugDescription)")
+        } catch DecodingError.typeMismatch(_, let context) {
+            fatalError("Type mismatch context \(context.debugDescription)")
+        } catch DecodingError.valueNotFound(let type, let context) {
+            fatalError("Failed to decode \(type) - context: \(context.debugDescription)")
+        }  catch DecodingError.dataCorrupted(_) {
+            fatalError("Wrong JSON")
+        } catch {
+            fatalError("Filed to decode \(file) from bundle")
+        }
+    }
+}

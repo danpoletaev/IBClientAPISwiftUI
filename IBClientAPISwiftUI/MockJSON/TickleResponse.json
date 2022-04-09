@@ -1,0 +1,19 @@
+{
+    "session": "5805dec9600ee91a548a38c7938010c0",
+    "ssoExpires": 65201,
+    "collission": false,
+    "userId": 59771326,
+    "iserver": {
+        "authStatus": {
+            "authenticated": true,
+            "competing": false,
+            "connected": true,
+            "message": "",
+            "MAC": "98:F2:B3:23:AE:D0",
+            "serverInfo": {
+                "serverName": "JisfN4001",
+                "serverVersion": "Build 10.15.0b, Apr 6, 2022 1:32:03 PM"
+            }
+        }
+    }
+}

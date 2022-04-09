@@ -15,8 +15,8 @@ final class SearchRepository: SearchRepositoryProtocol {
     
     private let apiService: SearchApiServiceProtocol
     
-    init(apiService: SearchApiServiceProtocol = SearchApiService()) {
-        self.apiService = apiService
+    init(apiService: SearchApiServiceProtocol?) {
+        self.apiService = apiService ?? SearchApiService()
     }
     
     func searchForNameSymbol(value: String, completion: @escaping ([SearchTicket]) -> ()) {

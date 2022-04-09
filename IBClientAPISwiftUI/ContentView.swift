@@ -6,9 +6,25 @@
 //
 
 import SwiftUI
+import AppTrackingTransparency
+
+struct SheetView: View {
+    @Environment(\.dismiss) var dismiss
+    
+    @StateObject var model = WebViewModel()
+    
+    var body: some View {
+        WebView(webView: model.webView)
+    }
+}
+
 
 struct ContentView: View {
     @EnvironmentObject var environmentModel: EnvironmentModel
+    @Environment(\.openURL) var openURL
+    
+    
+    @State private var showingSheet = false
     
     init() {
         UITabBar.appearance().barTintColor = UIColor.gray
@@ -18,7 +34,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $environmentModel.tagSelection) {
-                PortfolioView()
+                PortfolioView(portfolioViewModel: nil)
                     .background(CustomColor.lightBg)
                     .tabItem {
                         Image(systemName: "list.bullet.rectangle")
@@ -27,7 +43,7 @@ struct ContentView: View {
                     }
                     .tag(0)
                 
-                HomeView()
+                HomeView(homeViewModel: nil)
                     .background(CustomColor.lightBg)
                     .tabItem{
                         Image(systemName: "house.fill")
@@ -46,7 +62,7 @@ struct ContentView: View {
                     }
                     .tag(2)
                 
-                TradesView()
+                TradesView(tradesViewModel: nil)
                     .background(CustomColor.lightBg)
                     .tabItem {
                         Image(systemName: "chart.bar.doc.horizontal.fill")
@@ -61,6 +77,25 @@ struct ContentView: View {
                 NavigationBar(title: "Interactive")
             }
         }.accentColor(Color.white)
+//            .onAppear(perform: {
+////                openURL(URL(string: "http://\(APIConstants.COMMON_BASE_URL)")!)
+//                //Ask for notification permission
+////                let n = NotificationHandler()
+////                n.askNotificationPermission {
+////                    //n.scheduleAllNotifications()
+////
+////                    //IMPORTANT: wait for 1 second to display another alert
+////                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+////                        if #available(iOS 14, *) {
+////                          ATTrackingManager.requestTrackingAuthorization { (status) in
+////                              self.showingSheet = true
+////                            //print("IDFA STATUS: \(status.rawValue)")
+////                            //FBAdSettings.setAdvertiserTrackingEnabled(true)
+////                          }
+////                        }
+////                    }
+////                }
+//            })
     }
 }
 

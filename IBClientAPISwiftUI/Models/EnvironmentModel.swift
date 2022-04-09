@@ -11,13 +11,15 @@ class EnvironmentModel: ObservableObject {
 
     @Published var positions: [Position] = []
     @Published var topPositions: [Position] = []
-    @Published var accountViewModel = AccountViewModel()
     @Published var tagSelection = 1
+    @Published var accountViewModel: AccountViewModel
+    
+    init(accountViewModel: AccountViewModel?) {
+        self.accountViewModel = accountViewModel ?? AccountViewModel(repository: nil)
+    }
     
     
     func fetchData() {
-        
         accountViewModel.fetchAccount()
-        
     }
 }

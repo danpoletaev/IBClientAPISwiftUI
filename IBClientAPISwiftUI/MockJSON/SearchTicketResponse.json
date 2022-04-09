@@ -1,0 +1,88 @@
+[
+    {
+        "conid": 481863646,
+        "companyHeader": "APPLOVIN CORP-CLASS A - NASDAQ",
+        "companyName": "APPLOVIN CORP-CLASS A",
+        "symbol": "APP",
+        "description": "NASDAQ",
+        "restricted": "CFD,IOPT,OPT",
+        "fop": null,
+        "opt": "20220414;20220520;20220617;20220819;20220916;20221118;20230120;20240119",
+        "war": null,
+        "sections": [
+            {
+                "secType": "STK"
+            },
+            {
+                "secType": "OPT",
+                "months": "APR22;MAY22;JUN22;AUG22;SEP22;NOV22;JAN23;JAN24",
+                "exchange": "AMEX;BATS;BOX;CBOE;CBOE2;EDGX;EMERALD;GEMINI;ISE;MERCURY;MIAX;NASDAQBX;NASDAQOM;PEARL;PHLX;PSE"
+            },
+            {
+                "secType": "IOPT"
+            },
+            {
+                "secType": "CFD",
+                "exchange": "SMART",
+                "conid": 519074988
+            },
+            {
+                "secType": "BAG"
+            }
+        ]
+    },
+    {
+        "conid": 273043146,
+        "companyHeader": "GLOBAL CANNABIS APPLICATIONS - PURE",
+        "companyName": "GLOBAL CANNABIS APPLICATIONS",
+        "symbol": "APP",
+        "description": "PURE",
+        "restricted": "STK",
+        "fop": null,
+        "opt": null,
+        "war": null,
+        "sections": [
+            {
+                "secType": "STK"
+            }
+        ]
+    },
+    {
+        "conid": 100292960,
+        "companyHeader": "APPRECIATE GROUP PLC - LSE",
+        "companyName": "APPRECIATE GROUP PLC",
+        "symbol": "APP",
+        "description": "LSE",
+        "restricted": "STK",
+        "fop": null,
+        "opt": null,
+        "war": null,
+        "sections": [
+            {
+                "secType": "STK"
+            }
+        ]
+    },
+    {
+        "issuers": [
+            {
+                "id": "e1434668",
+                "name": "American Apparel Inc"
+            }
+        ],
+        "conid": 2147483647,
+        "companyHeader": "American Apparel Inc",
+        "companyName": null,
+        "symbol": "APP",
+        "description": null,
+        "restricted": "BOND",
+        "fop": null,
+        "opt": null,
+        "war": null,
+        "sections": [
+            {
+                "secType": "BOND"
+            }
+        ]
+    }
+]

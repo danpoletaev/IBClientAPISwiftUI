@@ -17,9 +17,9 @@ final class TransactionRepository: TransactionRepositoryProtocol {
     private let apiService: TransactionApiServiceProtocol
     private let accountApiService: AccountApiServiceProtocol
     
-    init(apiService: TransactionApiServiceProtocol = TransactionApiService(), accountApiService: AccountApiServiceProtocol = AccountApiService()) {
-        self.apiService = apiService
-        self.accountApiService = accountApiService
+    init(apiService: TransactionApiServiceProtocol?, accountApiService: AccountApiServiceProtocol?) {
+        self.apiService = apiService ?? TransactionApiService()
+        self.accountApiService = accountApiService ?? AccountApiService()
     }
     
     func placeOrder(order: Order, completion: @escaping ([PlaceOrderResponse]) -> ()) {

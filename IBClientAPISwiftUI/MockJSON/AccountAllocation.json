@@ -1,0 +1,32 @@
+{
+    "assetClass": {
+        "long": {
+            "STK": 853.7840156555174,
+            "CASH": 171.72
+        },
+        "short": {}
+    },
+    "sector": {
+        "long": {
+            "Basic Materials": 5.8416801071167,
+            "Industrial": 64.70784118652344,
+            "Technology": 144.46924264907835,
+            "Consumer, Cyclical": 111.44128204345704,
+            "Consumer, Non-cyclical": 527.3239696693421
+        },
+        "short": {}
+    },
+    "group": {
+        "long": {
+            "Computers": 144.46924264907835,
+            "Commercial Services": 326.46004598617554,
+            "Healthcare-Products": 180.1933633041382,
+            "Auto Manufacturers": 111.21660203933716,
+            "Transportation": 64.70784118652344,
+            "Home Furnishings": 0.22468000411987304,
+            "Household Products/Wares": 20.67056037902832,
+            "Chemicals": 5.8416801071167
+        },
+        "short": {}
+    }
+}

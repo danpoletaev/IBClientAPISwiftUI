@@ -23,9 +23,17 @@ struct TransactionView: View {
     var exchange: String
     
     @ObservedObject var ticketViewModel: TicketViewModel
-    @StateObject private var transactionViewModel = TransactionViewModel()
+    @StateObject private var transactionViewModel: TransactionViewModel
     @State private var selection = OrderTypes.LMT
     @State private var timeInForce = TifTypes.DAY
+    
+    init(transactionViewModel: TransactionViewModel?, ticketViewModel: ObservedObject<TicketViewModel>, buying: Bool, ticket: String, exchange: String) {
+        _transactionViewModel = StateObject(wrappedValue: transactionViewModel ?? TransactionViewModel(repository: nil))
+        _ticketViewModel = ticketViewModel
+        self.buying = buying
+        self.ticket = ticket
+        self.exchange = exchange
+    }
     
     var body: some View {
         VStack {
@@ -254,5 +262,19 @@ struct TransactionView: View {
         .toolbar {
             TransactionNavBar(buying: buying)
         }
+    }
+}
+
+
+struct TransactionView_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        let transactionViewModel = TransactionViewModel(repository: TransactionRepository(apiService: MockTransactionApiService(placeOrderResponse: nil, replyItemResponse: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil)))
+        
+        let ticketViewModel = ObservedObject(wrappedValue: TicketViewModel(repository: TicketRepository(apiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil), acccountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil))))
+        
+        TransactionView(transactionViewModel: transactionViewModel, ticketViewModel: ticketViewModel    , buying: true, ticket: "BIOL", exchange: "NASDAQ")
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.darkBg)
     }
 }

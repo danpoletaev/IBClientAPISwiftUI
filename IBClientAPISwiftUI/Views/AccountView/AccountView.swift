@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountView: View {
-
+    
     @EnvironmentObject var environmentModel: EnvironmentModel
     
     var body: some View {
@@ -17,6 +17,7 @@ struct AccountView: View {
                 Image(systemName: "person.crop.circle")
                     .resizable()
                     .frame(width: 120, height: 120, alignment: .center)
+
                 
                 Text((environmentModel.accountViewModel.account != nil) ? environmentModel.accountViewModel.account?.accountTitle ?? "" : "Fetching")
                     .font(.system(.title2))
@@ -34,7 +35,15 @@ struct AccountView: View {
 }
 
 struct AccountView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        AccountView()
+        let environmentModel = MockedAccountModels.mockedEvnironmentModel
+        
+        AccountView().environmentObject(environmentModel)
+            .onAppear(perform: {
+                environmentModel.fetchData()
+            })
+        .background(CustomColor.lightBg)
+        .environment(\.colorScheme, .dark)
     }
 }

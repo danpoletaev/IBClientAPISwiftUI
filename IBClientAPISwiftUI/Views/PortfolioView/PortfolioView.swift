@@ -14,9 +14,12 @@ struct AccountSummaryString {
 
 struct PortfolioView: View {
     
-    @StateObject var portfolioViewModel = PortfolioViewModel()
+    @StateObject var portfolioViewModel: PortfolioViewModel
     @EnvironmentObject var environmentModel: EnvironmentModel
-    private var timer: Timer? = nil
+    
+    init(portfolioViewModel: PortfolioViewModel?) {
+        _portfolioViewModel = StateObject(wrappedValue: portfolioViewModel ?? PortfolioViewModel(repository: nil))
+    }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -54,7 +57,7 @@ struct PortfolioView: View {
                             Divider()
                             ForEach(portfolioViewModel.positions, id: \.conid) { position in
                                 NavigationLink(destination: {
-                                    TicketView(tickerTitle: position.name ?? "Ticker", exchange: position.listingExchange ?? "Exchange", conid: position.conid)
+                                    TicketView(ticketViewModel: nil, tickerTitle: position.name ?? "Ticker", exchange: position.listingExchange ?? "Exchange", conid: position.conid)
                                 }, label: {
                                     PortfolioListItem(ticker: position.contractDesc ?? "Ticker", last: position.mktPrice ?? 1, listingExchange: position.listingExchange ?? "NASDAQ", position: position.position ?? 0, unrealizedPnl: position.unrealizedPnl ?? 0, changeFromLastPrice: position.priceChange ?? "0")
                                 })
@@ -84,7 +87,23 @@ struct PortfolioView: View {
 
 struct PortfolioView_Previews: PreviewProvider {
     static var previews: some View {
-        PortfolioView()
+        
+        let environmentModel = MockedAccountModels.mockedEvnironmentModel
+        
+        let portfolioViewModel = PortfolioViewModel(repository: PortfolioRepository(portfolioApiService: MockPortfolioApiService(positions: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil), tickerApiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)))
+        
+        
+        
+        
+        PortfolioView(portfolioViewModel: portfolioViewModel)
+            .environmentObject(environmentModel)
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.lightBg)
+            .onAppear(perform: {
+                portfolioViewModel.onAppear()
+                environmentModel.fetchData()
+            })
+        
     }
 }
 

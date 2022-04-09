@@ -19,7 +19,7 @@ struct CustomScreenerItem: View {
     
     var body: some View {
         NavigationLink(destination: {
-            TicketView(tickerTitle: name, exchange: listingExchange, conid: conid)
+            TicketView(ticketViewModel: nil, tickerTitle: name, exchange: listingExchange, conid: conid)
         }, label: {
             HStack {
                 Image(systemName: percentChange < 0 ? "arrowtriangle.down.fill" : "arrowtriangle.up.fill" )
@@ -37,5 +37,13 @@ struct CustomScreenerItem: View {
             .background(CustomColor.darkBg)
             .cornerRadius(8)
         })
+    }
+}
+
+struct CustomScreenerItem_Preview: PreviewProvider {
+    static var previews: some View {
+        CustomScreenerItem(ticker: "BIOL", price: "$12.3", percentChange: 53, conid: 12, listingExchange: "NASDAQ", name: "BIOL")
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.lightBg)
     }
 }

@@ -38,3 +38,11 @@ struct PortfolioListItem: View {
         .padding(.horizontal, 10)
     }
 }
+
+struct PortfolioListItem_Previews: PreviewProvider {
+    static var previews: some View {
+        PortfolioListItem(ticker: "Ticker", last: 12.2, listingExchange: "Exchange", position: 12.2, unrealizedPnl: 0.4, changeFromLastPrice: "0.3")
+            .environment(\.colorScheme, .dark)
+            .background(CustomColor.lightBg)
+    }
+}

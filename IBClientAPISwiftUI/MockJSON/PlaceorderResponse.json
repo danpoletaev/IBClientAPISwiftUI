@@ -1,0 +1,14 @@
+[
+    {
+        "id": "86bbcb0a-f284-4a8e-b147-3de818e8f036",
+        "message": [
+            "<h4>Market Order Confirmation</h4>&nbsp;&nbsp;&nbsp;A Market Order is an instruction to trade your order at any available price and presents significant risk of trading at an undesirable price. Large market orders may also be split into smaller orders and traded over time to minimize impacting and disrupting prices. Please <a href='https://api.ibkr.com/lib/cstools/faq/ios1/ios.html#/tag/market_order_confirmation_warning'>read our FAQ</a> for more information regarding how IB handles market orders.",
+            "<h4>Confirm Mandatory Cap Price</h4>To avoid trading at a price that is not consistent with a fair and orderly market, IB may set a cap (for a buy order) or floor (for a sell order). THIS MAY CAUSE AN ORDER THAT WOULD OTHERWISE BE MARKETABLE NOT TO BE TRADED."
+        ],
+        "isSuppressed": false,
+        "messageIds": [
+            "o10151",
+            "o10153"
+        ]
+    }
+]
