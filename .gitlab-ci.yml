@@ -5,7 +5,7 @@ build_project:
   stage: build
   script:
     - xcodebuild clean -project IBClientAPISwiftUI.xcodeproj -scheme IBClientAPISwiftUI
-    - xcodebuild test -project IBClientAPISwiftUI.xcodeproj -scheme IBClientAPISwiftUI -destination 'platform=iOS Simulator,name=iPhone 11,OS=15.3'
+    - xcodebuild test -project IBClientAPISwiftUI.xcodeproj -scheme IBClientAPISwiftUI -destination 'platform=iOS Simulator,name=iPhone 11,OS=15.2'
   tags:
     - ios_15-3
     - xcode_13-2
