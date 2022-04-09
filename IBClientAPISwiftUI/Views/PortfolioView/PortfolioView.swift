@@ -98,7 +98,7 @@ struct PortfolioView_Previews: PreviewProvider {
         PortfolioView(portfolioViewModel: portfolioViewModel)
             .environmentObject(environmentModel)
             .environment(\.colorScheme, .dark)
-            .background(CustomColor.lightBg)
+            .background(CustomColor.darkBg)
             .onAppear(perform: {
                 portfolioViewModel.onAppear()
                 environmentModel.fetchData()
