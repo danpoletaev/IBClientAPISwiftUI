@@ -17,10 +17,18 @@ final class AccountViewModel: ObservableObject {
         self.repository = repository ?? AccountRepository(apiService: AccountApiService())
     }
     
+    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ()) {
+        repository.getIServerAccount { response in
+            completion(response)
+            
+        }
+    }
+    
     func fetchAccount() {
         repository.fetchAccount { account in
             self.account = account
         }
+        
         repository.getAccountBalances { summaryResponse in
             self.total = summaryResponse.total
         }

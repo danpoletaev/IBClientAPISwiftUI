@@ -29,6 +29,9 @@ final class PortfolioRepository: PortfolioRepositoryProtocol {
         self.accountApiService.fetchAccount { accounts in
             self.portfolioApiService.fetchPositions(accountID: accounts[0].accountId) { positions in
                 var tempPositions: [Position] = []
+                if positions.count == 0 {
+                    completion(positions)
+                }
                 positions.forEach { position in
                     var tempPosition = position
                     self.tickerApiService.getTickerInfo(conid: position.conid) { tickerInfo in

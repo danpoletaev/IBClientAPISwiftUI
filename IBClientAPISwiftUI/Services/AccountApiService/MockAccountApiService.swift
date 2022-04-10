@@ -41,9 +41,9 @@ class MockAccountApiService: AccountApiServiceProtocol {
         }
     }
     
-    func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping (PerformanceResponse) -> ()) {
+    func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping ((PerformanceResponse?, NetworkError?)) -> ()) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            completion(self.accountPerformanceTestData)
+            completion((self.accountPerformanceTestData, nil))
         }
     }
     
@@ -66,7 +66,9 @@ class MockAccountApiService: AccountApiServiceProtocol {
         }
     }
     
-    func getIServerAccount() { }
+    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ()) {
+        completion((nil, nil))
+    }
     
     func tickle(completion: @escaping (TickleResponse) -> ()) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

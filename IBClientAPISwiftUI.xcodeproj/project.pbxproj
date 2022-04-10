@@ -62,6 +62,8 @@
 		8366FE7E27E53DDC00082C13 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE7D27E53DDC00082C13 /* APIConstants.swift */; };
 		8366FE8127E53E0C00082C13 /* StockCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 8366FE8027E53E0C00082C13 /* StockCharts */; };
 		836F0EF52801DADE000D2F6D /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 836F0EF42801DADE000D2F6D /* .gitlab-ci.yml */; };
+		836F0EF92801F127000D2F6D /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836F0EF82801F127000D2F6D /* SFSafariViewWrapper.swift */; };
+		836F0EFC28031083000D2F6D /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 836F0EFB28031083000D2F6D /* ActivityIndicatorView */; };
 		839A8F9628019DED00003158 /* MockSearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A8F9528019DED00003158 /* MockSearchModels.swift */; };
 		839A8F9828019E0100003158 /* MockSearchApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A8F9728019E0100003158 /* MockSearchApiService.swift */; };
 		839A8F9A2801A2D900003158 /* SearchTicketResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 839A8F992801A2D900003158 /* SearchTicketResponse.json */; };
@@ -195,6 +197,7 @@
 		8366FE7A27E53DB400082C13 /* SearchApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApiService.swift; sourceTree = "<group>"; };
 		8366FE7D27E53DDC00082C13 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		836F0EF42801DADE000D2F6D /* .gitlab-ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = ".gitlab-ci.yml"; sourceTree = "<group>"; };
+		836F0EF82801F127000D2F6D /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		839A8F9528019DED00003158 /* MockSearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchModels.swift; sourceTree = "<group>"; };
 		839A8F9728019E0100003158 /* MockSearchApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchApiService.swift; sourceTree = "<group>"; };
 		839A8F992801A2D900003158 /* SearchTicketResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchTicketResponse.json; sourceTree = "<group>"; };
@@ -253,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				836F0EFC28031083000D2F6D /* ActivityIndicatorView in Frameworks */,
 				8366FE8127E53E0C00082C13 /* StockCharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +319,7 @@
 				8366FE1E27E5392F00082C13 /* Extensions.swift */,
 				8366FE2027E5394500082C13 /* CustomColor.swift */,
 				83F8B3C127FE12BB00E186D1 /* NotificationHandler.swift */,
+				836F0EF82801F127000D2F6D /* SFSafariViewWrapper.swift */,
 			);
 			path = IBClientAPISwiftUI;
 			sourceTree = "<group>";
@@ -605,6 +610,7 @@
 			name = IBClientAPISwiftUI;
 			packageProductDependencies = (
 				8366FE8027E53E0C00082C13 /* StockCharts */,
+				836F0EFB28031083000D2F6D /* ActivityIndicatorView */,
 			);
 			productName = IBClientAPISwiftUI;
 			productReference = 8366FE0D27E538F300082C13 /* IBClientAPISwiftUI.app */;
@@ -658,6 +664,7 @@
 			mainGroup = 8366FE0427E538F300082C13;
 			packageReferences = (
 				8366FE7F27E53E0C00082C13 /* XCRemoteSwiftPackageReference "stock-charts" */,
+				836F0EFA28031083000D2F6D /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
 			);
 			productRefGroup = 8366FE0E27E538F300082C13 /* Products */;
 			projectDirPath = "";
@@ -745,6 +752,7 @@
 				8366FE6C27E53D1C00082C13 /* PortfolioRepository.swift in Sources */,
 				8366FE3427E53A9400082C13 /* HomeView.swift in Sources */,
 				83C6FFE727F0D4430052FEFD /* TradesView.swift in Sources */,
+				836F0EF92801F127000D2F6D /* SFSafariViewWrapper.swift in Sources */,
 				8366FE5027E53C0300082C13 /* EnvironmentModel.swift in Sources */,
 				8366FE5227E53C1500082C13 /* Account.swift in Sources */,
 				83F8B3EF2800A43200E186D1 /* MockTickerApiService.swift in Sources */,
@@ -1086,6 +1094,14 @@
 				kind = branch;
 			};
 		};
+		836F0EFA28031083000D2F6D /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1093,6 +1109,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8366FE7F27E53E0C00082C13 /* XCRemoteSwiftPackageReference "stock-charts" */;
 			productName = StockCharts;
+		};
+		836F0EFB28031083000D2F6D /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 836F0EFA28031083000D2F6D /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
+			productName = ActivityIndicatorView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

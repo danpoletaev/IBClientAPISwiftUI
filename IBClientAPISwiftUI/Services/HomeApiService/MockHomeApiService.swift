@@ -14,9 +14,9 @@ class MockHomeApiService: HomeApiServiceProtocol {
         self.scannerResponse = scannerResponse ?? MockedHomeModels.scannerResponse
     }
     
-    func getScannerConids(completion: @escaping (ScannerResponse) -> Void) {
+    func getScannerConids(completion: @escaping ((ScannerResponse?, NetworkError?)) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            completion(self.scannerResponse)
+            completion((self.scannerResponse, nil))
         }
     }
 }

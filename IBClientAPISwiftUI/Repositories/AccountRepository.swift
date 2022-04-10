@@ -9,8 +9,9 @@ import Foundation
 
 protocol AccountRepositoryProtocol {
     func fetchAccount(completion: @escaping (Account) -> Void)
-    func getAccountPerformance(freq: String, completion: @escaping (AccountPerformance) -> Void)
+    func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping ((AccountPerformance?, NetworkError?)) -> ())
     func getAccountBalances(completion: @escaping (PASummaryResponse) -> Void)
+    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ())
 }
 
 final class AccountRepository: AccountRepositoryProtocol {
@@ -27,19 +28,23 @@ final class AccountRepository: AccountRepositoryProtocol {
     }
     
     
-    func getAccountPerformance(freq: String, completion: @escaping (AccountPerformance) -> Void) {
+    func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping ((AccountPerformance?, NetworkError?)) -> ()) {
         self.apiService.fetchAccount { accounts in
-            self.apiService.getAccountPerformance(accountIds: [accounts[0].accountId], freq: freq) { performanceResponse in
-                var reformatedDates: [String] = []
-                performanceResponse.nav.dates.forEach { date in
-                    reformatedDates.append("\(date[2])\(date[3])-\(date[4])\(date[5])-\(date[6])\(date[7])")
+            self.apiService.getAccountPerformance(accountIds: [accounts[0].accountId], freq: freq) { (performanceResponse, error) in
+                if (performanceResponse != nil) {
+                    var reformatedDates: [String] = []
+                    performanceResponse!.nav.dates.forEach { date in
+                        reformatedDates.append("\(date[2])\(date[3])-\(date[4])\(date[5])-\(date[6])\(date[7])")
+                    }
+                    let lastDate = performanceResponse!.nav.data[0].navs[performanceResponse!.nav.data[0].navs.count - 1]
+                    let firstDate = performanceResponse!.nav.data[0].navs[0]
+                    let moneyChange = lastDate - firstDate
+                    let percentChange = 100 * lastDate/firstDate
+                    
+                    completion((AccountPerformance(graphData: performanceResponse!.nav.data[0].navs, dates: reformatedDates, moneyChange: moneyChange, percentChange: percentChange), nil))
+                } else {
+                    completion((nil, error))
                 }
-                let lastDate = performanceResponse.nav.data[0].navs[performanceResponse.nav.data[0].navs.count - 1]
-                let firstDate = performanceResponse.nav.data[0].navs[0]
-                let moneyChange = lastDate - firstDate
-                let percentChange = 100 * lastDate/firstDate
-                
-                completion(AccountPerformance(graphData: performanceResponse.nav.data[0].navs, dates: reformatedDates, moneyChange: moneyChange, percentChange: percentChange))
             }
         }
     }
@@ -49,6 +54,12 @@ final class AccountRepository: AccountRepositoryProtocol {
             self.apiService.getCurrentBalance(acctIds: [account.accountId]) { response in
                 completion(response)
             }
+        }
+    }
+    
+    func getIServerAccount(completion: @escaping ((Any?, NetworkError?)) -> ()) {
+        self.apiService.getIServerAccount{ response in
+            completion(response)
         }
     }
 }

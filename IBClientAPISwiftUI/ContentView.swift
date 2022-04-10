@@ -10,19 +10,64 @@ import AppTrackingTransparency
 
 struct SheetView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var environmentModel: EnvironmentModel
     
-    @StateObject var model = WebViewModel()
+
+    @State var errorAgain = false
     
     var body: some View {
-        WebView(webView: model.webView)
+        VStack {
+            Image(systemName: "xmark.icloud.fill")
+                .resizable()
+                .frame(width: 140, height: 100, alignment: .center)
+                .foregroundColor(Color.red)
+                .padding(.top, 60)
+                .padding(.bottom, 40)
+            
+            Text("You are not logged in or server is not started. Please, login by going to:")
+                .font(.title2)
+                .padding(10)
+            if errorAgain {
+                Text("Please, try again.")
+                    .foregroundColor(Color.red)
+                    .padding(10)
+            }
+            Link("http://\(APIConstants.COMMON_BASE_URL)", destination: URL(string: "http://\(APIConstants.COMMON_BASE_URL)")!)
+                .padding(.bottom, 40)
+            
+            Button(action: {
+                self.errorAgain = false
+                environmentModel.getIServerAccount { (data, error) in
+                    if (error == nil) {
+                        self.dismiss()
+                    } else {
+                        self.errorAgain = true
+                    }
+                }
+            }, label: {
+                Text("Reconnect")
+                    .foregroundColor(Color.white)
+                    .font(.title)
+                    .frame(width: 300, height: 50, alignment: .center)
+                    .background(CustomColor.graphBlue)
+                    .cornerRadius(16)
+                    .foregroundColor(Color.white)
+                    .padding()
+            })
+        }
+        .interactiveDismissDisabled()
+        .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight, alignment: .center)
+        .background(CustomColor.lightBg)
     }
 }
+
+
 
 
 struct ContentView: View {
     @EnvironmentObject var environmentModel: EnvironmentModel
     @Environment(\.openURL) var openURL
-    
+    @State private var showingAuthorizationSheet = false
     
     @State private var showingSheet = false
     
@@ -76,31 +121,36 @@ struct ContentView: View {
             .toolbar {
                 NavigationBar(title: "Interactive")
             }
-        }.accentColor(Color.white)
-//            .onAppear(perform: {
-////                openURL(URL(string: "http://\(APIConstants.COMMON_BASE_URL)")!)
-//                //Ask for notification permission
-////                let n = NotificationHandler()
-////                n.askNotificationPermission {
-////                    //n.scheduleAllNotifications()
-////
-////                    //IMPORTANT: wait for 1 second to display another alert
-////                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-////                        if #available(iOS 14, *) {
-////                          ATTrackingManager.requestTrackingAuthorization { (status) in
-////                              self.showingSheet = true
-////                            //print("IDFA STATUS: \(status.rawValue)")
-////                            //FBAdSettings.setAdvertiserTrackingEnabled(true)
-////                          }
-////                        }
-////                    }
-////                }
-//            })
+        }
+        .accentColor(Color.white)
+        .onAppear(perform: {
+            self.environmentModel.getIServerAccount{ (data, error) in
+                if (error == NetworkError.unauthorized) {
+                    self.showingAuthorizationSheet = true
+                }
+            }
+        })
+        .sheet(isPresented: $showingAuthorizationSheet) {
+            SheetView()
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        let environmentModel = MockedAccountModels.mockedEvnironmentModel
         ContentView()
+            .environmentObject(environmentModel)
+            .environment(\.colorScheme, .dark)
+            .onAppear(perform: {
+                environmentModel.fetchData()
+            })
+    }
+}
+
+struct SheetUnauthorized_Previews: PreviewProvider {
+    static var previews: some View {
+        SheetView()
+            .environment(\.colorScheme, .dark)
     }
 }

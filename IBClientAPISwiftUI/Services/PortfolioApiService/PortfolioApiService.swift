@@ -24,6 +24,7 @@ final class PortfolioApiService: PortfolioApiServiceProtocol {
             do {
                 let positions = try JSONDecoder().decode([Position].self, from: data)
                 DispatchQueue.main.async {
+                    print("Positions decoded")
                     completion(positions)
                 }
             } catch {

@@ -13,6 +13,12 @@ final class PortfolioViewModel: ObservableObject {
     @Published var accountSummary: AccountSummary = [:]
     @Published var dailyPnL: CorePnLModel? = nil
     
+    @Published var isLoading = true
+    @Published var isPositionsLoading = true
+    @Published var isAccountPerformanceLoading = true
+    @Published var isAccountSummaryLoading = true
+    @Published var isPnlLoading = true
+    
     private let repository: PortfolioRepositoryProtocol
     
     init(repository: PortfolioRepositoryProtocol?) {
@@ -21,34 +27,50 @@ final class PortfolioViewModel: ObservableObject {
     
     func fetchPositions() {
         self.repository.fetchPositions { positions in
-            print(positions)
             self.positions = positions
+            self.isPositionsLoading = false
+            if (!self.isAccountPerformanceLoading && !self.isAccountSummaryLoading && !self.isPnlLoading) {
+                self.isLoading = false
+            }
         }
     }
     
     func fetchAccounPerformance() {
         self.repository.fetchAccountAllocation { accountPerformance in
             self.assetClass = accountPerformance.assetClass
+            self.isAccountPerformanceLoading = false
+            if (!self.isPositionsLoading && !self.isAccountSummaryLoading && !self.isPnlLoading) {
+                self.isLoading = false
+            }
         }
     }
     
     func fetchAccountSummary() {
         self.repository.getAccountSummary { accountSummary in
             self.accountSummary = accountSummary
+            self.isAccountSummaryLoading = false
+            if (!self.isPositionsLoading && !self.isAccountPerformanceLoading && !self.isPnlLoading) {
+                self.isLoading = false
+            }
         }
     }
     
     func getPnL() {
         self.repository.getPnL { coreModel in
-            print(coreModel)
             self.dailyPnL = coreModel
+            self.isPnlLoading = false
+            if (!self.isPositionsLoading && !self.isAccountPerformanceLoading && !self.isAccountSummaryLoading) {
+                self.isLoading = false
+            }
         }
     }
     
     
     
     func onAppear() {
-        fetchPositions()
+        if positions.count == 0 {
+            fetchPositions()
+        }
         fetchAccountSummary()
         fetchAccounPerformance()
         getPnL()

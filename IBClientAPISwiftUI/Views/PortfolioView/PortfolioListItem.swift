@@ -9,11 +9,25 @@ import SwiftUI
 
 struct PortfolioListItem: View {
     var ticker: String
-    var last: Double
     var listingExchange: String
+    var conid: Int
+    var last: Double
     var position: Double
     var unrealizedPnl: Double
     var changeFromLastPrice: String
+    
+    @StateObject var ticketViewModel: TicketViewModel
+    
+    init(ticketViewModel: TicketViewModel?, ticker: String, listingExchange: String, conid: Int, last: Double, position: Double, unrealizedPnL: Double, changeFromLastPrice: String) {
+        _ticketViewModel = StateObject(wrappedValue: ticketViewModel ?? TicketViewModel(repository: nil))
+        self.ticker = ticker
+        self.listingExchange = listingExchange
+        self.conid = conid
+        self.last = round(last * 100) / 100.0
+        self.position = round(position * 100) / 100.0
+        self.unrealizedPnl = unrealizedPnL
+        self.changeFromLastPrice = changeFromLastPrice
+    }
     
     var body: some View {
         HStack {
@@ -24,25 +38,33 @@ struct PortfolioListItem: View {
                     .font(.system(size: 10))
             }
             .frame(width: 100, alignment: .leading)
-            Text("\(last, specifier: "%.2f")")
+            Text(ticketViewModel.tickerInfo?.bid ?? "\(last)")
                 .frame(width: 100, alignment: .center)
-            Text("\(Double(changeFromLastPrice) ?? 0, specifier: "%.2f")")
-                .foregroundColor(Double(changeFromLastPrice) ?? 0 < 0 ? Color.red :Color.green)
+            Text(ticketViewModel.tickerInfo?.changeFromLastPrice ?? changeFromLastPrice)
+                .foregroundColor(ticketViewModel.tickerInfo?.changeFromLastPricePercentage ?? Double(changeFromLastPrice) ?? 0 < 0 ? Color.red :Color.green)
                 .frame(width: 70, alignment: .center)
-            Text("\(position, specifier: "%.2f")")
+            Text(ticketViewModel.tickerInfo?.positions ?? "\(position)")
                 .frame(width: 70, alignment: .center)
-            Text("\(unrealizedPnl, specifier: "%.2f")")
-                .foregroundColor(unrealizedPnl < 0 ? Color.red : Color.green)
+            Text(ticketViewModel.tickerInfo?.unrPnL ?? "\(unrealizedPnl)")
+                .foregroundColor(Double(ticketViewModel.tickerInfo?.unrPnL ?? "\(unrealizedPnl)") ?? unrealizedPnl < 0 ? Color.red : Color.green)
                 .frame(width: 70, alignment: .center)
         }
         .padding(.horizontal, 10)
+        .onAppear(perform: {
+            ticketViewModel.getTickerInfo(conid: conid)
+        })
     }
 }
 
 struct PortfolioListItem_Previews: PreviewProvider {
     static var previews: some View {
-        PortfolioListItem(ticker: "Ticker", last: 12.2, listingExchange: "Exchange", position: 12.2, unrealizedPnl: 0.4, changeFromLastPrice: "0.3")
+        let ticketViewModel = TicketViewModel(repository: TicketRepository(apiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil), acccountApiService: nil))
+        
+        PortfolioListItem(ticketViewModel: ticketViewModel, ticker: "BIOL", listingExchange: "NASDAQ", conid: 1, last: 12.2, position: 1.2, unrealizedPnL: -0.5, changeFromLastPrice: "-32$")
             .environment(\.colorScheme, .dark)
             .background(CustomColor.lightBg)
+            .onAppear(perform: {
+                ticketViewModel.getTickerInfo(conid: 1)
+            })
     }
 }

@@ -8,11 +8,11 @@
 import Foundation
 
 protocol HomeApiServiceProtocol {
-    func getScannerConids(completion: @escaping (ScannerResponse) -> Void)
+    func getScannerConids(completion: @escaping ((ScannerResponse?, NetworkError?)) -> Void)
 }
 
 final class HomeApiService: HomeApiServiceProtocol {
-    func getScannerConids(completion: @escaping (ScannerResponse) -> Void) {
+    func getScannerConids(completion: @escaping ((ScannerResponse?, NetworkError?)) -> Void) {
         guard let url = URL(string: APIConstants.BASE_URL.appending("/hmds/scanner")) else {
             print("Problem here")
             return
@@ -30,20 +30,27 @@ final class HomeApiService: HomeApiServiceProtocol {
         
         request.httpBody = httpBody
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 return
             }
             
+            if let httpResponse = response as? HTTPURLResponse {
+                    if (httpResponse.statusCode >= 400) {
+                        self.getScannerConids { (response, error) in
+                            completion((response, error))
+                        }
+                        return
+                    }
+                }
+            
             do {
                 let scannerResponse = try JSONDecoder().decode(ScannerResponse.self, from: data)
                 DispatchQueue.main.async {
-                    print("decoded successfully")
-                    completion(scannerResponse)
+                    completion((scannerResponse, nil))
                 }
             } catch {
-                print("here problem")
-                print(error)
+                completion((nil, NetworkError.decodeError))
             }
         }
         task.resume()

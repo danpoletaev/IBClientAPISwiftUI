@@ -11,6 +11,9 @@ final class TicketViewModel: ObservableObject {
     @Published var tickerInfo: TickerInfo? = nil
     @Published var graphData: [Double] = []
     @Published var dates: [String] = []
+    
+    @Published var isLoading = true
+    
     private let stream = WebSocketService(url: APIConstants.SOCKET_URL)
     
     private let repository: TicketRepositoryProtocol
@@ -48,6 +51,7 @@ final class TicketViewModel: ObservableObject {
                     let tickerInfo = try message.tickerInfo()
                     DispatchQueue.main.async {
                         self.tickerInfo = self.tickerInfo?.combine(newTicket: tickerInfo) ?? tickerInfo
+                        self.isLoading = false
                     }
                 } catch {
                     continue
@@ -66,6 +70,7 @@ final class TicketViewModel: ObservableObject {
     }
     
     func onDisappear() {
+        print("Connection should be closed")
         self.stream.close()
     }
 }

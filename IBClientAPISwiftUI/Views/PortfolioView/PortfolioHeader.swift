@@ -82,6 +82,7 @@ struct PortfolioHeader: View {
                 }
             }.padding(.horizontal, 10)
         }
+        .frame(maxHeight: 70)
         .padding(.top, 20)
         .background(CustomColor.darkBg)
     }

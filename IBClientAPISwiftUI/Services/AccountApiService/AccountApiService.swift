@@ -9,13 +9,14 @@ import Foundation
 
 protocol AccountApiServiceProtocol {
     func fetchAccount(completion: @escaping ([Account]) -> Void)
-    func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping (PerformanceResponse) -> ())
+    func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping ((PerformanceResponse?, NetworkError?)) -> ())
     func getAccountAllocation(accountId: String, completion: @escaping (AllocationResponse) -> ())
     func getAccountSummary(accountId: String, completion: @escaping (AccountSummary) -> ())
     func getPnL(completion: @escaping (PnLModelResponseModel) -> ())
-    func getIServerAccount()
+    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ())
     func tickle(completion: @escaping (TickleResponse) -> ())
     func getCurrentBalance(acctIds: [String], completion: @escaping (PASummaryResponse) -> Void)
+    //    func
 }
 
 final class AccountApiService: AccountApiServiceProtocol {
@@ -41,7 +42,7 @@ final class AccountApiService: AccountApiServiceProtocol {
         task.resume()
     }
     
-    func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping (PerformanceResponse) -> ()) {
+    func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping ((PerformanceResponse?, NetworkError?)) -> ()) {
         guard let url = URL(string: APIConstants.BASE_URL.appending("/pa/performance")) else {
             print("Problem here")
             return
@@ -61,19 +62,29 @@ final class AccountApiService: AccountApiServiceProtocol {
         request.httpBody = httpBody
         
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 return
             }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if (httpResponse.statusCode >= 400 && httpResponse.statusCode<500) {
+                    completion((nil, NetworkError.unauthorized))
+                    return
+                }
+                else if (httpResponse.statusCode > 500) {
+                    completion((nil, NetworkError.serverError))
+                    return
+                }
+            }
+            
             do {
                 let performanceResponse = try JSONDecoder().decode(PerformanceResponse.self, from: data)
                 DispatchQueue.main.async {
-                    print("decoded successfully")
-                    completion(performanceResponse)
+                    completion((performanceResponse, nil))
                 }
             } catch {
-                print("here problem")
-                print(error)
+                completion((nil, NetworkError.decodeError))
             }
         }
         task.resume()
@@ -144,18 +155,32 @@ final class AccountApiService: AccountApiServiceProtocol {
         task.resume()
     }
     
-    func getIServerAccount() {
+    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ()) {
         guard let url = URL(string: APIConstants.BASE_URL.appending("/iserver/accounts")) else {
             print("Problem here")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
+                completion((nil, NetworkError.unauthorized))
                 return
             }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if (httpResponse.statusCode >= 400 && httpResponse.statusCode<500) {
+                    completion((nil, NetworkError.unauthorized))
+                    return
+                }
+                else if (httpResponse.statusCode > 500) {
+                    completion((nil, NetworkError.serverError))
+                    return
+                }
+            }
+            
             do {
                 DispatchQueue.main.async {
                     print("i server account called")
+                    completion(("hello", nil))
                 }
             } catch {
                 print(error)

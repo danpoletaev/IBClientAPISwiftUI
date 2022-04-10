@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ActivityIndicatorView
 
 struct SearchView: View {
     @State var searchText: String
@@ -17,34 +18,41 @@ struct SearchView: View {
     }
     
     var body: some View {
-        VStack {
-            ScrollView(showsIndicators: false) {
-                List {
-                    ForEach(searchViewModel.tickets, id: \.conid) { ticket in
-                        TicketItem(title: ticket.companyName ?? "", exchange: ticket.description ?? "", conid: ticket.conid)
+        ZStack {
+            VStack {
+                ScrollView(showsIndicators: false) {
+                    List {
+                        ForEach(searchViewModel.tickets, id: \.conid) { ticket in
+                            TicketItem(title: ticket.companyName ?? "", exchange: ticket.description ?? "", conid: ticket.conid)
+                        }
+                    }
+                    .listStyle(.plain)
+                    .searchable(text: $searchText)
+                    .frame(height: UIScreen.screenHeight, alignment: .center)
+                    .listRowBackground(CustomColor.lightBg)
+                    .onChange(of: searchText) { value in
+                        if !value.isEmpty {
+                            self.searchViewModel.searchForNameSymbol(value: searchText)
+                            print(self.searchViewModel.tickets)
+                        } else {
+                            searchViewModel.tickets.removeAll()
+                        }
                     }
                 }
-                .listStyle(.plain)
-                .searchable(text: $searchText)
-                .frame(height: UIScreen.screenHeight, alignment: .center)
-                .listRowBackground(CustomColor.lightBg)
-                .onChange(of: searchText) { value in
-                    if !value.isEmpty {
-                        self.searchViewModel.searchForNameSymbol(value: searchText)
-                        print(self.searchViewModel.tickets)
-                    } else {
-                        searchViewModel.tickets.removeAll()
-                    }
+                .padding(.top, 20)
+                .frame(width: UIScreen.screenWidth, alignment: .center)
+                .navigationTitle("Bar")
+                .background(CustomColor.lightBg)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    SearchNavigationBar(searchText: $searchText)
                 }
             }
-            .padding(.top, 20)
-            .frame(width: UIScreen.screenWidth, alignment: .center)
-            .navigationTitle("Bar")
-            .background(CustomColor.lightBg)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                SearchNavigationBar(searchText: $searchText)
-            }
+            .opacity(searchViewModel.isLoading ? 0.5 : 1)
+            ActivityIndicatorView(isVisible: $searchViewModel.isLoading, type: .scalingDots)
+                .foregroundColor(Color.white)
+                .frame(width: 80, height: 50, alignment: .center)
+        
         }
     }
 }
