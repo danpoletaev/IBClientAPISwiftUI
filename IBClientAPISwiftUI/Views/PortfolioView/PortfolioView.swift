@@ -109,7 +109,7 @@ struct PortfolioView_Previews: PreviewProvider {
         
         let environmentModel = MockedAccountModels.mockedEvnironmentModel
         
-        let portfolioViewModel = PortfolioViewModel(repository: PortfolioRepository(portfolioApiService: MockPortfolioApiService(positions: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil), tickerApiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)))
+        let portfolioViewModel = PortfolioViewModel(repository: PortfolioRepository(portfolioApiService: MockPortfolioApiService(positions: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil), tickerApiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)))
         
         PortfolioView(portfolioViewModel: portfolioViewModel)
             .environmentObject(environmentModel)

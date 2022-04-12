@@ -19,14 +19,13 @@ class EnvironmentModel: ObservableObject {
         self.accountViewModel = accountViewModel ?? AccountViewModel(repository: nil)
     }
     
-    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ()) {
+    func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ()) {
         self.accountViewModel.getIServerAccount { (data, error) in
             if error == NetworkError.unauthorized {
                 self.authorized = false
             } else {
                 self.authorized = true
             }
-            print("authorization \(self.authorized)")
             completion((data, error))
         }
     }

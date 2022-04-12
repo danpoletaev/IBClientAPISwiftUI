@@ -13,7 +13,7 @@ protocol AccountApiServiceProtocol {
     func getAccountAllocation(accountId: String, completion: @escaping (AllocationResponse) -> ())
     func getAccountSummary(accountId: String, completion: @escaping (AccountSummary) -> ())
     func getPnL(completion: @escaping (PnLModelResponseModel) -> ())
-    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ())
+    func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ())
     func tickle(completion: @escaping (TickleResponse) -> ())
     func getCurrentBalance(acctIds: [String], completion: @escaping (PASummaryResponse) -> Void)
     //    func
@@ -155,7 +155,7 @@ final class AccountApiService: AccountApiServiceProtocol {
         task.resume()
     }
     
-    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ()) {
+    func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ()) {
         guard let url = URL(string: APIConstants.BASE_URL.appending("/iserver/accounts")) else {
             print("Problem here")
             return
@@ -178,12 +178,12 @@ final class AccountApiService: AccountApiServiceProtocol {
             }
             
             do {
+                let iServerResponse = try JSONDecoder().decode(IServerResponse.self, from: data)
                 DispatchQueue.main.async {
-                    print("i server account called")
-                    completion(("hello", nil))
+                    completion((iServerResponse, nil))
                 }
             } catch {
-                print(error)
+                completion((nil, NetworkError.decodeError))
             }
         }
         task.resume()

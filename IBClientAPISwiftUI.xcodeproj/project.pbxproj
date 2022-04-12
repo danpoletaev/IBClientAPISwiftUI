@@ -13,7 +13,15 @@
 		832A9B4E27EA2F7800A48880 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9B4D27EA2F7800A48880 /* TransactionViewModel.swift */; };
 		8336527B27E8FBCC00587323 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8336527A27E8FBCC00587323 /* TransactionView.swift */; };
 		8336527D27E9078500587323 /* TransactionNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8336527C27E9078500587323 /* TransactionNavBar.swift */; };
+		8341F68F2805F21E004EE849 /* PortfolioRepository_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F68E2805F21E004EE849 /* PortfolioRepository_tests.swift */; };
+		8341F6912805F67B004EE849 /* TicketRepository_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6902805F67B004EE849 /* TicketRepository_Tests.swift */; };
+		8341F6942805F9B5004EE849 /* SearchRepository_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6932805F9B5004EE849 /* SearchRepository_Tests.swift */; };
+		8341F6962805FA88004EE849 /* TransactionRepository_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6952805FA88004EE849 /* TransactionRepository_Tests.swift */; };
+		8341F6982805FC5F004EE849 /* TradesRepository_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6972805FC5F004EE849 /* TradesRepository_Tests.swift */; };
 		834ACDF427ECDB3F00DA0932 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */; };
+		834AF66528049A4300831EF9 /* MockIServerResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 834AF66428049A4300831EF9 /* MockIServerResponse.json */; };
+		834AF66728049EEE00831EF9 /* HomeRepository_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834AF66628049EEE00831EF9 /* HomeRepository_tests.swift */; };
+		834AF6682804A2D600831EF9 /* MockIServerResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 834AF66428049A4300831EF9 /* MockIServerResponse.json */; };
 		8366FE1127E538F300082C13 /* IBClientAPISwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE1027E538F300082C13 /* IBClientAPISwiftUIApp.swift */; };
 		8366FE1327E538F300082C13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366FE1227E538F300082C13 /* ContentView.swift */; };
 		8366FE1527E538F500082C13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8366FE1427E538F500082C13 /* Assets.xcassets */; };
@@ -64,6 +72,7 @@
 		836F0EF52801DADE000D2F6D /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 836F0EF42801DADE000D2F6D /* .gitlab-ci.yml */; };
 		836F0EF92801F127000D2F6D /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836F0EF82801F127000D2F6D /* SFSafariViewWrapper.swift */; };
 		836F0EFC28031083000D2F6D /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 836F0EFB28031083000D2F6D /* ActivityIndicatorView */; };
+		836F0EFF2803517F000D2F6D /* AccountRepository_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836F0EFE2803517F000D2F6D /* AccountRepository_Tests.swift */; };
 		839A8F9628019DED00003158 /* MockSearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A8F9528019DED00003158 /* MockSearchModels.swift */; };
 		839A8F9828019E0100003158 /* MockSearchApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A8F9728019E0100003158 /* MockSearchApiService.swift */; };
 		839A8F9A2801A2D900003158 /* SearchTicketResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 839A8F992801A2D900003158 /* SearchTicketResponse.json */; };
@@ -148,7 +157,14 @@
 		832A9B4D27EA2F7800A48880 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		8336527A27E8FBCC00587323 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		8336527C27E9078500587323 /* TransactionNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionNavBar.swift; sourceTree = "<group>"; };
+		8341F68E2805F21E004EE849 /* PortfolioRepository_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioRepository_tests.swift; sourceTree = "<group>"; };
+		8341F6902805F67B004EE849 /* TicketRepository_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRepository_Tests.swift; sourceTree = "<group>"; };
+		8341F6932805F9B5004EE849 /* SearchRepository_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository_Tests.swift; sourceTree = "<group>"; };
+		8341F6952805FA88004EE849 /* TransactionRepository_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository_Tests.swift; sourceTree = "<group>"; };
+		8341F6972805FC5F004EE849 /* TradesRepository_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesRepository_Tests.swift; sourceTree = "<group>"; };
 		834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
+		834AF66428049A4300831EF9 /* MockIServerResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockIServerResponse.json; sourceTree = "<group>"; };
+		834AF66628049EEE00831EF9 /* HomeRepository_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository_tests.swift; sourceTree = "<group>"; };
 		8366FE0D27E538F300082C13 /* IBClientAPISwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IBClientAPISwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8366FE1027E538F300082C13 /* IBClientAPISwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBClientAPISwiftUIApp.swift; sourceTree = "<group>"; };
 		8366FE1227E538F300082C13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -198,6 +214,7 @@
 		8366FE7D27E53DDC00082C13 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		836F0EF42801DADE000D2F6D /* .gitlab-ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = ".gitlab-ci.yml"; sourceTree = "<group>"; };
 		836F0EF82801F127000D2F6D /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
+		836F0EFE2803517F000D2F6D /* AccountRepository_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepository_Tests.swift; sourceTree = "<group>"; };
 		839A8F9528019DED00003158 /* MockSearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchModels.swift; sourceTree = "<group>"; };
 		839A8F9728019E0100003158 /* MockSearchApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchApiService.swift; sourceTree = "<group>"; };
 		839A8F992801A2D900003158 /* SearchTicketResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchTicketResponse.json; sourceTree = "<group>"; };
@@ -475,6 +492,20 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		836F0EFD2803515B000D2F6D /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				836F0EFE2803517F000D2F6D /* AccountRepository_Tests.swift */,
+				834AF66628049EEE00831EF9 /* HomeRepository_tests.swift */,
+				8341F68E2805F21E004EE849 /* PortfolioRepository_tests.swift */,
+				8341F6902805F67B004EE849 /* TicketRepository_Tests.swift */,
+				8341F6932805F9B5004EE849 /* SearchRepository_Tests.swift */,
+				8341F6952805FA88004EE849 /* TransactionRepository_Tests.swift */,
+				8341F6972805FC5F004EE849 /* TradesRepository_Tests.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		839A8F9428019DCA00003158 /* SearchApiService */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +539,7 @@
 		83F8B3CC28007F6100E186D1 /* IBClientAPISwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
+				836F0EFD2803515B000D2F6D /* Repositories */,
 				83F8B3D62800846200E186D1 /* Services */,
 				83F8B3CD28007F6100E186D1 /* IBClientAPISwiftUITests.swift */,
 				83F8B3D428007FB300E186D1 /* AccountViewModel_Tests.swift */,
@@ -588,6 +620,7 @@
 				839A8FCB2801AF0200003158 /* TickleResponse.json */,
 				839A8FCD2801AF5700003158 /* PaSummaryResponse.json */,
 				839A8FD62801B0D900003158 /* AccountResponse.json */,
+				834AF66428049A4300831EF9 /* MockIServerResponse.json */,
 			);
 			path = MockJSON;
 			sourceTree = "<group>";
@@ -693,6 +726,7 @@
 				83F8B3F42800A70A00E186D1 /* SecDefResponse.json in Resources */,
 				8366FE1827E538F500082C13 /* Preview Assets.xcassets in Resources */,
 				839A8FBA2801AB7C00003158 /* PortfolioPositions.json in Resources */,
+				834AF66528049A4300831EF9 /* MockIServerResponse.json in Resources */,
 				8366FE1527E538F500082C13 /* Assets.xcassets in Resources */,
 				839A8FC82801AE6E00003158 /* AccountSummary.json in Resources */,
 				839A8FCE2801AF5700003158 /* PaSummaryResponse.json in Resources */,
@@ -707,6 +741,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834AF6682804A2D600831EF9 /* MockIServerResponse.json in Resources */,
 				839A8FD82801B0E200003158 /* AccountResponse.json in Resources */,
 				839A8FD02801AFC200003158 /* PerformanceResponse.json in Resources */,
 				839A8FD12801AFC200003158 /* AccountAllocation.json in Resources */,
@@ -819,9 +854,16 @@
 				839A8F9F2801A34300003158 /* SearchApiService_Tests.swift in Sources */,
 				83F8B3D528007FB300E186D1 /* AccountViewModel_Tests.swift in Sources */,
 				83F8B3CE28007F6100E186D1 /* IBClientAPISwiftUITests.swift in Sources */,
+				834AF66728049EEE00831EF9 /* HomeRepository_tests.swift in Sources */,
 				83F56D772800A907009FCCCF /* TickerApiService_Tests.swift in Sources */,
+				8341F6912805F67B004EE849 /* TicketRepository_Tests.swift in Sources */,
 				839A8FAD2801A71B00003158 /* TransactionApiService_Tests.swift in Sources */,
+				8341F6962805FA88004EE849 /* TransactionRepository_Tests.swift in Sources */,
+				8341F68F2805F21E004EE849 /* PortfolioRepository_tests.swift in Sources */,
+				836F0EFF2803517F000D2F6D /* AccountRepository_Tests.swift in Sources */,
+				8341F6942805F9B5004EE849 /* SearchRepository_Tests.swift in Sources */,
 				83F8B3DA280084A400E186D1 /* AccountApiService_Tests.swift in Sources */,
+				8341F6982805FC5F004EE849 /* TradesRepository_Tests.swift in Sources */,
 				83F8B3E228008D8B00E186D1 /* HomeApiService_Tests.swift in Sources */,
 				839A8FB82801A9DD00003158 /* TradesApiService_tests.swift in Sources */,
 				839A8FBD2801ABCE00003158 /* PortfolioApiService_tests.swift in Sources */,

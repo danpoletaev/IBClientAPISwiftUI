@@ -11,7 +11,7 @@ protocol AccountRepositoryProtocol {
     func fetchAccount(completion: @escaping (Account) -> Void)
     func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping ((AccountPerformance?, NetworkError?)) -> ())
     func getAccountBalances(completion: @escaping (PASummaryResponse) -> Void)
-    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ())
+    func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ())
 }
 
 final class AccountRepository: AccountRepositoryProtocol {
@@ -57,9 +57,9 @@ final class AccountRepository: AccountRepositoryProtocol {
         }
     }
     
-    func getIServerAccount(completion: @escaping ((Any?, NetworkError?)) -> ()) {
-        self.apiService.getIServerAccount{ response in
-            completion(response)
+    func getIServerAccount(completion: @escaping ((IServerResponse?, NetworkError?)) -> ()) {
+        self.apiService.getIServerAccount{ (response, error) in
+            completion((response, error))
         }
     }
 }

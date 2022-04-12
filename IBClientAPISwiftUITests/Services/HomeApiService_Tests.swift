@@ -24,8 +24,8 @@ class HomeApiService_Tests: XCTestCase {
         
         let homeApiService: HomeApiServiceProtocol = MockHomeApiService(scannerResponse: scannerResponse)
         
-        homeApiService.getScannerConids { scannerResp in
-            XCTAssertEqual(scannerResponse.Contracts.Contract.count, scannerResp.Contracts.Contract.count)
+        homeApiService.getScannerConids { (scannerResp, error) in
+            XCTAssertEqual(scannerResponse.Contracts.Contract.count, scannerResp!.Contracts.Contract.count)
         }
     }
 

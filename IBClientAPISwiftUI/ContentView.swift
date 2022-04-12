@@ -38,7 +38,7 @@ struct SheetView: View {
             Button(action: {
                 self.errorAgain = false
                 environmentModel.getIServerAccount { (data, error) in
-                    if (error == nil) {
+                    if (error == nil && data != nil) {
                         self.dismiss()
                     } else {
                         self.errorAgain = true

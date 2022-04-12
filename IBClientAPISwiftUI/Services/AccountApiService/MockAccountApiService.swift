@@ -18,8 +18,9 @@ class MockAccountApiService: AccountApiServiceProtocol {
     let pnlModelResponseTest: PnLModelResponseModel
     let testTickleResponse: TickleResponse
     let paSummaryResponse: PASummaryResponse
+    let iServerResponse: (IServerResponse?, NetworkError?)
     
-    init(accountTestData: [Account]?, accountPerformanceTestData: PerformanceResponse?, allocationTestResponse: AllocationResponse?, accountSummaryTest: AccountSummary?, pnlModelResponseTest: PnLModelResponseModel?, testTickleResponse: TickleResponse?, paSummaryResponse: PASummaryResponse?) {
+    init(accountTestData: [Account]?, accountPerformanceTestData: PerformanceResponse?, allocationTestResponse: AllocationResponse?, accountSummaryTest: AccountSummary?, pnlModelResponseTest: PnLModelResponseModel?, testTickleResponse: TickleResponse?, paSummaryResponse: PASummaryResponse?, iServerResponse: (IServerResponse?, NetworkError?)?) {
         self.accountTestData = accountTestData ?? MockedAccountModels.account
         
         self.accountPerformanceTestData = accountPerformanceTestData ?? MockedAccountModels.performanceResponse
@@ -33,6 +34,8 @@ class MockAccountApiService: AccountApiServiceProtocol {
         self.testTickleResponse = testTickleResponse ?? MockedAccountModels.tickleResponse
         
         self.paSummaryResponse = paSummaryResponse ?? MockedAccountModels.paSummaryResponse
+        
+        self.iServerResponse = iServerResponse ?? (MockedAccountModels.iServerResponse, nil)
     }
     
     func fetchAccount(completion: @escaping ([Account]) -> Void) {
@@ -66,8 +69,8 @@ class MockAccountApiService: AccountApiServiceProtocol {
         }
     }
     
-    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ()) {
-        completion((nil, nil))
+    func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ()) {
+        completion(iServerResponse)
     }
     
     func tickle(completion: @escaping (TickleResponse) -> ()) {

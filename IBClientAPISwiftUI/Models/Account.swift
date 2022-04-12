@@ -153,3 +153,7 @@ struct AccountTotal: Codable {
 struct SummaryPostData: Encodable {
     let acctIds: [String]
 }
+
+struct IServerResponse: Codable {
+    let accounts: [String]
+}

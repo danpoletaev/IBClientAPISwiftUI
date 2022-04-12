@@ -179,7 +179,7 @@ struct HomeView_Preview: PreviewProvider {
     static var previews: some View {
         let environmentModel = MockedAccountModels.mockedEvnironmentModel
         
-        let homeViewModel = HomeViewModel(homeRepository: HomeRepository(homeApiService: MockHomeApiService(scannerResponse: nil), portfolioApiService: nil, tickerApiService: nil, accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil)))
+        let homeViewModel = HomeViewModel(homeRepository: HomeRepository(homeApiService: MockHomeApiService(scannerResponse: nil), portfolioApiService: nil, tickerApiService: nil, accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)))
         
         HomeView(homeViewModel: homeViewModel)
             .environmentObject(environmentModel)

@@ -17,9 +17,9 @@ final class AccountViewModel: ObservableObject {
         self.repository = repository ?? AccountRepository(apiService: AccountApiService())
     }
     
-    func getIServerAccount(completion: @escaping((Any?, NetworkError?)) -> ()) {
-        repository.getIServerAccount { response in
-            completion(response)
+    func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ()) {
+        repository.getIServerAccount { (response, error) in
+            completion((response, error))
             
         }
     }

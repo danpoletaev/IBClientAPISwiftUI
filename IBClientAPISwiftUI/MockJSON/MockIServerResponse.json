@@ -1,0 +1,89 @@
+{
+    "accounts": [
+        "U5625832"
+    ],
+    "acctProps": {
+        "U5625832": {
+            "hasChildAccounts": false,
+            "supportsCashQty": true,
+            "supportsFractions": true
+        }
+    },
+    "aliases": {
+        "U5625832": "U5625832"
+    },
+    "allowFeatures": {
+        "showGFIS": true,
+        "allowFXConv": true,
+        "allowMTA": true,
+        "allowTypeAhead": true,
+        "snapshotRefreshTimeout": 30,
+        "liteUser": false,
+        "showWebNews": false,
+        "research": false,
+        "debugPnl": true,
+        "showTaxOpt": true,
+        "showImpactDashboard": true,
+        "allowedAssetTypes": "STK,CFD,OPT,FOP,WAR,FUT,BAG,CASH,IND,BOND,BILL,FUND,SLB,News,CMDTY,IOPT,ICU,ICS,PHYSS,CRYPTO"
+    },
+    "chartPeriods": {
+        "STK": [
+            "*"
+        ],
+        "CFD": [
+            "*"
+        ],
+        "OPT": [
+            "2h",
+            "1d",
+            "2d",
+            "1w",
+            "1m"
+        ],
+        "FOP": [
+            "2h",
+            "1d",
+            "2d",
+            "1w",
+            "1m"
+        ],
+        "WAR": [
+            "*"
+        ],
+        "IOPT": [
+            "*"
+        ],
+        "FUT": [
+            "*"
+        ],
+        "CASH": [
+            "*"
+        ],
+        "IND": [
+            "*"
+        ],
+        "BOND": [
+            "*"
+        ],
+        "FUND": [
+            "*"
+        ],
+        "CMDTY": [
+            "*"
+        ],
+        "PHYSS": [
+            "*"
+        ],
+        "CRYPTO": [
+            "*"
+        ]
+    },
+    "groups": [],
+    "profiles": [],
+    "selectedAccount": "U5625832",
+    "serverInfo": {
+        "serverName": "JifN18053",
+        "serverVersion": "Build 10.14.0p, Mar 24, 2022 11:24:47 AM"
+    },
+    "sessionId": "6253add4.0000005a"
+}
