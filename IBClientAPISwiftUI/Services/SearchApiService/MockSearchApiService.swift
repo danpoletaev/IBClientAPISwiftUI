@@ -17,7 +17,9 @@ class MockSearchApiService: SearchApiServiceProtocol {
     }
     
     func searchForNameSymbol(value: String, completion: @escaping ([SearchTicket]) -> ()) {
-            completion(searchTicket)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            completion(self.searchTicket)
+        }
     }
     
 }

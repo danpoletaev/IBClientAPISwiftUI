@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PortfolioHeader: View {
     var accountSummary: AccountSummary
-    @EnvironmentObject var environmentModel: EnvironmentModel
+    @EnvironmentObject var environmentModel: EnvironmentViewModel
     var dailyPnL: CorePnLModel? = nil
     
     let ACCOUNT_SUMMARY_STRINGS = [AccountSummaryString(name: "maintmarginreq", label: "MntMgn"), AccountSummaryString(name: "excessliquidity", label: "ExLiq"), AccountSummaryString(name: "buyingpower", label: "Buy PWR"), AccountSummaryString(name: "netliquidation", label: "Net Lqa")]

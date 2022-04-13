@@ -10,7 +10,7 @@ import SwiftUI
 struct CashBalancesRow: View {
     let key: String
     let value: Double
-    @EnvironmentObject var environmentModel: EnvironmentModel
+    @EnvironmentObject var environmentModel: EnvironmentViewModel
     
     var body: some View {
         HStack {

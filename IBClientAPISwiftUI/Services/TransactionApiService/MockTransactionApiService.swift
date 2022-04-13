@@ -18,11 +18,15 @@ class MockTransactionApiService: TransactionApiServiceProtocol {
     }
     
     func placeOrder(order: Order, accountId: String, completion: @escaping ([PlaceOrderResponse]) -> ()) {
-        completion(placeOrderResponse)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            completion(self.placeOrderResponse)
+        }
     }
     
     func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ()) {
-        completion(replyItemResponse)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            completion(self.replyItemResponse)
+        }
     }
     
     

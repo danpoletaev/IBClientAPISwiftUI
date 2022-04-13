@@ -16,7 +16,7 @@ struct AccountSummaryString {
 struct PortfolioView: View {
     
     @StateObject var portfolioViewModel: PortfolioViewModel
-    @EnvironmentObject var environmentModel: EnvironmentModel
+    @EnvironmentObject var environmentModel: EnvironmentViewModel
     
     init(portfolioViewModel: PortfolioViewModel?) {
         _portfolioViewModel = StateObject(wrappedValue: portfolioViewModel ?? PortfolioViewModel(repository: nil))

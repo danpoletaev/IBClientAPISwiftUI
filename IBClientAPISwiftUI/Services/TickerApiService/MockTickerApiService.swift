@@ -20,15 +20,21 @@ class MockTickerApiService: TickerApiServiceProtocol {
     }
     
     func getTickerInfo(conid: Int, completion: @escaping ([TickerInfo]) -> Void) {
-        completion([tickerInfo])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            completion([self.tickerInfo])
+        }
     }
     
     func getSecDefByConids(value: [Int], completion: @escaping (SecDefResponse) -> Void) {
-        completion(secDefResponse)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            completion(self.secDefResponse)
+        }
     }
     
     func getConidHistory(conid: Int, period: String, completion: @escaping (HistoryConidResponse) -> ()) {
-        completion(historyConidResponse)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            completion(self.historyConidResponse)
+        }
     }
-
+    
 }

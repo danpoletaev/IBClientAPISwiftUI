@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AccountView: View {
     
-    @EnvironmentObject var environmentModel: EnvironmentModel
+    @EnvironmentObject var environmentModel: EnvironmentViewModel
     
     var body: some View {
         ScrollView {

@@ -25,7 +25,7 @@ enum MockedAccountModels {
     
     static let iServerResponse: IServerResponse = Bundle.main.decode(type: IServerResponse.self, from: "MockIServerResponse.json")
     
-    static let mockedEvnironmentModel = EnvironmentModel(
+    static let mockedEvnironmentModel = EnvironmentViewModel(
         accountViewModel: AccountViewModel(
             repository: AccountRepository(
                 apiService: MockAccountApiService(

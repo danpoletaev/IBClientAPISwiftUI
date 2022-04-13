@@ -25,7 +25,7 @@ final class PortfolioViewModel: ObservableObject {
         self.repository = repository ?? PortfolioRepository(portfolioApiService: nil, accountApiService: nil, tickerApiService: nil )
     }
     
-    func fetchPositions() {
+    private func fetchPositions() {
         self.repository.fetchPositions { positions in
             self.positions = positions
             self.isPositionsLoading = false
@@ -35,7 +35,7 @@ final class PortfolioViewModel: ObservableObject {
         }
     }
     
-    func fetchAccounPerformance() {
+    private func fetchAccounPerformance() {
         self.repository.fetchAccountAllocation { accountPerformance in
             self.assetClass = accountPerformance.assetClass
             self.isAccountPerformanceLoading = false
@@ -45,7 +45,7 @@ final class PortfolioViewModel: ObservableObject {
         }
     }
     
-    func fetchAccountSummary() {
+    private func fetchAccountSummary() {
         self.repository.getAccountSummary { accountSummary in
             self.accountSummary = accountSummary
             self.isAccountSummaryLoading = false
@@ -55,7 +55,7 @@ final class PortfolioViewModel: ObservableObject {
         }
     }
     
-    func getPnL() {
+    private func getPnL() {
         self.repository.getPnL { coreModel in
             self.dailyPnL = coreModel
             self.isPnlLoading = false

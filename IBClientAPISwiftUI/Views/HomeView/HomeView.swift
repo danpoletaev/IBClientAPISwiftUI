@@ -10,7 +10,7 @@ import StockCharts
 import ActivityIndicatorView
 
 struct HomeView: View {
-    @EnvironmentObject var environmentModel: EnvironmentModel
+    @EnvironmentObject var environmentModel: EnvironmentViewModel
     @StateObject var homeViewModel: HomeViewModel
     
     init(homeViewModel: HomeViewModel?) {

@@ -10,7 +10,7 @@ import AppTrackingTransparency
 
 struct SheetView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var environmentModel: EnvironmentModel
+    @EnvironmentObject var environmentModel: EnvironmentViewModel
     
 
     @State var errorAgain = false
@@ -65,7 +65,7 @@ struct SheetView: View {
 
 
 struct ContentView: View {
-    @EnvironmentObject var environmentModel: EnvironmentModel
+    @EnvironmentObject var environmentModel: EnvironmentViewModel
     @Environment(\.openURL) var openURL
     @State private var showingAuthorizationSheet = false
     

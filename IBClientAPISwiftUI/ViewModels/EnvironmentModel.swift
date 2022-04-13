@@ -7,10 +7,8 @@
 
 import Foundation
 
-class EnvironmentModel: ObservableObject {
-
-    @Published var positions: [Position] = []
-    @Published var topPositions: [Position] = []
+class EnvironmentViewModel: ObservableObject {
+    
     @Published var tagSelection = 1
     @Published var accountViewModel: AccountViewModel
     @Published var authorized = false
@@ -21,10 +19,14 @@ class EnvironmentModel: ObservableObject {
     
     func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ()) {
         self.accountViewModel.getIServerAccount { (data, error) in
-            if error == NetworkError.unauthorized {
-                self.authorized = false
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.authorized = false
+                }
             } else {
-                self.authorized = true
+                DispatchQueue.main.async {
+                    self.authorized = true
+                }
             }
             completion((data, error))
         }
