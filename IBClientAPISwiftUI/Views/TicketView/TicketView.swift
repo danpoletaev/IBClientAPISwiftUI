@@ -10,7 +10,11 @@ import StockCharts
 import ActivityIndicatorView
 
 struct TicketView: View {
+    @EnvironmentObject var environmentModel: EnvironmentViewModel
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
     @StateObject var ticketViewModel: TicketViewModel
+    @State var orderPlacedSuccessfully = false
     
     
     var tickerTitle: String
@@ -39,7 +43,9 @@ struct TicketView: View {
                         }
                         .padding(.horizontal)
                         .frame(width: UIScreen.screenWidth, alignment: .leading)
+                        .padding(.top)
                     }
+
                     
                     HStack {
                         Text(ticketViewModel.tickerInfo?.bid ?? "0")
@@ -78,7 +84,7 @@ struct TicketView: View {
                     HStack {
                         
                         NavigationLink(destination: {
-                            TransactionView(transactionViewModel: nil, ticketViewModel: ObservedObject(wrappedValue: ticketViewModel), buying: false, ticket: tickerTitle, exchange: exchange)
+                            TransactionView(transactionViewModel: nil, ticketViewModel: ObservedObject(wrappedValue: ticketViewModel), buying: false, ticket: tickerTitle, exchange: exchange, orderPlacedSuccessfully: $orderPlacedSuccessfully)
                         }, label: {
                             Text("Sell")
                                 .foregroundColor(Color.white)
@@ -86,14 +92,14 @@ struct TicketView: View {
                                 .frame(width: 160, alignment: .center)
                                 .background(Color.red)
                                 .cornerRadius(8)
-                                .opacity(ticketViewModel.tickerInfo == nil ? 0.5 : 1)
+                                .opacity(ticketViewModel.tickerInfo == nil || Double(ticketViewModel.tickerInfo?.positions ?? "0") ?? 0 <= 0 ? 0.5 : 1)
                         })
-                            .disabled(ticketViewModel.tickerInfo == nil)
+                            .disabled(ticketViewModel.tickerInfo == nil || Double(ticketViewModel.tickerInfo?.positions ?? "0") ?? 0 <= 0)
                         
                         Spacer()
                         
                         NavigationLink(destination: {
-                            TransactionView(transactionViewModel: nil, ticketViewModel: ObservedObject(wrappedValue: ticketViewModel), buying: true, ticket: tickerTitle, exchange: exchange)
+                            TransactionView(transactionViewModel: nil, ticketViewModel: ObservedObject(wrappedValue: ticketViewModel), buying: true, ticket: tickerTitle, exchange: exchange, orderPlacedSuccessfully: $orderPlacedSuccessfully)
                         }, label: {
                             Text("Buy")
                                 .foregroundColor(Color.white)
@@ -117,12 +123,22 @@ struct TicketView: View {
                 }
             }
             .opacity(ticketViewModel.isLoading ? 0.5 : 1)
+            .onChange(of: orderPlacedSuccessfully, perform: { newValue in
+                if newValue {
+                    self.orderPlacedSuccessfully = false
+                    self.mode.wrappedValue.dismiss()
+                    self.environmentModel.tagSelection = 3
+                }
+            })
             .onAppear(perform: {
                 ticketViewModel.onAppear(conid: conid, period: "1m")
             })
             .task {
-                do {
-                    await ticketViewModel.retrieveMessages()
+                let shouldUseMockedService: String = ProcessInfo.processInfo.environment["-UITest_mockService"] ?? "false"
+                if (shouldUseMockedService != "true") {
+                    do {
+                        await ticketViewModel.retrieveMessages()
+                    }
                 }
             }
             .onDisappear(perform: {

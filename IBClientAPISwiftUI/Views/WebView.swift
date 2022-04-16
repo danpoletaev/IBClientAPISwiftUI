@@ -109,13 +109,67 @@ import WebKit
 struct WebView: UIViewRepresentable {
     typealias UIViewType = WKWebView
     
-    let webView: WKWebView
+    let url: URL
     
-    func makeUIView(context: Context) -> WKWebView {
-        return webView
+    func makeCoordinator() -> WebView.Coordinator {
+        Coordinator(self)
     }
     
-    func updateUIView(_ uiView: WKWebView, context: Context) { }
+    func makeUIView(context: Context) -> WKWebView {
+//        let configuration = WKWebViewConfiguration()
+//        configuration.websiteDataStore = .nonPersistent()
+//        var webView: WKWebView = WKWebView(frame: .zero, configuration: configuration)
+//        webView.navigationDelegate = WebViewNavigationDelegate()
+        let webView = WKWebView()
+        webView.navigationDelegate = context.coordinator
+        let request = URLRequest(url: url)
+        webView.load(request)
+        return WKWebView()
+    }
+    
+    func updateUIView(_ webView: WKWebView, context: Context) {
+        let request = URLRequest(url: url)
+        
+        webView.load(request)
+    }
+    
+    class Coordinator: NSObject, WKNavigationDelegate {
+        let parent: WebView
+        
+        init(_ parent: WebView) {
+            self.parent = parent
+        }
+        
+        func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+            print("CHALLENGE")
+            guard let serverTrust = challenge.protectionSpace.serverTrust else { return completionHandler(.useCredential, nil) }
+                let exceptions = SecTrustCopyExceptions(serverTrust)
+                SecTrustSetExceptions(serverTrust, exceptions)
+                completionHandler(.useCredential, URLCredential(trust: serverTrust))
+        }
+//        func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+//            print("I am here")
+//            guard let serverTrust = challenge.protectionSpace.serverTrust else {
+//                completionHandler(.cancelAuthenticationChallenge, nil)
+//                return
+//            }
+//            let exceptions = SecTrustCopyExceptions(serverTrust)
+//            SecTrustSetExceptions(serverTrust, exceptions)
+//            completionHandler(.useCredential, URLCredential(trust: serverTrust));
+//        }
+        
+//        func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+//            print("I am here")
+//            guard let serverTrust = challenge.protectionSpace.serverTrust else {
+//                completionHandler(.cancelAuthenticationChallenge, nil)
+//                return
+//            }
+//            let exceptions = SecTrustCopyExceptions(serverTrust)
+//            SecTrustSetExceptions(serverTrust, exceptions)
+//            completionHandler(.useCredential, URLCredential(trust: serverTrust));
+//        }
+
+    }
 }
 
 class WebViewNavigationDelegate: NSObject, WKNavigationDelegate {

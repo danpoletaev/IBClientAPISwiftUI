@@ -132,3 +132,29 @@ extension Bundle {
         }
     }
 }
+
+extension SecTrust {
+
+    var isSelfSigned: Bool? {
+        guard SecTrustGetCertificateCount(self) == 1 else {
+            return false
+        }
+        guard let cert = SecTrustGetCertificateAtIndex(self, 0) else {
+            return nil
+        }
+        return cert.isSelfSigned
+    }
+}
+
+extension SecCertificate {
+
+    var isSelfSigned: Bool? {
+        guard
+            let subject = SecCertificateCopyNormalizedSubjectSequence(self),
+            let issuer = SecCertificateCopyNormalizedIssuerSequence(self)
+        else {
+            return nil
+        }
+        return subject == issuer
+    }
+}

@@ -17,7 +17,6 @@ struct TransactionView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    
     var buying: Bool = true
     var ticket: String
     var exchange: String
@@ -26,13 +25,15 @@ struct TransactionView: View {
     @StateObject private var transactionViewModel: TransactionViewModel
     @State private var selection = OrderTypes.LMT
     @State private var timeInForce = TifTypes.DAY
+    @Binding var orderPlacedSuccessfully: Bool
     
-    init(transactionViewModel: TransactionViewModel?, ticketViewModel: ObservedObject<TicketViewModel>, buying: Bool, ticket: String, exchange: String) {
+    init(transactionViewModel: TransactionViewModel?, ticketViewModel: ObservedObject<TicketViewModel>, buying: Bool, ticket: String, exchange: String, orderPlacedSuccessfully: Binding<Bool>) {
         _transactionViewModel = StateObject(wrappedValue: transactionViewModel ?? TransactionViewModel(repository: nil))
         _ticketViewModel = ticketViewModel
         self.buying = buying
         self.ticket = ticket
         self.exchange = exchange
+        self._orderPlacedSuccessfully = orderPlacedSuccessfully
     }
     
     var body: some View {
@@ -152,6 +153,7 @@ struct TransactionView: View {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color(.secondaryLabel), lineWidth: 2)
                             )
+                            .accessibility(identifier: "quanityTF")
                     }
                     .padding(.horizontal)
                     
@@ -202,6 +204,7 @@ struct TransactionView: View {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color(.secondaryLabel), lineWidth: 2)
                                 )
+                                .accessibility(identifier: "limitPrice")
                         }
                         .padding(.horizontal)
                         
@@ -236,7 +239,6 @@ struct TransactionView: View {
                     let order = Order(conid: Int(ticketViewModel.tickerInfo?.conid ?? 0), secType: "STK", orderType: selection.rawValue, side: buying ? "BUY" : "SELL", tif: timeInForce.rawValue, quantity: Double(quantity) ?? 0)
                     
                     transactionViewModel.placeOrder(order: order) { orders in
-                        print(orders)
                         self.order = order
                         self.showingConfirmation = true
                     }
@@ -248,11 +250,18 @@ struct TransactionView: View {
                         .foregroundColor(Color.white)
                         .cornerRadius(8)
                 }
+                .opacity(quantity.length == 0 || (selection == OrderTypes.LMT && limitPrice.length == 0) ? 0.5 : 1)
+                .disabled(quantity.length == 0 || (selection == OrderTypes.LMT && limitPrice.length == 0))
                 
             }
         }
+        .onChange(of: orderPlacedSuccessfully, perform: { newValue in
+            if newValue {
+                self.mode.wrappedValue.dismiss()
+            }
+        })
         .sheet(isPresented: $showingConfirmation) {
-            OrderConfirmation(placedOrder: $order, transactionViewModel: transactionViewModel)
+            OrderConfirmation(placedOrder: $order, orderPlacedSuccessfully: $orderPlacedSuccessfully, transactionViewModel: transactionViewModel)
         }
         .padding(.top, 20)
         .frame(width: UIScreen.screenWidth, alignment: .leading)
@@ -267,13 +276,14 @@ struct TransactionView: View {
 
 
 struct TransactionView_Previews: PreviewProvider {
+    @State static var orderPlacedSuccessfully = false
     static var previews: some View {
         
         let transactionViewModel = TransactionViewModel(repository: TransactionRepository(apiService: MockTransactionApiService(placeOrderResponse: nil, replyItemResponse: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)))
         
         let ticketViewModel = ObservedObject(wrappedValue: TicketViewModel(repository: TicketRepository(apiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil), acccountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil))))
         
-        TransactionView(transactionViewModel: transactionViewModel, ticketViewModel: ticketViewModel    , buying: true, ticket: "BIOL", exchange: "NASDAQ")
+        TransactionView(transactionViewModel: transactionViewModel, ticketViewModel: ticketViewModel    , buying: true, ticket: "BIOL", exchange: "NASDAQ", orderPlacedSuccessfully: $orderPlacedSuccessfully)
             .environment(\.colorScheme, .dark)
             .background(CustomColor.darkBg)
     }

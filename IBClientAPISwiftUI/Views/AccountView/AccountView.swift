@@ -22,6 +22,7 @@ struct AccountView: View {
                 Text((environmentModel.accountViewModel.account != nil) ? environmentModel.accountViewModel.account?.accountTitle ?? "" : "Fetching")
                     .font(.system(.title2))
                     .padding(.vertical, 10)
+                    .accessibilityIdentifier("accountName")
             }
             
             AccountCard(account: $environmentModel.accountViewModel.account)

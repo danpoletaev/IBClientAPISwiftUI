@@ -17,8 +17,14 @@ protocol AccountRepositoryProtocol {
 final class AccountRepository: AccountRepositoryProtocol {
     private let apiService: AccountApiServiceProtocol
     
-    init(apiService: AccountApiServiceProtocol? ) {
-        self.apiService = apiService ?? AccountApiService()
+    init(apiService: AccountApiServiceProtocol?) {
+        let shouldUseMockedService: String = ProcessInfo.processInfo.environment["-UITest_mockService"] ?? "false"
+        let shouldReturnUnauthorize: String = ProcessInfo.processInfo.environment["-UITest_unauthorized"] ?? "false"
+        if shouldUseMockedService == "true" {
+            self.apiService = MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: shouldReturnUnauthorize == "true" ? (nil, NetworkError.unauthorized) : nil)
+        } else {
+            self.apiService = apiService ?? AccountApiService()
+        }
     }
     
     func fetchAccount(completion: @escaping (Account) -> Void) {

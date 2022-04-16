@@ -15,7 +15,12 @@ final class TradesRepository: TradesRepositoryProtocol {
     private let apiService: TradesApiServiceProtocol
     
     init(apiService: TradesApiServiceProtocol?) {
-        self.apiService = apiService ?? TradesApiService()
+        let shouldUseMockedService: String = ProcessInfo.processInfo.environment["-UITest_mockService"] ?? "false"
+        if shouldUseMockedService == "true" {
+            self.apiService = MockTradesApiService(allTradesResponse: nil)
+        } else {
+            self.apiService = apiService ?? TradesApiService()
+        }
     }
     
     func getAllTrades(completion: @escaping (AllTradesResponse) -> ()) {

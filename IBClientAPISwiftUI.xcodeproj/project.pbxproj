@@ -25,6 +25,11 @@
 		8341F6A428072705004EE849 /* TransactionViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6A328072705004EE849 /* TransactionViewModel_Tests.swift */; };
 		8341F6A628072E7A004EE849 /* TradesViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6A528072E7A004EE849 /* TradesViewModel_Tests.swift */; };
 		8341F6A828073018004EE849 /* EnvironmentModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6A728073018004EE849 /* EnvironmentModel_Tests.swift */; };
+		8341F6B02808726C004EE849 /* ContentView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6AF2808726C004EE849 /* ContentView_Tests.swift */; };
+		8341F6B928088822004EE849 /* SearchView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6B828088822004EE849 /* SearchView_Tests.swift */; };
+		8341F6BB28097A9C004EE849 /* HomeView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6BA28097A9C004EE849 /* HomeView_Tests.swift */; };
+		8341F6BD2809DDE6004EE849 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6BC2809DDE6004EE849 /* DataManager.swift */; };
+		834781B1280B443100841C8A /* TicketView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834781B0280B443100841C8A /* TicketView_Tests.swift */; };
 		834ACDF427ECDB3F00DA0932 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */; };
 		834AF66528049A4300831EF9 /* MockIServerResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 834AF66428049A4300831EF9 /* MockIServerResponse.json */; };
 		834AF66728049EEE00831EF9 /* HomeRepository_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834AF66628049EEE00831EF9 /* HomeRepository_tests.swift */; };
@@ -147,6 +152,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8341F6B32808726C004EE849 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8366FE0527E538F300082C13 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8366FE0C27E538F300082C13;
+			remoteInfo = IBClientAPISwiftUI;
+		};
 		83F8B3CF28007F6100E186D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8366FE0527E538F300082C13 /* Project object */;
@@ -175,6 +187,12 @@
 		8341F6A328072705004EE849 /* TransactionViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel_Tests.swift; sourceTree = "<group>"; };
 		8341F6A528072E7A004EE849 /* TradesViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesViewModel_Tests.swift; sourceTree = "<group>"; };
 		8341F6A728073018004EE849 /* EnvironmentModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentModel_Tests.swift; sourceTree = "<group>"; };
+		8341F6AD2808726C004EE849 /* IBClientAPISwiftTestsUI.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IBClientAPISwiftTestsUI.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8341F6AF2808726C004EE849 /* ContentView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_Tests.swift; sourceTree = "<group>"; };
+		8341F6B828088822004EE849 /* SearchView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView_Tests.swift; sourceTree = "<group>"; };
+		8341F6BA28097A9C004EE849 /* HomeView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView_Tests.swift; sourceTree = "<group>"; };
+		8341F6BC2809DDE6004EE849 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		834781B0280B443100841C8A /* TicketView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView_Tests.swift; sourceTree = "<group>"; };
 		834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
 		834AF66428049A4300831EF9 /* MockIServerResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockIServerResponse.json; sourceTree = "<group>"; };
 		834AF66628049EEE00831EF9 /* HomeRepository_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository_tests.swift; sourceTree = "<group>"; };
@@ -281,6 +299,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8341F6AA2808726C004EE849 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8366FE0A27E538F300082C13 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,12 +349,24 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		8341F6AE2808726C004EE849 /* IBClientAPISwiftTestsUI */ = {
+			isa = PBXGroup;
+			children = (
+				8341F6AF2808726C004EE849 /* ContentView_Tests.swift */,
+				8341F6B828088822004EE849 /* SearchView_Tests.swift */,
+				8341F6BA28097A9C004EE849 /* HomeView_Tests.swift */,
+				834781B0280B443100841C8A /* TicketView_Tests.swift */,
+			);
+			path = IBClientAPISwiftTestsUI;
+			sourceTree = "<group>";
+		};
 		8366FE0427E538F300082C13 = {
 			isa = PBXGroup;
 			children = (
 				836F0EF42801DADE000D2F6D /* .gitlab-ci.yml */,
 				8366FE0F27E538F300082C13 /* IBClientAPISwiftUI */,
-				83F8B3CC28007F6100E186D1 /* IBClientAPISwiftUITests */,
+				83F8B3CC28007F6100E186D1 /* IBClientAPISwiftUnitTests */,
+				8341F6AE2808726C004EE849 /* IBClientAPISwiftTestsUI */,
 				8366FE0E27E538F300082C13 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -339,6 +376,7 @@
 			children = (
 				8366FE0D27E538F300082C13 /* IBClientAPISwiftUI.app */,
 				83F8B3CB28007F6100E186D1 /* IBClientAPISwiftUITests.xctest */,
+				8341F6AD2808726C004EE849 /* IBClientAPISwiftTestsUI.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -506,6 +544,7 @@
 				83F8B3E328008D9700E186D1 /* HomeApiService */,
 				83F8B3DB2800855400E186D1 /* AccountApiService */,
 				834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */,
+				8341F6BC2809DDE6004EE849 /* DataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -562,7 +601,7 @@
 			path = TradesApiService;
 			sourceTree = "<group>";
 		};
-		83F8B3CC28007F6100E186D1 /* IBClientAPISwiftUITests */ = {
+		83F8B3CC28007F6100E186D1 /* IBClientAPISwiftUnitTests */ = {
 			isa = PBXGroup;
 			children = (
 				8341F69A2805FFEF004EE849 /* ViewModels */,
@@ -570,7 +609,7 @@
 				83F8B3D62800846200E186D1 /* Services */,
 				83F8B3CD28007F6100E186D1 /* IBClientAPISwiftUITests.swift */,
 			);
-			path = IBClientAPISwiftUITests;
+			path = IBClientAPISwiftUnitTests;
 			sourceTree = "<group>";
 		};
 		83F8B3D62800846200E186D1 /* Services */ = {
@@ -654,6 +693,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8341F6AC2808726C004EE849 /* IBClientAPISwiftTestsUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8341F6B52808726C004EE849 /* Build configuration list for PBXNativeTarget "IBClientAPISwiftTestsUI" */;
+			buildPhases = (
+				8341F6A92808726C004EE849 /* Sources */,
+				8341F6AA2808726C004EE849 /* Frameworks */,
+				8341F6AB2808726C004EE849 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8341F6B42808726C004EE849 /* PBXTargetDependency */,
+			);
+			name = IBClientAPISwiftTestsUI;
+			productName = IBClientAPISwiftTestsUI;
+			productReference = 8341F6AD2808726C004EE849 /* IBClientAPISwiftTestsUI.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		8366FE0C27E538F300082C13 /* IBClientAPISwiftUI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8366FE1B27E538F500082C13 /* Build configuration list for PBXNativeTarget "IBClientAPISwiftUI" */;
@@ -703,6 +760,10 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					8341F6AC2808726C004EE849 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 8366FE0C27E538F300082C13;
+					};
 					8366FE0C27E538F300082C13 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -731,11 +792,19 @@
 			targets = (
 				8366FE0C27E538F300082C13 /* IBClientAPISwiftUI */,
 				83F8B3CA28007F6100E186D1 /* IBClientAPISwiftUITests */,
+				8341F6AC2808726C004EE849 /* IBClientAPISwiftTestsUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8341F6AB2808726C004EE849 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8366FE0B27E538F300082C13 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -790,6 +859,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8341F6A92808726C004EE849 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8341F6BB28097A9C004EE849 /* HomeView_Tests.swift in Sources */,
+				8341F6B928088822004EE849 /* SearchView_Tests.swift in Sources */,
+				834781B1280B443100841C8A /* TicketView_Tests.swift in Sources */,
+				8341F6B02808726C004EE849 /* ContentView_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8366FE0927E538F300082C13 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -846,6 +926,7 @@
 				83C6FFE927F0D6930052FEFD /* OrderConfirmation.swift in Sources */,
 				8366FE4B27E53BC200082C13 /* SearchView.swift in Sources */,
 				83F8B3F12800A47A00E186D1 /* MockTickerModels.swift in Sources */,
+				8341F6BD2809DDE6004EE849 /* DataManager.swift in Sources */,
 				8366FE2827E539BF00082C13 /* SearchNavigationBar.swift in Sources */,
 				8366FE3C27E53AF700082C13 /* PortfolioHeader.swift in Sources */,
 				83C6FFE527F0D3490052FEFD /* HTMLView.swift in Sources */,
@@ -905,6 +986,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8341F6B42808726C004EE849 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8366FE0C27E538F300082C13 /* IBClientAPISwiftUI */;
+			targetProxy = 8341F6B32808726C004EE849 /* PBXContainerItemProxy */;
+		};
 		83F8B3D028007F6100E186D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8366FE0C27E538F300082C13 /* IBClientAPISwiftUI */;
@@ -913,6 +999,40 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		8341F6B62808726C004EE849 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9PJGLQ75C6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fit.cvut.poletdan.IBClientAPISwiftTestsUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IBClientAPISwiftUI;
+			};
+			name = Debug;
+		};
+		8341F6B72808726C004EE849 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9PJGLQ75C6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fit.cvut.poletdan.IBClientAPISwiftTestsUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IBClientAPISwiftUI;
+			};
+			name = Release;
+		};
 		8366FE1927E538F500082C13 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1130,6 +1250,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8341F6B52808726C004EE849 /* Build configuration list for PBXNativeTarget "IBClientAPISwiftTestsUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8341F6B62808726C004EE849 /* Debug */,
+				8341F6B72808726C004EE849 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8366FE0827E538F300082C13 /* Build configuration list for PBXProject "IBClientAPISwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

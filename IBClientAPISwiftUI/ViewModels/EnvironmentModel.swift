@@ -19,7 +19,7 @@ class EnvironmentViewModel: ObservableObject {
     
     func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ()) {
         self.accountViewModel.getIServerAccount { (data, error) in
-            if error != nil {
+            if error != nil{
                 DispatchQueue.main.async {
                     self.authorized = false
                 }

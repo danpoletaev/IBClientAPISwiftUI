@@ -17,7 +17,9 @@ class WebSocketService: AsyncSequence {
     private var continuation: AsyncThrowingStream<Element, Error>.Continuation?
     private let socket: URLSessionWebSocketTask
     
-    init(url: String, session: URLSession = URLSession.shared) {
+    let session: URLSession = URLSession(configuration: URLSessionConfiguration.default, delegate: CustomUrlSessionDelegate(), delegateQueue: OperationQueue.main)
+    
+    init(url: String, session: URLSession = URLSession(configuration: URLSessionConfiguration.default, delegate: CustomUrlSessionDelegate(), delegateQueue: OperationQueue.main)) {
         socket = session.webSocketTask(with: URL(string: url)!)
         stream = AsyncThrowingStream { continuation in
             self.continuation = continuation
@@ -62,7 +64,6 @@ class WebSocketService: AsyncSequence {
     
     func sendRepeatedly(message: String) {
         DispatchQueue.global().asyncAfter(deadline: .now() + 1) { [self] in
-            print("Sendind messages")
             send(message: message)
         }
     }

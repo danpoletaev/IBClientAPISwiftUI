@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import ActivityIndicatorView
 
 struct CustomScreenerItem: View {
     var ticker: String
@@ -31,16 +32,27 @@ struct CustomScreenerItem: View {
             TicketView(ticketViewModel: nil, tickerTitle: name, exchange: listingExchange, conid: conid)
         }, label: {
             HStack {
-                Image(systemName: ticketViewModel.tickerInfo?.changeFromLastPricePercentage ?? 0 < 0 ? "arrowtriangle.down.fill" : "arrowtriangle.up.fill" )
-                    .resizable()
-                    .frame(width: 15, height: 15, alignment: .leading)
-                    .foregroundColor(ticketViewModel.tickerInfo?.changeFromLastPricePercentage ?? 0 < 0 ? Color.red : Color.green)
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
                     Text(ticker)
-                    Text("\(ticketViewModel.tickerInfo?.changeFromLastPricePercentage ?? 0, specifier: "%.2f")%")
-                        .foregroundColor(ticketViewModel.tickerInfo?.changeFromLastPricePercentage ?? 0 < 0 ? Color.red : Color.green)
-                    Text(ticketViewModel.tickerInfo?.bid?.appending("$") ?? "")
                         .frame(alignment: .center)
+                    ZStack {
+                        ActivityIndicatorView(isVisible: $ticketViewModel.isLoading, type: .default)
+                            .foregroundColor(Color.white)
+                            .frame(width: 30, height: 30, alignment: .center)
+                        HStack {
+                            Image(systemName: ticketViewModel.tickerInfo?.changeFromLastPricePercentage ?? 0 < 0 ? "arrowtriangle.down.fill" : "arrowtriangle.up.fill" )
+                                .resizable()
+                                .frame(width: 15, height: 15, alignment: .leading)
+                                .foregroundColor(ticketViewModel.tickerInfo?.changeFromLastPricePercentage ?? 0 < 0 ? Color.red : Color.green)
+                            VStack {
+                                Text("\(ticketViewModel.tickerInfo?.changeFromLastPricePercentage ?? 0, specifier: "%.2f")%")
+                                    .foregroundColor(ticketViewModel.tickerInfo?.changeFromLastPricePercentage ?? 0 < 0 ? Color.red : Color.green)
+                                Text(ticketViewModel.tickerInfo?.bid?.appending("$") ?? "")
+                                    .frame(alignment: .center)
+                            }
+                        }
+                        .opacity(ticketViewModel.isLoading ? 0.5 : 1)
+                    }
                 }
             }
             .padding()

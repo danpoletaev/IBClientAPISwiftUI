@@ -36,10 +36,12 @@ struct NavigationBar: View {
             }, label: {
                 Image(systemName: "bell.badge")
                     .resizable()
+                    .opacity(0.5)
                     .foregroundColor(Color.white)
                     .frame(width: 30, height: 30, alignment: .center)
                     .padding(.trailing)
             })
+                .disabled(true)
         }
         .frame(width: UIScreen.screenWidth, height: 60)
         .background(CustomColor.lightBg)

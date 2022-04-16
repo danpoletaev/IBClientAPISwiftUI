@@ -12,10 +12,12 @@ struct IBClientAPISwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             let environmentModel = EnvironmentViewModel(accountViewModel: AccountViewModel(repository: nil))
+            
             ContentView().environmentObject(environmentModel)
                 .onAppear(perform: {
                     environmentModel.fetchData()
                 })
+                .environment(\.colorScheme, .dark)
         }
     }
 }

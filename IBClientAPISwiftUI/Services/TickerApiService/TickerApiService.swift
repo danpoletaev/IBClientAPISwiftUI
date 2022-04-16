@@ -13,13 +13,13 @@ protocol TickerApiServiceProtocol {
     func getConidHistory(conid: Int, period: String, completion: @escaping (HistoryConidResponse) -> ())
 }
 
-final class TickerApiService: TickerApiServiceProtocol {
+final class TickerApiService: DataManager, TickerApiServiceProtocol {
     func getTickerInfo(conid: Int, completion: @escaping ([TickerInfo]) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/iserver/marketdata/snapshot?conids=\(conid)&fields=\(APIConstants.CONID_FIELDS)")) else {
+        guard let url = URL(string: self.API_URL.appending("/iserver/marketdata/snapshot?conids=\(conid)&fields=\(APIConstants.CONID_FIELDS)")) else {
             print("Problem here")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        let task = session.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }
@@ -37,7 +37,7 @@ final class TickerApiService: TickerApiServiceProtocol {
     
     
     func getSecDefByConids(value: [Int], completion: @escaping (SecDefResponse) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/trsrv/secdef")) else {
+        guard let url = URL(string: self.API_URL.appending("/trsrv/secdef")) else {
             print("Problem here")
             return
         }
@@ -55,7 +55,7 @@ final class TickerApiService: TickerApiServiceProtocol {
         
         request.httpBody = httpBody
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = session.dataTask(with: request) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }
@@ -74,11 +74,11 @@ final class TickerApiService: TickerApiServiceProtocol {
     }
     
     func getConidHistory(conid: Int, period: String, completion: @escaping (HistoryConidResponse) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/iserver/marketdata/history?conid=\(conid)&period=\(period)")) else {
+        guard let url = URL(string: self.API_URL.appending("/iserver/marketdata/history?conid=\(conid)&period=\(period)")) else {
             print("Problem here")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        let task = session.dataTask(with: url) { data, _, error in
             guard let data =  data, error == nil else {
                 return
             }

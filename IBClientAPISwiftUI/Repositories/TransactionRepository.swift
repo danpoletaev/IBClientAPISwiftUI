@@ -18,8 +18,14 @@ final class TransactionRepository: TransactionRepositoryProtocol {
     private let accountApiService: AccountApiServiceProtocol
     
     init(apiService: TransactionApiServiceProtocol?, accountApiService: AccountApiServiceProtocol?) {
-        self.apiService = apiService ?? TransactionApiService()
-        self.accountApiService = accountApiService ?? AccountApiService()
+        let shouldUseMockedService: String = ProcessInfo.processInfo.environment["-UITest_mockService"] ?? "false"
+        if shouldUseMockedService == "true" {
+            self.apiService = MockTransactionApiService(placeOrderResponse: nil, replyItemResponse: nil)
+            self.accountApiService = MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)
+        } else {
+            self.apiService = apiService ?? TransactionApiService()
+            self.accountApiService = accountApiService ?? AccountApiService()
+        }
     }
     
     func placeOrder(order: Order, completion: @escaping ([PlaceOrderResponse]) -> ()) {

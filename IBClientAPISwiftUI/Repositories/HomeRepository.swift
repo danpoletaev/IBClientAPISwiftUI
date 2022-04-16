@@ -21,10 +21,18 @@ final class HomeRepository: HomeRepositoryProtocol {
     private let accountApiService: AccountApiServiceProtocol
     
     init(homeApiService: HomeApiServiceProtocol?, portfolioApiService: PortfolioApiServiceProtocol?, tickerApiService: TickerApiServiceProtocol?, accountApiService: AccountApiServiceProtocol?) {
-        self.homeApiService = homeApiService ?? HomeApiService()
-        self.portfolioApiService = portfolioApiService ?? PortfolioApiService()
-        self.tickerApiService = tickerApiService ?? TickerApiService()
-        self.accountApiService = accountApiService ?? AccountApiService()
+        let shouldUseMockedService: String = ProcessInfo.processInfo.environment["-UITest_mockService"] ?? "false"
+        if shouldUseMockedService == "true" {
+            self.homeApiService = MockHomeApiService(scannerResponse: nil)
+            self.portfolioApiService = MockPortfolioApiService(positions: nil)
+            self.tickerApiService = MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)
+            self.accountApiService = MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)
+        } else {
+            self.homeApiService = homeApiService ?? HomeApiService()
+            self.portfolioApiService = portfolioApiService ?? PortfolioApiService()
+            self.tickerApiService = tickerApiService ?? TickerApiService()
+            self.accountApiService = accountApiService ?? AccountApiService()
+        }
     }
     
     func fetchTopPositions(completion: @escaping ([Position]) -> Void) {

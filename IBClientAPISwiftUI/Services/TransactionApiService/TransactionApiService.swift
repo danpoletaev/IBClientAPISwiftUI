@@ -14,10 +14,10 @@ protocol TransactionApiServiceProtocol {
 }
 
 
-final class TransactionApiService: TransactionApiServiceProtocol {
+final class TransactionApiService: DataManager, TransactionApiServiceProtocol {
     
     func placeOrder(order: Order, accountId: String, completion: @escaping ([PlaceOrderResponse]) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/iserver/account/\(accountId)/orders")) else {
+        guard let url = URL(string: self.API_URL.appending("/iserver/account/\(accountId)/orders")) else {
             print("Problem here")
             return
         }
@@ -40,7 +40,7 @@ final class TransactionApiService: TransactionApiServiceProtocol {
         
         request.httpBody = httpBody
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = self.session.dataTask(with: request) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }
@@ -60,7 +60,7 @@ final class TransactionApiService: TransactionApiServiceProtocol {
     }
     
     func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("iserver/reply/\(id)")) else {
+        guard let url = URL(string: self.API_URL.appending("iserver/reply/\(id)")) else {
             print("Problem here")
             return
         }
@@ -78,7 +78,7 @@ final class TransactionApiService: TransactionApiServiceProtocol {
         
         request.httpBody = httpBody
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = self.session.dataTask(with: request) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }

@@ -19,14 +19,15 @@ protocol AccountApiServiceProtocol {
     //    func
 }
 
-final class AccountApiService: AccountApiServiceProtocol {
+
+final class AccountApiService: DataManager, AccountApiServiceProtocol {
     
     func fetchAccount(completion: @escaping ([Account]) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/portfolio/accounts")) else {
+        guard let url = URL(string: self.API_URL.appending("/portfolio/accounts")) else {
             print("Problem here")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        let task = self.session.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }
@@ -43,7 +44,7 @@ final class AccountApiService: AccountApiServiceProtocol {
     }
     
     func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping ((PerformanceResponse?, NetworkError?)) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/pa/performance")) else {
+        guard let url = URL(string: self.API_URL.appending("/pa/performance")) else {
             print("Problem here")
             return
         }
@@ -62,7 +63,7 @@ final class AccountApiService: AccountApiServiceProtocol {
         request.httpBody = httpBody
         
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = self.session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 return
             }
@@ -91,18 +92,17 @@ final class AccountApiService: AccountApiServiceProtocol {
     }
     
     func getAccountAllocation(accountId: String, completion: @escaping (AllocationResponse) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/portfolio/\(accountId)/allocation")) else {
+        guard let url = URL(string: self.API_URL.appending("/portfolio/\(accountId)/allocation")) else {
             print("Problem here")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        let task = self.session.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }
             do {
                 let allocation = try JSONDecoder().decode(AllocationResponse.self, from: data)
                 DispatchQueue.main.async {
-                    print("decoded successfully")
                     completion(allocation)
                 }
             } catch {
@@ -113,11 +113,11 @@ final class AccountApiService: AccountApiServiceProtocol {
     }
     
     func getAccountSummary(accountId: String, completion: @escaping (AccountSummary) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/portfolio/\(accountId)/summary")) else {
+        guard let url = URL(string: self.API_URL.appending("/portfolio/\(accountId)/summary")) else {
             print("Problem here")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        let task = self.session.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }
@@ -134,18 +134,17 @@ final class AccountApiService: AccountApiServiceProtocol {
     }
     
     func getPnL(completion: @escaping (PnLModelResponseModel) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/iserver/account/pnl/partitioned")) else {
+        guard let url = URL(string: self.API_URL.appending("/iserver/account/pnl/partitioned")) else {
             print("Problem here")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        let task = self.session.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }
             do {
                 let pnlModel = try JSONDecoder().decode(PnLModelResponseModel.self, from: data)
                 DispatchQueue.main.async {
-                    print("decoded successfully")
                     completion(pnlModel)
                 }
             } catch {
@@ -156,11 +155,11 @@ final class AccountApiService: AccountApiServiceProtocol {
     }
     
     func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/iserver/accounts")) else {
+        guard let url = URL(string: self.API_URL.appending("/iserver/accounts")) else {
             print("Problem here")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = self.session.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 completion((nil, NetworkError.unauthorized))
                 return
@@ -190,11 +189,11 @@ final class AccountApiService: AccountApiServiceProtocol {
     }
     
     func tickle(completion: @escaping (TickleResponse) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/tickle")) else {
+        guard let url = URL(string: self.API_URL.appending("/tickle")) else {
             print("Problem here")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        let task = self.session.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }
@@ -211,7 +210,7 @@ final class AccountApiService: AccountApiServiceProtocol {
     }
     
     func getCurrentBalance(acctIds: [String], completion: @escaping (PASummaryResponse) -> Void) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/pa/summary")) else {
+        guard let url = URL(string: self.API_URL.appending("/pa/summary")) else {
             print("Problem here")
             return
         }
@@ -230,7 +229,7 @@ final class AccountApiService: AccountApiServiceProtocol {
         request.httpBody = httpBody
         
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = self.session.dataTask(with: request) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }

@@ -16,7 +16,12 @@ final class SearchRepository: SearchRepositoryProtocol {
     private let apiService: SearchApiServiceProtocol
     
     init(apiService: SearchApiServiceProtocol?) {
-        self.apiService = apiService ?? SearchApiService()
+        let shouldUseMockedService: String = ProcessInfo.processInfo.environment["-UITest_mockService"] ?? "false"
+        if shouldUseMockedService == "true" {
+            self.apiService = MockSearchApiService(searchTicket: nil)
+        } else {
+            self.apiService = apiService ?? SearchApiService()
+        }
     }
     
     func searchForNameSymbol(value: String, completion: @escaping ([SearchTicket]) -> ()) {

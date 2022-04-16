@@ -18,8 +18,14 @@ final class TicketRepository: TicketRepositoryProtocol {
     private let accountApiService: AccountApiServiceProtocol
     
     init(apiService: TickerApiServiceProtocol?, acccountApiService: AccountApiServiceProtocol?) {
-        self.apiService = apiService ?? TickerApiService()
-        self.accountApiService = acccountApiService ?? AccountApiService()
+        let shouldUseMockedService: String = ProcessInfo.processInfo.environment["-UITest_mockService"] ?? "false"
+        if shouldUseMockedService == "true" {
+            self.apiService = MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)
+            self.accountApiService = MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)
+        } else {
+            self.apiService = apiService ?? TickerApiService()
+            self.accountApiService = acccountApiService ?? AccountApiService()
+        }
     }
     
     func getTickerInfo(conid: Int, completion: @escaping (TickerInfo) -> Void) {

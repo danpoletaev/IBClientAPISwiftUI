@@ -12,10 +12,10 @@ protocol SearchApiServiceProtocol {
 }
 
 
-final class SearchApiService: SearchApiServiceProtocol {
+final class SearchApiService: DataManager, SearchApiServiceProtocol {
     
     func searchForNameSymbol(value: String, completion: @escaping ([SearchTicket]) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/iserver/secdef/search")) else {
+        guard let url = URL(string: self.API_URL.appending("/iserver/secdef/search")) else {
             print("Problem here")
             return
         }
@@ -32,7 +32,7 @@ final class SearchApiService: SearchApiServiceProtocol {
         
         request.httpBody = httpBody
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = self.session.dataTask(with: request) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }

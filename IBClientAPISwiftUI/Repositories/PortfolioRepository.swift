@@ -20,9 +20,16 @@ final class PortfolioRepository: PortfolioRepositoryProtocol {
     private let tickerApiService: TickerApiServiceProtocol
     
     init(portfolioApiService: PortfolioApiServiceProtocol?, accountApiService: AccountApiServiceProtocol?, tickerApiService: TickerApiServiceProtocol?) {
-        self.portfolioApiService = portfolioApiService ?? PortfolioApiService()
-        self.accountApiService = accountApiService ?? AccountApiService()
-        self.tickerApiService = tickerApiService ?? TickerApiService()
+        let shouldUseMockedService: String = ProcessInfo.processInfo.environment["-UITest_mockService"] ?? "false"
+        if shouldUseMockedService == "true" {
+            self.portfolioApiService = MockPortfolioApiService(positions: nil)
+            self.accountApiService = MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)
+            self.tickerApiService = MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)
+        } else {
+            self.portfolioApiService = portfolioApiService ?? PortfolioApiService()
+            self.accountApiService = accountApiService ?? AccountApiService()
+            self.tickerApiService = tickerApiService ?? TickerApiService()
+        }
     }
     
     func fetchPositions(completion: @escaping ([Position]) -> Void) {

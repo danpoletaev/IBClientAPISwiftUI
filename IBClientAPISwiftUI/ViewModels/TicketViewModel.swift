@@ -25,6 +25,7 @@ final class TicketViewModel: ObservableObject {
     func getTickerInfo(conid: Int) {
         self.repository.getTickerInfo(conid: conid) { tickerInfo in
             self.tickerInfo = tickerInfo
+            self.isLoading = false
         }
     }
     
@@ -63,14 +64,17 @@ final class TicketViewModel: ObservableObject {
     }
     
     func onAppear(conid: Int, period: String) {
-        
-        loadTickerInfoFromSocket(conid: conid)
+        let shouldUseMockedService: String = ProcessInfo.processInfo.environment["-UITest_mockService"] ?? "false"
+        if (shouldUseMockedService == "true") {
+            getTickerInfo(conid: conid)
+        } else {
+            loadTickerInfoFromSocket(conid: conid)
+        }
         
         getTickerHistory(conid: conid, period: period)
     }
     
     func onDisappear() {
-        print("Connection should be closed")
         self.stream.close()
     }
 }

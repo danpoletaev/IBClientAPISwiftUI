@@ -14,7 +14,7 @@ final class AccountViewModel: ObservableObject {
     private let repository: AccountRepositoryProtocol
     
     init(repository: AccountRepositoryProtocol?) {
-        self.repository = repository ?? AccountRepository(apiService: AccountApiService())
+        self.repository = repository ?? AccountRepository(apiService: nil)
     }
     
     func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ()) {

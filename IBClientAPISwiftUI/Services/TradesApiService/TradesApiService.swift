@@ -12,13 +12,13 @@ protocol TradesApiServiceProtocol {
 }
 
 
-final class TradesApiService: TradesApiServiceProtocol {
+final class TradesApiService: DataManager, TradesApiServiceProtocol {
     func getAllTrades(completion: @escaping (AllTradesResponse) -> ()) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/iserver/account/orders?force=false")) else {
+        guard let url = URL(string: self.API_URL.appending("/iserver/account/orders?force=false")) else {
             print("Problem here")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        let task = self.session.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }

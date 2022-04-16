@@ -11,9 +11,9 @@ protocol HomeApiServiceProtocol {
     func getScannerConids(completion: @escaping ((ScannerResponse?, NetworkError?)) -> Void)
 }
 
-final class HomeApiService: HomeApiServiceProtocol {
+final class HomeApiService: DataManager, HomeApiServiceProtocol {
     func getScannerConids(completion: @escaping ((ScannerResponse?, NetworkError?)) -> Void) {
-        guard let url = URL(string: APIConstants.BASE_URL.appending("/hmds/scanner")) else {
+        guard let url = URL(string: self.API_URL.appending("/hmds/scanner")) else {
             print("Problem here")
             return
         }
@@ -30,7 +30,7 @@ final class HomeApiService: HomeApiServiceProtocol {
         
         request.httpBody = httpBody
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = self.session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 return
             }

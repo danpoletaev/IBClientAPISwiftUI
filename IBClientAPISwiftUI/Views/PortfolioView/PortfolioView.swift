@@ -56,13 +56,13 @@ struct PortfolioView: View {
                             .padding(.horizontal, 10)
                             
                             VStack {
-                                if portfolioViewModel.positions.count == 0 {
+                                if portfolioViewModel.positions.count == 0 && !portfolioViewModel.isLoading {
                                     Text("You don't have any positions yet")
                                         .foregroundColor(Color(.secondaryLabel))
                                         .frame(width: UIScreen.screenWidth)
                                         .padding(.horizontal, 30)
                                     
-                                } else {
+                                } else if !portfolioViewModel.isLoading {
                                     Divider()
                                     ForEach(portfolioViewModel.positions, id: \.conid) { position in
                                         NavigationLink(destination: {
@@ -109,7 +109,7 @@ struct PortfolioView_Previews: PreviewProvider {
         
         let environmentModel = MockedAccountModels.mockedEvnironmentModel
         
-        let portfolioViewModel = PortfolioViewModel(repository: PortfolioRepository(portfolioApiService: MockPortfolioApiService(positions: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil), tickerApiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)))
+        let portfolioViewModel = PortfolioViewModel(repository: PortfolioRepository(portfolioApiService: MockPortfolioApiService(positions: []), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil), tickerApiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)))
         
         PortfolioView(portfolioViewModel: portfolioViewModel)
             .environmentObject(environmentModel)

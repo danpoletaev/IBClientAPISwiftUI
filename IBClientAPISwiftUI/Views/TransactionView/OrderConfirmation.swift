@@ -10,7 +10,9 @@ import SwiftUI
 struct OrderConfirmation: View {
     @Environment(\.dismiss) var dismiss
     @Binding var placedOrder: Order?
+    @Binding var orderPlacedSuccessfully: Bool
     @StateObject var transactionViewModel: TransactionViewModel
+    @EnvironmentObject var environmentModel: EnvironmentViewModel
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -116,6 +118,7 @@ struct OrderConfirmation: View {
                         print("reply response")
                         print(replyResponse)
                         print("reply response")
+                        self.orderPlacedSuccessfully = true
                         dismiss()
                     }
                 }, label: {
