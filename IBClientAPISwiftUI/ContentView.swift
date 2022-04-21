@@ -135,6 +135,7 @@ struct ContentView: View {
                     }
                     .tag(3)
             }
+            .navigationBarTitle("Bar")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 NavigationBar(title: TAB_TITLES[environmentModel.tagSelection])

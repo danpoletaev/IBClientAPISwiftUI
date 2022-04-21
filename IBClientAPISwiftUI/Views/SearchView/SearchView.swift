@@ -25,9 +25,9 @@ struct SearchView: View {
                         ForEach(searchViewModel.tickets, id: \.conid) { ticket in
                             TicketItem(title: ticket.companyName ?? "", exchange: ticket.description ?? "", conid: ticket.conid)
                         }
-                    }
+                    }.padding(.top, 20)
                     .listStyle(.plain)
-                    .searchable(text: $searchText)
+                    .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic))
                     .frame(height: UIScreen.screenHeight, alignment: .center)
                     .listRowBackground(CustomColor.lightBg)
                     .onChange(of: searchText) { value in
