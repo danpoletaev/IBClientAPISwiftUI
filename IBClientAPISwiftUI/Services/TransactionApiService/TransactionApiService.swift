@@ -8,11 +8,6 @@
 import Foundation
 import SwiftUI
 
-protocol TransactionApiServiceProtocol {
-    func placeOrder(order: Order, accountId: String, completion: @escaping ([PlaceOrderResponse]) -> ())
-    func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ())
-}
-
 
 final class TransactionApiService: DataManager, TransactionApiServiceProtocol {
     

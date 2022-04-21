@@ -34,25 +34,26 @@ struct PortfolioView: View {
                                 Text("Instument")
                                     .foregroundColor(Color(.secondaryLabel))
                                     .font(.system(size: 14))
-                                    .frame(width: 100, alignment: .leading)
+                                    .frame(minWidth: 100, maxWidth: .infinity)
                                 Text("Last")
                                     .foregroundColor(Color(.secondaryLabel))
                                     .font(.system(size: 14))
-                                    .frame(width: 100, alignment: .center)
+                                    .frame(minWidth: 100, maxWidth: .infinity)
                                 Text("Change")
                                     .foregroundColor(Color(.secondaryLabel))
                                     .font(.system(size: 14))
-                                    .frame(width: 70, alignment: .center)
+                                    .frame(minWidth: 70, maxWidth: .infinity)
                                 Text("Position")
                                     .foregroundColor(Color(.secondaryLabel))
                                     .font(.system(size: 14))
-                                    .frame(width: 70, alignment: .center)
+                                    .frame(minWidth: 70, maxWidth: .infinity)
                                 
                                 Text("P&L")
                                     .foregroundColor(Color(.secondaryLabel))
                                     .font(.system(size: 14))
-                                    .frame(width: 70, alignment: .center)
+                                    .frame(minWidth: 70, maxWidth: .infinity)
                             }
+                            .frame(minWidth: UIScreen.screenWidth, alignment: .leading)
                             .padding(.horizontal, 10)
                             
                             VStack {
@@ -111,14 +112,28 @@ struct PortfolioView_Previews: PreviewProvider {
         
         let portfolioViewModel = PortfolioViewModel(repository: PortfolioRepository(portfolioApiService: MockPortfolioApiService(positions: []), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil), tickerApiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)))
         
-        PortfolioView(portfolioViewModel: portfolioViewModel)
-            .environmentObject(environmentModel)
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.darkBg)
-            .onAppear(perform: {
-                portfolioViewModel.onAppear()
-                environmentModel.fetchData()
-            })
+        Group {
+            PortfolioView(portfolioViewModel: portfolioViewModel)
+                .environmentObject(environmentModel)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.darkBg)
+                .onAppear(perform: {
+                    portfolioViewModel.onAppear()
+                    environmentModel.fetchData()
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            PortfolioView(portfolioViewModel: portfolioViewModel)
+                .environmentObject(environmentModel)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.darkBg)
+                .onAppear(perform: {
+                    portfolioViewModel.onAppear()
+                    environmentModel.fetchData()
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+            
+        }
         
     }
 }

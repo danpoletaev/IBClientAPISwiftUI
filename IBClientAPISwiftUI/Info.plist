@@ -24,6 +24,13 @@
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
+			<key>localhost:5000</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<string>1</string>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<string>1</string>
+			</dict>
 		</dict>
 	</dict>
 </dict>

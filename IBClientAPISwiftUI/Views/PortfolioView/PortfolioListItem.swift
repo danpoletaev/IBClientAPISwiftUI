@@ -37,18 +37,19 @@ struct PortfolioListItem: View {
                     .foregroundColor(Color(.secondaryLabel))
                     .font(.system(size: 10))
             }
-            .frame(width: 100, alignment: .leading)
+            .frame(minWidth: 100, maxWidth: .infinity)
             Text(ticketViewModel.tickerInfo?.bid ?? "\(last)")
-                .frame(width: 100, alignment: .center)
+                .frame(minWidth: 100, maxWidth: .infinity)
             Text(ticketViewModel.tickerInfo?.changeFromLastPrice ?? changeFromLastPrice)
                 .foregroundColor(ticketViewModel.tickerInfo?.changeFromLastPricePercentage ?? Double(changeFromLastPrice) ?? 0 < 0 ? Color.red :Color.green)
-                .frame(width: 70, alignment: .center)
+                .frame(minWidth: 70, maxWidth: .infinity)
             Text(ticketViewModel.tickerInfo?.positions ?? "\(position)")
-                .frame(width: 70, alignment: .center)
+                .frame(minWidth: 70, maxWidth: .infinity)
             Text(ticketViewModel.tickerInfo?.unrPnL ?? "\(unrealizedPnl)")
                 .foregroundColor(Double(ticketViewModel.tickerInfo?.unrPnL ?? "\(unrealizedPnl)") ?? unrealizedPnl < 0 ? Color.red : Color.green)
-                .frame(width: 70, alignment: .center)
+                .frame(minWidth: 70, maxWidth: .infinity)
         }
+        .frame(minWidth: UIScreen.screenWidth, alignment: .leading)
         .padding(.horizontal, 10)
         .onAppear(perform: {
             ticketViewModel.getTickerInfo(conid: conid)
@@ -60,11 +61,23 @@ struct PortfolioListItem_Previews: PreviewProvider {
     static var previews: some View {
         let ticketViewModel = TicketViewModel(repository: TicketRepository(apiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil), acccountApiService: nil))
         
-        PortfolioListItem(ticketViewModel: ticketViewModel, ticker: "BIOL", listingExchange: "NASDAQ", conid: 1, last: 12.2, position: 1.2, unrealizedPnL: -0.5, changeFromLastPrice: "-32$")
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.lightBg)
-            .onAppear(perform: {
-                ticketViewModel.getTickerInfo(conid: 1)
-            })
+        
+        Group {
+            PortfolioListItem(ticketViewModel: ticketViewModel, ticker: "BIOL", listingExchange: "NASDAQ", conid: 1, last: 12.2, position: 1.2, unrealizedPnL: -0.5, changeFromLastPrice: "-32$")
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .onAppear(perform: {
+                    ticketViewModel.getTickerInfo(conid: 1)
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            PortfolioListItem(ticketViewModel: ticketViewModel, ticker: "BIOL", listingExchange: "NASDAQ", conid: 1, last: 12.2, position: 1.2, unrealizedPnL: -0.5, changeFromLastPrice: "-32$")
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .onAppear(perform: {
+                    ticketViewModel.getTickerInfo(conid: 1)
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
     }
 }

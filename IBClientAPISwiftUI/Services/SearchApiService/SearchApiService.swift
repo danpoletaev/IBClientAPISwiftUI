@@ -7,11 +7,6 @@
 
 import Foundation
 
-protocol SearchApiServiceProtocol {
-    func searchForNameSymbol(value: String, completion: @escaping ([SearchTicket]) -> ())
-}
-
-
 final class SearchApiService: DataManager, SearchApiServiceProtocol {
     
     func searchForNameSymbol(value: String, completion: @escaping ([SearchTicket]) -> ()) {

@@ -48,43 +48,52 @@ struct PortfolioHeader: View {
         }
         .padding(.horizontal, 10)
         .frame(width: UIScreen.screenWidth, alignment: .leading)
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                if (!accountSummary.isEmpty) {
-                    ForEach(0..<ACCOUNT_SUMMARY_STRINGS.count / 2) { i in
-                        VStack {
-                            HStack {
-                                Text(ACCOUNT_SUMMARY_STRINGS[i].label)
-                                    .foregroundColor(Color(.secondaryLabel))
-                                    .font(.system(size: 14))
-                                    .frame(width: 70, alignment: .leading)
-                                Text("\(String(format: "%.0f", accountSummary[ACCOUNT_SUMMARY_STRINGS[i].name]?.amount ?? 0))")
-                                    .frame(width: 50, alignment: .center)
-                            }
-                            .padding(.bottom, 5)
-                            
-                                HStack {
-                                    Text(ACCOUNT_SUMMARY_STRINGS[i + 1].label)
-                                        .foregroundColor(Color(.secondaryLabel))
-                                        .font(.system(size: 14))
-                                        .frame(width: 70, alignment: .leading)
-                                    Text("\(String(format: "%.0f", accountSummary[ACCOUNT_SUMMARY_STRINGS[i + 1].name]?.amount ?? 0))")
-                                        .frame(width: 50, alignment: .center)
-                                }
-                        }
-                        .padding(.vertical, 20)
-                        .frame(alignment: .leading)
+        HStack {
+            if (!accountSummary.isEmpty) {
+                HStack {
+                    VStack {
+                        AccountSummaryCard(label: ACCOUNT_SUMMARY_STRINGS[0].label, amount: accountSummary[ACCOUNT_SUMMARY_STRINGS[0].name]?.amount ?? 0)
                         
-                        
-                        Divider()
-                            .padding()
+                        AccountSummaryCard(label: ACCOUNT_SUMMARY_STRINGS[1].label, amount: accountSummary[ACCOUNT_SUMMARY_STRINGS[1].name]?.amount ?? 0)
                     }
+                    .padding(.vertical, 20)
+                    
+                    Divider()
+                        .frame(maxHeight: 70)
+                        .padding(.horizontal, 10)
+                    
+                    VStack {
+                        AccountSummaryCard(label: ACCOUNT_SUMMARY_STRINGS[2].label, amount: accountSummary[ACCOUNT_SUMMARY_STRINGS[2].name]?.amount ?? 0)
+                        
+                        AccountSummaryCard(label: ACCOUNT_SUMMARY_STRINGS[3].label, amount: accountSummary[ACCOUNT_SUMMARY_STRINGS[3].name]?.amount ?? 0)
+                    }
+                    .padding(.vertical, 20)
                 }
-            }.padding(.horizontal, 10)
+            }
         }
-        .frame(maxHeight: 70)
-        .padding(.top, 20)
+        .padding(.horizontal, 30)
+        .frame(width: UIScreen.screenWidth)
         .background(CustomColor.darkBg)
+    }
+}
+
+struct AccountSummaryCard: View {
+    
+    var label: String
+    var amount: Double
+    
+    var body: some View {
+        HStack {
+            Text(label)
+                .foregroundColor(Color(.secondaryLabel))
+                .font(.system(size: 14))
+                .frame(minWidth: 70, maxWidth: .infinity, alignment: .leading)
+            Spacer()
+            Text("\(String(format: "%.0f", amount))")
+                .frame(minWidth: 50, maxWidth: .infinity, alignment: .leading)
+        }
+        .frame(alignment: .leading)
+        .padding(.bottom, 5)
     }
 }
 

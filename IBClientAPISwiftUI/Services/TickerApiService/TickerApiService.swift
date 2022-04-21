@@ -7,12 +7,6 @@
 
 import Foundation
 
-protocol TickerApiServiceProtocol {
-    func getTickerInfo(conid: Int, completion: @escaping ([TickerInfo]) -> Void)
-    func getSecDefByConids(value: [Int], completion: @escaping (SecDefResponse) -> Void)
-    func getConidHistory(conid: Int, period: String, completion: @escaping (HistoryConidResponse) -> ())
-}
-
 final class TickerApiService: DataManager, TickerApiServiceProtocol {
     func getTickerInfo(conid: Int, completion: @escaping ([TickerInfo]) -> ()) {
         guard let url = URL(string: self.API_URL.appending("/iserver/marketdata/snapshot?conids=\(conid)&fields=\(APIConstants.CONID_FIELDS)")) else {

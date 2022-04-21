@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol PortfolioApiServiceProtocol {
-    func fetchPositions(accountID: String, completion: @escaping ([Position]) -> Void)
-}
-
 final class PortfolioApiService: DataManager, PortfolioApiServiceProtocol {
     func fetchPositions(accountID: String, completion: @escaping ([Position]) -> Void) {
         guard let url = URL(string: self.API_URL.appending("/portfolio/\(accountID)/positions/0"))  else {

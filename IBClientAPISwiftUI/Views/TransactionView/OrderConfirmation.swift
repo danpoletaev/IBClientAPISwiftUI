@@ -12,7 +12,6 @@ struct OrderConfirmation: View {
     @Binding var placedOrder: Order?
     @Binding var orderPlacedSuccessfully: Bool
     @StateObject var transactionViewModel: TransactionViewModel
-    @EnvironmentObject var environmentModel: EnvironmentViewModel
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -30,10 +29,11 @@ struct OrderConfirmation: View {
                 
                 VStack {
                     ForEach(self.transactionViewModel.orders[0].message, id: \.self) { message in
-                        let htmlString = "<html><style>body {font-size: 36px} h4 {font-size: 50px}</style><body style=\"color: white\">\(message)</body></html>"
+                        let htmlString = "<html><style>body {font-size: 1.2em} h4 {font-size: 2em}</style><body style=\"color: white\">\(message)</body></html>"
                         HTMLView(htmlString: htmlString)
                             .padding(.horizontal)
-                            .frame(width: UIScreen.screenWidth, height: 150, alignment: .center)
+                            .frame(alignment: .center)
+                            .frame(maxWidth: .infinity, minHeight: 200)
                         Divider()
                     }
                 }
@@ -108,7 +108,7 @@ struct OrderConfirmation: View {
                         .padding(.horizontal)
                     }
                 }
-                .frame(width: UIScreen.screenWidth, height: 100, alignment: .center)
+//                .frame(width: UIScreen.screenWidth, height: 100, alignment: .center)
                 
                 Divider()
                     .padding(.vertical)

@@ -17,7 +17,6 @@ struct SheetView: View {
     var body: some View {
         if DataManager().API_URL.starts(with: "https") {
             SFSafariViewWrapper(url: URL(string: "https://\(APIConstants.COMMON_BASE_URL)")!)
-//            WebView(url: URL(string: "https://\(APIConstants.COMMON_BASE_URL)")!)
         } else {
             VStack {
                 Image(systemName: "xmark.icloud.fill")
@@ -136,12 +135,12 @@ struct ContentView: View {
                     }
                     .tag(3)
             }
-            .navigationTitle("Bar")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 NavigationBar(title: TAB_TITLES[environmentModel.tagSelection])
             }
         }
+        .navigationViewStyle(.stack)
         .accentColor(Color.white)
         .onAppear(perform: {
             self.environmentModel.getIServerAccount{ (data, error) in
@@ -151,12 +150,14 @@ struct ContentView: View {
             }
         })
         .onChange(of: showingAuthorizationSheet, perform: { newValue in
-//            print("auth \(newValue)")
-//            self.environmentModel.getIServerAccount{ (data, error) in
-//                if (error != nil) {
-//                    self.showingAuthorizationSheet = true
-//                }
-//            }
+            print("auth \(newValue)")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.environmentModel.getIServerAccount{ (data, error) in
+                    if (error != nil) {
+                        self.showingAuthorizationSheet = true
+                    }
+                }
+            }
         })
         .sheet(isPresented: $showingAuthorizationSheet) {
             SheetView()
@@ -167,12 +168,23 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let environmentModel = MockedAccountModels.mockedEvnironmentModel
-        ContentView()
-            .environmentObject(environmentModel)
-            .environment(\.colorScheme, .dark)
-            .onAppear(perform: {
-                environmentModel.fetchData()
-            })
+        Group {
+            ContentView()
+                .environmentObject(environmentModel)
+                .environment(\.colorScheme, .dark)
+                .onAppear(perform: {
+                    environmentModel.fetchData()
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            ContentView()
+                .environmentObject(environmentModel)
+                .environment(\.colorScheme, .dark)
+                .onAppear(perform: {
+                    environmentModel.fetchData()
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
     }
 }
 

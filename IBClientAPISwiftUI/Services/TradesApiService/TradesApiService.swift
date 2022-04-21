@@ -7,11 +7,6 @@
 
 import Foundation
 
-protocol TradesApiServiceProtocol {
-    func getAllTrades(completion: @escaping (AllTradesResponse) -> ())
-}
-
-
 final class TradesApiService: DataManager, TradesApiServiceProtocol {
     func getAllTrades(completion: @escaping (AllTradesResponse) -> ()) {
         guard let url = URL(string: self.API_URL.appending("/iserver/account/orders?force=false")) else {

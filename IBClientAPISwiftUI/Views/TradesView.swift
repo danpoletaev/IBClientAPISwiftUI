@@ -22,29 +22,34 @@ struct TradesView: View {
                     Text("Instument")
                         .foregroundColor(Color(.secondaryLabel))
                         .font(.system(size: 14))
-                        .frame(width: 100, alignment: .leading)
+                        .frame(minWidth: 120, maxWidth: .infinity)
+                    
                     Text("Trade Time")
                         .foregroundColor(Color(.secondaryLabel))
                         .font(.system(size: 14))
-                        .frame(width: 100, alignment: .center)
+                        .frame(minWidth: 100, maxWidth: .infinity)
+
                     Text("Action")
                         .foregroundColor(Color(.secondaryLabel))
                         .font(.system(size: 14))
-                        .frame(width: 70, alignment: .center)
+                        .frame(minWidth: 70, maxWidth: .infinity)
+
                     Text("Status")
                         .foregroundColor(Color(.secondaryLabel))
                         .font(.system(size: 14))
-                        .frame(width: 70, alignment: .center)
+                        .frame(minWidth: 70, maxWidth: .infinity)
+
                     Text("Quantity")
                         .foregroundColor(Color(.secondaryLabel))
                         .font(.system(size: 14))
-                        .frame(width: 70, alignment: .center)
+                        .frame(minWidth: 70, maxWidth: .infinity)
                     
                     Text("Avg Price")
                         .foregroundColor(Color(.secondaryLabel))
                         .font(.system(size: 14))
-                        .frame(width: 70, alignment: .center)
+                        .frame(minWidth: 70, maxWidth: .infinity)
                 }
+                .frame(minWidth: UIScreen.screenWidth, alignment: .leading)
                 .padding(.horizontal, 10)
                 
                 VStack {
@@ -85,19 +90,25 @@ struct TradeItem: View {
                     .foregroundColor(Color(.secondaryLabel))
                     .font(.system(size: 10))
             }
-            .frame(width: 100, alignment: .leading)
+            .frame(minWidth: 120, maxWidth: .infinity)
+            
             Text(parseTime(time: tradeTime))
-                .frame(width: 100, alignment: .center)
+                .frame(minWidth: 100, maxWidth: .infinity)
+            
             Text(action)
                 .foregroundColor(action == "BUY" ? Color.green : Color.red)
-                .frame(width: 70, alignment: .center)
+                .frame(minWidth: 70, maxWidth: .infinity)
+
             Text(status)
-                .frame(width: 70, alignment: .center)
+                .frame(minWidth: 70, maxWidth: .infinity)
+
             Text("\(quantity)")
-                .frame(width: 70, alignment: .center)
+                .frame(minWidth: 70, maxWidth: .infinity)
+
             Text(avgPrice)
-                .frame(width: 70, alignment: .center)
+                .frame(minWidth: 70, maxWidth: .infinity)
         }
+        .frame(minWidth: UIScreen.screenWidth, alignment: .leading)
         .padding(.horizontal, 10)
     }
 }

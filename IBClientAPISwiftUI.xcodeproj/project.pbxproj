@@ -30,6 +30,13 @@
 		8341F6BB28097A9C004EE849 /* HomeView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6BA28097A9C004EE849 /* HomeView_Tests.swift */; };
 		8341F6BD2809DDE6004EE849 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341F6BC2809DDE6004EE849 /* DataManager.swift */; };
 		834781B1280B443100841C8A /* TicketView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834781B0280B443100841C8A /* TicketView_Tests.swift */; };
+		834781B3280C4AE000841C8A /* TradesApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834781B2280C4AE000841C8A /* TradesApiServiceProtocol.swift */; };
+		834781B5280C4AFF00841C8A /* TransactionApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834781B4280C4AFF00841C8A /* TransactionApiServiceProtocol.swift */; };
+		834781B7280C4B1400841C8A /* SearchApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834781B6280C4B1400841C8A /* SearchApiServiceProtocol.swift */; };
+		834781B9280C4B2A00841C8A /* TickerApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834781B8280C4B2A00841C8A /* TickerApiServiceProtocol.swift */; };
+		834781BB280C4B3F00841C8A /* PortfolioApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834781BA280C4B3F00841C8A /* PortfolioApiServiceProtocol.swift */; };
+		834781BD280C4B5000841C8A /* HomeApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834781BC280C4B5000841C8A /* HomeApiServiceProtocol.swift */; };
+		834781BF280C4B6700841C8A /* AccountApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834781BE280C4B6700841C8A /* AccountApiServiceProtocol.swift */; };
 		834ACDF427ECDB3F00DA0932 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */; };
 		834AF66528049A4300831EF9 /* MockIServerResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 834AF66428049A4300831EF9 /* MockIServerResponse.json */; };
 		834AF66728049EEE00831EF9 /* HomeRepository_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834AF66628049EEE00831EF9 /* HomeRepository_tests.swift */; };
@@ -140,7 +147,7 @@
 		83F8B3CE28007F6100E186D1 /* IBClientAPISwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3CD28007F6100E186D1 /* IBClientAPISwiftUITests.swift */; };
 		83F8B3DA280084A400E186D1 /* AccountApiService_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3D9280084A400E186D1 /* AccountApiService_Tests.swift */; };
 		83F8B3DE2800857B00E186D1 /* MockAccountApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3DD2800857B00E186D1 /* MockAccountApiService.swift */; };
-		83F8B3E0280085D200E186D1 /* MockedAccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3DF280085D200E186D1 /* MockedAccountModels.swift */; };
+		83F8B3E0280085D200E186D1 /* MockAccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3DF280085D200E186D1 /* MockAccountModels.swift */; };
 		83F8B3E228008D8B00E186D1 /* HomeApiService_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3E128008D8B00E186D1 /* HomeApiService_Tests.swift */; };
 		83F8B3E528008DC700E186D1 /* MockHomeApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3E428008DC700E186D1 /* MockHomeApiService.swift */; };
 		83F8B3E728008E0100E186D1 /* MockHomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3E628008E0100E186D1 /* MockHomeModels.swift */; };
@@ -193,6 +200,13 @@
 		8341F6BA28097A9C004EE849 /* HomeView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView_Tests.swift; sourceTree = "<group>"; };
 		8341F6BC2809DDE6004EE849 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		834781B0280B443100841C8A /* TicketView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView_Tests.swift; sourceTree = "<group>"; };
+		834781B2280C4AE000841C8A /* TradesApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesApiServiceProtocol.swift; sourceTree = "<group>"; };
+		834781B4280C4AFF00841C8A /* TransactionApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionApiServiceProtocol.swift; sourceTree = "<group>"; };
+		834781B6280C4B1400841C8A /* SearchApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApiServiceProtocol.swift; sourceTree = "<group>"; };
+		834781B8280C4B2A00841C8A /* TickerApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerApiServiceProtocol.swift; sourceTree = "<group>"; };
+		834781BA280C4B3F00841C8A /* PortfolioApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioApiServiceProtocol.swift; sourceTree = "<group>"; };
+		834781BC280C4B5000841C8A /* HomeApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeApiServiceProtocol.swift; sourceTree = "<group>"; };
+		834781BE280C4B6700841C8A /* AccountApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountApiServiceProtocol.swift; sourceTree = "<group>"; };
 		834ACDF327ECDB3F00DA0932 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
 		834AF66428049A4300831EF9 /* MockIServerResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockIServerResponse.json; sourceTree = "<group>"; };
 		834AF66628049EEE00831EF9 /* HomeRepository_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository_tests.swift; sourceTree = "<group>"; };
@@ -287,7 +301,7 @@
 		83F8B3CD28007F6100E186D1 /* IBClientAPISwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBClientAPISwiftUITests.swift; sourceTree = "<group>"; };
 		83F8B3D9280084A400E186D1 /* AccountApiService_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountApiService_Tests.swift; sourceTree = "<group>"; };
 		83F8B3DD2800857B00E186D1 /* MockAccountApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccountApiService.swift; sourceTree = "<group>"; };
-		83F8B3DF280085D200E186D1 /* MockedAccountModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedAccountModels.swift; sourceTree = "<group>"; };
+		83F8B3DF280085D200E186D1 /* MockAccountModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccountModels.swift; sourceTree = "<group>"; };
 		83F8B3E128008D8B00E186D1 /* HomeApiService_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeApiService_Tests.swift; sourceTree = "<group>"; };
 		83F8B3E428008DC700E186D1 /* MockHomeApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeApiService.swift; sourceTree = "<group>"; };
 		83F8B3E628008E0100E186D1 /* MockHomeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeModels.swift; sourceTree = "<group>"; };
@@ -574,6 +588,7 @@
 		839A8F9428019DCA00003158 /* SearchApiService */ = {
 			isa = PBXGroup;
 			children = (
+				834781B6280C4B1400841C8A /* SearchApiServiceProtocol.swift */,
 				8366FE7A27E53DB400082C13 /* SearchApiService.swift */,
 				839A8F9528019DED00003158 /* MockSearchModels.swift */,
 				839A8F9728019E0100003158 /* MockSearchApiService.swift */,
@@ -584,6 +599,7 @@
 		839A8FA02801A49200003158 /* TransactionApiService */ = {
 			isa = PBXGroup;
 			children = (
+				834781B4280C4AFF00841C8A /* TransactionApiServiceProtocol.swift */,
 				832A9B4727EA283800A48880 /* TransactionApiService.swift */,
 				839A8FA12801A4BE00003158 /* MockTransactionApiService.swift */,
 				839A8FA32801A4CA00003158 /* MockTransactionModels.swift */,
@@ -594,6 +610,7 @@
 		839A8FAE2801A8AB00003158 /* TradesApiService */ = {
 			isa = PBXGroup;
 			children = (
+				834781B2280C4AE000841C8A /* TradesApiServiceProtocol.swift */,
 				83C6FFEC27F22AF80052FEFD /* TradesApiService.swift */,
 				839A8FAF2801A8C300003158 /* MockTradesApiService.swift */,
 				839A8FB12801A92700003158 /* MockTradesModels.swift */,
@@ -629,9 +646,10 @@
 		83F8B3DB2800855400E186D1 /* AccountApiService */ = {
 			isa = PBXGroup;
 			children = (
+				834781BE280C4B6700841C8A /* AccountApiServiceProtocol.swift */,
 				8366FE7227E53D6B00082C13 /* AccountApiService.swift */,
 				83F8B3DD2800857B00E186D1 /* MockAccountApiService.swift */,
-				83F8B3DF280085D200E186D1 /* MockedAccountModels.swift */,
+				83F8B3DF280085D200E186D1 /* MockAccountModels.swift */,
 			);
 			path = AccountApiService;
 			sourceTree = "<group>";
@@ -639,6 +657,7 @@
 		83F8B3E328008D9700E186D1 /* HomeApiService */ = {
 			isa = PBXGroup;
 			children = (
+				834781BC280C4B5000841C8A /* HomeApiServiceProtocol.swift */,
 				8366FE7427E53D7D00082C13 /* HomeApiService.swift */,
 				83F8B3E428008DC700E186D1 /* MockHomeApiService.swift */,
 				83F8B3E628008E0100E186D1 /* MockHomeModels.swift */,
@@ -649,6 +668,7 @@
 		83F8B3E82800A23900E186D1 /* PortfolioApiService */ = {
 			isa = PBXGroup;
 			children = (
+				834781BA280C4B3F00841C8A /* PortfolioApiServiceProtocol.swift */,
 				8366FE7627E53D8F00082C13 /* PortfolioApiService.swift */,
 				83F8B3E92800A24E00E186D1 /* MockPortfolioApiService.swift */,
 				83F8B3EB2800A25B00E186D1 /* MockPortfolioModels.swift */,
@@ -659,6 +679,7 @@
 		83F8B3ED2800A41F00E186D1 /* TickerApiService */ = {
 			isa = PBXGroup;
 			children = (
+				834781B8280C4B2A00841C8A /* TickerApiServiceProtocol.swift */,
 				8366FE7827E53DA100082C13 /* TickerApiService.swift */,
 				83F8B3EE2800A43200E186D1 /* MockTickerApiService.swift */,
 				83F8B3F02800A47A00E186D1 /* MockTickerModels.swift */,
@@ -875,7 +896,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8366FE6527E53CD100082C13 /* SearchViewModel.swift in Sources */,
+				834781BB280C4B3F00841C8A /* PortfolioApiServiceProtocol.swift in Sources */,
 				8366FE6327E53CBC00082C13 /* TicketViewModel.swift in Sources */,
+				834781B9280C4B2A00841C8A /* TickerApiServiceProtocol.swift in Sources */,
 				8336527D27E9078500587323 /* TransactionNavBar.swift in Sources */,
 				8366FE7B27E53DB400082C13 /* SearchApiService.swift in Sources */,
 				8366FE5627E53C3900082C13 /* Portfolio.swift in Sources */,
@@ -886,6 +909,7 @@
 				832A9B4A27EA288000A48880 /* Transactions.swift in Sources */,
 				83C6FFF127F22BF60052FEFD /* TradesViewModel.swift in Sources */,
 				8366FE3227E53A6800082C13 /* AccountCard.swift in Sources */,
+				834781B7280C4B1400841C8A /* SearchApiServiceProtocol.swift in Sources */,
 				83F8B3EC2800A25B00E186D1 /* MockPortfolioModels.swift in Sources */,
 				8366FE6E27E53D3200082C13 /* TicketRepository.swift in Sources */,
 				834ACDF427ECDB3F00DA0932 /* WebSocketService.swift in Sources */,
@@ -899,9 +923,11 @@
 				83F8B3EF2800A43200E186D1 /* MockTickerApiService.swift in Sources */,
 				8366FE7E27E53DDC00082C13 /* APIConstants.swift in Sources */,
 				83F8B3EA2800A24E00E186D1 /* MockPortfolioApiService.swift in Sources */,
+				834781B5280C4AFF00841C8A /* TransactionApiServiceProtocol.swift in Sources */,
 				83C6FFEB27F22A180052FEFD /* Trades.swift in Sources */,
 				8366FE1327E538F300082C13 /* ContentView.swift in Sources */,
 				8366FE6127E53CAA00082C13 /* PortfolioViewModel.swift in Sources */,
+				834781BF280C4B6700841C8A /* AccountApiServiceProtocol.swift in Sources */,
 				8366FE3E27E53B1600082C13 /* CashBalancesRow.swift in Sources */,
 				8366FE7327E53D6B00082C13 /* AccountApiService.swift in Sources */,
 				832A9B4E27EA2F7800A48880 /* TransactionViewModel.swift in Sources */,
@@ -932,7 +958,7 @@
 				83C6FFE527F0D3490052FEFD /* HTMLView.swift in Sources */,
 				832A9B4C27EA2E8B00A48880 /* TransactionRepository.swift in Sources */,
 				8366FE4027E53B3100082C13 /* PortfolioListItem.swift in Sources */,
-				83F8B3E0280085D200E186D1 /* MockedAccountModels.swift in Sources */,
+				83F8B3E0280085D200E186D1 /* MockAccountModels.swift in Sources */,
 				8366FE7527E53D7D00082C13 /* HomeApiService.swift in Sources */,
 				8366FE4D27E53BD900082C13 /* TicketItem.swift in Sources */,
 				83F8B3E528008DC700E186D1 /* MockHomeApiService.swift in Sources */,
@@ -944,9 +970,11 @@
 				83F8B3E728008E0100E186D1 /* MockHomeModels.swift in Sources */,
 				8366FE3627E53AA900082C13 /* CustomerScreenItem.swift in Sources */,
 				8366FE2127E5394500082C13 /* CustomColor.swift in Sources */,
+				834781BD280C4B5000841C8A /* HomeApiServiceProtocol.swift in Sources */,
 				8366FE7727E53D8F00082C13 /* PortfolioApiService.swift in Sources */,
 				8366FE3A27E53AE100082C13 /* CashBalances.swift in Sources */,
 				8366FE5427E53C2700082C13 /* Home.swift in Sources */,
+				834781B3280C4AE000841C8A /* TradesApiServiceProtocol.swift in Sources */,
 				8366FE1127E538F300082C13 /* IBClientAPISwiftUIApp.swift in Sources */,
 				8366FE4727E53B9100082C13 /* MarketData.swift in Sources */,
 				8366FE6827E53CF500082C13 /* AccountRepository.swift in Sources */,
