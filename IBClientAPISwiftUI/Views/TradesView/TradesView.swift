@@ -73,52 +73,26 @@ struct TradesView: View {
     }
 }
 
-struct TradeItem: View {
-    var ticker: String
-    var listingExchange: String
-    var tradeTime: String
-    var action: String
-    var status: String
-    var quantity: String
-    var avgPrice: String
-    
-    var body: some View {
-        HStack {
-            HStack {
-                Text(ticker)
-                Text(listingExchange)
-                    .foregroundColor(Color(.secondaryLabel))
-                    .font(.system(size: 10))
-            }
-            .frame(minWidth: 120, maxWidth: .infinity)
+struct TradesView_Previews: PreviewProvider {
+    static var previews: some View {
+        let tradesViewModel = TradesViewModel(repository: TradesRepository(apiService: MockTradesApiService(allTradesResponse: nil)))
+        
+        Group {
+            TradesView(tradesViewModel: tradesViewModel)
+                .background(CustomColor.lightBg)
+                .environment(\.colorScheme, .dark)
+                .onAppear(perform: {
+                    tradesViewModel.getAllTrades()
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
             
-            Text(parseTime(time: tradeTime))
-                .frame(minWidth: 100, maxWidth: .infinity)
-            
-            Text(action)
-                .foregroundColor(action == "BUY" ? Color.green : Color.red)
-                .frame(minWidth: 70, maxWidth: .infinity)
-
-            Text(status)
-                .frame(minWidth: 70, maxWidth: .infinity)
-
-            Text("\(quantity)")
-                .frame(minWidth: 70, maxWidth: .infinity)
-
-            Text(avgPrice)
-                .frame(minWidth: 70, maxWidth: .infinity)
+            TradesView(tradesViewModel: tradesViewModel)
+                .background(CustomColor.lightBg)
+                .environment(\.colorScheme, .dark)
+                .onAppear(perform: {
+                    tradesViewModel.getAllTrades()
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
         }
-        .frame(minWidth: UIScreen.screenWidth, alignment: .leading)
-        .padding(.horizontal, 10)
     }
 }
-
-func parseTime(time: String) -> String {
-    return "\(time[6])\(time[7]):\(time[8])\(time[9]):\(time[10])\(time[11])"
-}
-
-//struct TradesView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TradesView()
-//    }
-//}

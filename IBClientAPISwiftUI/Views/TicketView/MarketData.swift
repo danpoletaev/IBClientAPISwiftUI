@@ -162,8 +162,17 @@ struct MarketData_Preview: PreviewProvider {
     @State static var tickerInfo: TickerInfo? = MockTickerModels.tickerInfo
     
     static var previews: some View {
-        MarketData(tickerInfo: $tickerInfo)
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.lightBg)
+        
+        Group {
+            MarketData(tickerInfo: $tickerInfo)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            MarketData(tickerInfo: $tickerInfo)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
     }
 }

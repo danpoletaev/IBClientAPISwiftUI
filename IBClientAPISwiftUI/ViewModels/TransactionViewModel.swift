@@ -13,8 +13,9 @@ final class TransactionViewModel: ObservableObject {
     
     private let repository: TransactionRepositoryProtocol
     
-    init(repository: TransactionRepositoryProtocol?) {
+    init(repository: TransactionRepositoryProtocol?, orders: [PlaceOrderResponse]?) {
         self.repository = repository ?? TransactionRepository(apiService: nil, accountApiService: nil)
+        self.orders = orders ?? []
     }
         
     func placeOrder(order: Order, completion: @escaping ([PlaceOrderResponse]) -> ()) {

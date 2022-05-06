@@ -36,15 +36,25 @@ struct AccountView: View {
 }
 
 struct AccountView_Previews: PreviewProvider {
-    
     static var previews: some View {
         let environmentModel = MockedAccountModels.mockedEvnironmentModel
         
-        AccountView().environmentObject(environmentModel)
-            .onAppear(perform: {
-                environmentModel.fetchData()
-            })
-        .background(CustomColor.lightBg)
-        .environment(\.colorScheme, .dark)
+        Group {
+            AccountView().environmentObject(environmentModel)
+                .onAppear(perform: {
+                    environmentModel.fetchData()
+                })
+            .background(CustomColor.lightBg)
+            .environment(\.colorScheme, .dark)
+            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            AccountView().environmentObject(environmentModel)
+                .onAppear(perform: {
+                    environmentModel.fetchData()
+                })
+            .background(CustomColor.lightBg)
+            .environment(\.colorScheme, .dark)
+            .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
     }
 }

@@ -25,7 +25,6 @@ struct PositionItem: View {
                 }
                 .padding(.vertical, 10)
                 
-                //TODO use grid
                 HStack {
                     VStack {
                         HStack{
@@ -106,8 +105,18 @@ struct PositionItem_Preview: PreviewProvider {
     @State static var tickerInfo: TickerInfo? = MockTickerModels.tickerInfo
     
     static var previews: some View {
-        PositionItem(tickerInfo: $tickerInfo)
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.lightBg)
+        
+        Group {
+            
+            PositionItem(tickerInfo: $tickerInfo)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            PositionItem(tickerInfo: $tickerInfo)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
     }
 }

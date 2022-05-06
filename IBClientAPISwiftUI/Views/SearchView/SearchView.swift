@@ -61,11 +61,24 @@ struct SearchView_Preview: PreviewProvider {
     static var previews: some View {
         let searchViewModel = SearchViewModel(repository: SearchRepository(apiService: MockSearchApiService(searchTicket: nil)))
         
-        SearchView(searchViewModel: searchViewModel, searchText: "")
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.lightBg)
-            .onAppear(perform: {
-                searchViewModel.searchForNameSymbol(value: "s")
-            })
+        Group {
+         
+            SearchView(searchViewModel: searchViewModel, searchText: "")
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .onAppear(perform: {
+                    searchViewModel.searchForNameSymbol(value: "s")
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            SearchView(searchViewModel: searchViewModel, searchText: "")
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .onAppear(perform: {
+                    searchViewModel.searchForNameSymbol(value: "s")
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+            
+        }
     }
 }

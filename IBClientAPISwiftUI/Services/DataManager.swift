@@ -23,5 +23,4 @@ class DataManager: NSObject {
         self.API_URL = isHTTP == "true" ? "http://\(APIConstants.COMMON_BASE_URL)/v1/api" : APIConstants.BASE_URL
         super.init()
     }
-    
 }

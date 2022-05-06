@@ -42,7 +42,16 @@ struct AccountCard_Preview: PreviewProvider {
     @State static var testAccount: Account? = Account(id: "1", accountId: "1", accountVan: "Account Van", accountTitle: "First Name", displayName: "Display Name Poletaev", accountAlias: "UA", accountStatus: 123123.12, currency: "CZK", type: "INDIVIDUAL", tradingType: "STKCASH", ibEntity: "IB-CE", faclient: false, clearingStatus: "0", covestor: false, parent: AccountParent(mmc: [], accountId: "", isMParent: false, isMChild: false, isMultiplex: false), desc: "Description")
     
     static var previews: some View {
-        AccountCard(account: $testAccount)
-            .environment(\.colorScheme, .dark)
+        
+        Group {
+            AccountCard(account: $testAccount)
+                .environment(\.colorScheme, .dark)
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            AccountCard(account: $testAccount)
+                .environment(\.colorScheme, .dark)
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
+        
     }
 }

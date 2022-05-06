@@ -29,7 +29,7 @@ class TransactionViewModel_Tests: XCTestCase {
         let accountApiService = MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)
         
         let transactionRepository = TransactionRepository(apiService: transactionApiService, accountApiService: accountApiService)
-        let transactionViewModel = TransactionViewModel(repository: transactionRepository)
+        let transactionViewModel = TransactionViewModel(repository: transactionRepository, orders: nil)
         
         let expectation = XCTestExpectation(description: "Should return response after 0.5~1 seconds")
         
@@ -59,7 +59,7 @@ class TransactionViewModel_Tests: XCTestCase {
         let accountApiService = MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)
         
         let transactionRepository = TransactionRepository(apiService: transactionApiService, accountApiService: accountApiService)
-        let transactionViewModel = TransactionViewModel(repository: transactionRepository)
+        let transactionViewModel = TransactionViewModel(repository: transactionRepository, orders: nil)
         
         let expectation = XCTestExpectation(description: "Should return response after 0.5~1 seconds")
         
@@ -84,7 +84,7 @@ class TransactionViewModel_Tests: XCTestCase {
         let accountApiService = MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)
         
         let transactionRepository = TransactionRepository(apiService: transactionApiService, accountApiService: accountApiService)
-        let transactionViewModel = TransactionViewModel(repository: transactionRepository)
+        let transactionViewModel = TransactionViewModel(repository: transactionRepository, orders: nil)
         
         let expectation = XCTestExpectation(description: "Should return response after 0.5~1 seconds")
         

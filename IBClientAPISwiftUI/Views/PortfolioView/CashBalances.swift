@@ -37,9 +37,20 @@ struct CashBalances: View {
 struct CashBalances_Previews: PreviewProvider {
     static var previews: some View {
         let assetListMocked = MockedAccountModels.allocationResponse.assetClass.long
-        CashBalances(isLong: true, assetList: assetListMocked)
-            .environmentObject(MockedAccountModels.mockedEvnironmentModel)
-            .background(CustomColor.lightBg)
-            .environment(\.colorScheme, .dark)
+        
+        Group {
+            CashBalances(isLong: true, assetList: assetListMocked)
+                .environmentObject(MockedAccountModels.mockedEvnironmentModel)
+                .background(CustomColor.lightBg)
+                .environment(\.colorScheme, .dark)
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            CashBalances(isLong: true, assetList: assetListMocked)
+                .environmentObject(MockedAccountModels.mockedEvnironmentModel)
+                .background(CustomColor.lightBg)
+                .environment(\.colorScheme, .dark)
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
+    
     }
 }

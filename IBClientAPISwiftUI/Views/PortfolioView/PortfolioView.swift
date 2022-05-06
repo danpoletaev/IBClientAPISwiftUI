@@ -132,7 +132,6 @@ struct PortfolioView_Previews: PreviewProvider {
                     environmentModel.fetchData()
                 })
                 .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
-            
         }
         
     }

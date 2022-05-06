@@ -34,13 +34,26 @@ struct CashBalancesRow_Preview: PreviewProvider {
         
         let environmentModel = MockedAccountModels.mockedEvnironmentModel
         
-        CashBalancesRow(key: "key", value: 124.2)
-            .environmentObject(environmentModel)
-            .onAppear(perform: {
-                environmentModel.fetchData()
-            })
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.lightBg)
+        
+        Group {
+            CashBalancesRow(key: "key", value: 124.2)
+                .environmentObject(environmentModel)
+                .onAppear(perform: {
+                    environmentModel.fetchData()
+                })
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            CashBalancesRow(key: "key", value: 124.2)
+                .environmentObject(environmentModel)
+                .onAppear(perform: {
+                    environmentModel.fetchData()
+                })
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
         
     }
 }

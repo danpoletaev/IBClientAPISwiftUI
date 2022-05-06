@@ -45,7 +45,7 @@ struct TicketView: View {
                         .frame(width: UIScreen.screenWidth, alignment: .leading)
                         .padding(.top)
                     }
-
+                    
                     
                     HStack {
                         Text(ticketViewModel.tickerInfo?.bid ?? "0")
@@ -74,7 +74,7 @@ struct TicketView: View {
                         }
                     }.padding(.horizontal)
                     
-                    TicketGraph(tickerInfo: $ticketViewModel.tickerInfo, graphData: $ticketViewModel.graphData, dates: $ticketViewModel.dates)
+                    TicketGraph(graphData: $ticketViewModel.graphData, dates: $ticketViewModel.dates)
                     Divider()
                     MarketData(tickerInfo: $ticketViewModel.tickerInfo)
                     Divider()
@@ -156,12 +156,25 @@ struct TicketView_Previews: PreviewProvider {
     static var previews: some View {
         let ticketViewModel = TicketViewModel(repository: TicketRepository(apiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil), acccountApiService: nil))
         
-        TicketView(ticketViewModel: ticketViewModel, tickerTitle: "BIOL", exchange: "NASDAQ", conid: 1)
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.lightBg)
-            .onAppear(perform: {
-                ticketViewModel.onAppear(conid: 1, period: "Q")
-            })
+        
+        Group {
+            TicketView(ticketViewModel: ticketViewModel, tickerTitle: "BIOL", exchange: "NASDAQ", conid: 1)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .onAppear(perform: {
+                    ticketViewModel.onAppear(conid: 1, period: "Q")
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            
+            TicketView(ticketViewModel: ticketViewModel, tickerTitle: "BIOL", exchange: "NASDAQ", conid: 1)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .onAppear(perform: {
+                    ticketViewModel.onAppear(conid: 1, period: "Q")
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
     }
 }
 

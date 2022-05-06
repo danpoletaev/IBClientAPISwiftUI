@@ -24,8 +24,19 @@ struct AccountInfoRow: View {
 
 struct AccountInfoRow_Preview: PreviewProvider {
     static var previews: some View {
-        AccountInfoRow(key: "key", value: "value")
-            .background(CustomColor.lightBg)
-            .environment(\.colorScheme, .dark)
+        
+        Group {
+         
+            AccountInfoRow(key: "key", value: "value")
+                .background(CustomColor.lightBg)
+                .environment(\.colorScheme, .dark)
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            AccountInfoRow(key: "key", value: "value")
+                .background(CustomColor.lightBg)
+                .environment(\.colorScheme, .dark)
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+            
+        }
     }
 }

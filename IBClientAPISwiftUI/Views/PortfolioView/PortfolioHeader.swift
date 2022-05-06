@@ -103,13 +103,26 @@ struct PortfolioHeader_Preview: PreviewProvider {
         
         let portfolioViewModel = PortfolioViewModel(repository: PortfolioRepository(portfolioApiService: MockPortfolioApiService(positions: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil), tickerApiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil)))
         
-        PortfolioHeader(accountSummary: portfolioViewModel.accountSummary, dailyPnL: portfolioViewModel.dailyPnL)
-            .environmentObject(environmentModel)
-            .onAppear(perform: {
-                environmentModel.fetchData()
-                portfolioViewModel.onAppear()
-            })
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.lightBg)
+        Group {
+            PortfolioHeader(accountSummary: portfolioViewModel.accountSummary, dailyPnL: portfolioViewModel.dailyPnL)
+                .environmentObject(environmentModel)
+                .onAppear(perform: {
+                    environmentModel.fetchData()
+                    portfolioViewModel.onAppear()
+                })
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            PortfolioHeader(accountSummary: portfolioViewModel.accountSummary, dailyPnL: portfolioViewModel.dailyPnL)
+                .environmentObject(environmentModel)
+                .onAppear(perform: {
+                    environmentModel.fetchData()
+                    portfolioViewModel.onAppear()
+                })
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
     }
 }

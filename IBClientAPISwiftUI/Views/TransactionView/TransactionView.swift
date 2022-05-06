@@ -28,7 +28,7 @@ struct TransactionView: View {
     @Binding var orderPlacedSuccessfully: Bool
     
     init(transactionViewModel: TransactionViewModel?, ticketViewModel: ObservedObject<TicketViewModel>, buying: Bool, ticket: String, exchange: String, orderPlacedSuccessfully: Binding<Bool>) {
-        _transactionViewModel = StateObject(wrappedValue: transactionViewModel ?? TransactionViewModel(repository: nil))
+        _transactionViewModel = StateObject(wrappedValue: transactionViewModel ?? TransactionViewModel(repository: nil, orders: nil))
         _ticketViewModel = ticketViewModel
         self.buying = buying
         self.ticket = ticket
@@ -279,12 +279,20 @@ struct TransactionView_Previews: PreviewProvider {
     @State static var orderPlacedSuccessfully = false
     static var previews: some View {
         
-        let transactionViewModel = TransactionViewModel(repository: TransactionRepository(apiService: MockTransactionApiService(placeOrderResponse: nil, replyItemResponse: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)))
+        let transactionViewModel = TransactionViewModel(repository: TransactionRepository(apiService: MockTransactionApiService(placeOrderResponse: nil, replyItemResponse: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)), orders: nil)
         
         let ticketViewModel = ObservedObject(wrappedValue: TicketViewModel(repository: TicketRepository(apiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil), acccountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil))))
         
-        TransactionView(transactionViewModel: transactionViewModel, ticketViewModel: ticketViewModel    , buying: true, ticket: "BIOL", exchange: "NASDAQ", orderPlacedSuccessfully: $orderPlacedSuccessfully)
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.darkBg)
+        Group {
+            TransactionView(transactionViewModel: transactionViewModel, ticketViewModel: ticketViewModel    , buying: true, ticket: "BIOL", exchange: "NASDAQ", orderPlacedSuccessfully: $orderPlacedSuccessfully)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.darkBg)
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            TransactionView(transactionViewModel: transactionViewModel, ticketViewModel: ticketViewModel    , buying: true, ticket: "BIOL", exchange: "NASDAQ", orderPlacedSuccessfully: $orderPlacedSuccessfully)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.darkBg)
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
     }
 }

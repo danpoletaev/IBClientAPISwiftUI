@@ -37,17 +37,17 @@ struct OrderConfirmation: View {
                         Divider()
                     }
                 }
-
+                
                 
                 HStack {
                     VStack {
                         HStack {
                             Text("Action")
-                                .foregroundColor(Color(.secondaryLabel))
+                                .foregroundColor(Color.white.opacity(0.7))
                                 .font(.system(size: 14))
                             
                             Spacer()
-                                
+                            
                             Text("**\(placedOrder?.side ?? "SIDE")**")
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 16))
@@ -55,7 +55,7 @@ struct OrderConfirmation: View {
                         .padding(.horizontal)
                         HStack {
                             Text("Quantity")
-                                .foregroundColor(Color(.secondaryLabel))
+                                .foregroundColor(Color.white.opacity(0.7))
                                 .font(.system(size: 14))
                             
                             Spacer()
@@ -67,7 +67,7 @@ struct OrderConfirmation: View {
                         .padding(.horizontal)
                         HStack {
                             Text("Order Type")
-                                .foregroundColor(Color(.secondaryLabel))
+                                .foregroundColor(Color.white.opacity(0.7))
                                 .font(.system(size: 14))
                             
                             Spacer()
@@ -84,7 +84,7 @@ struct OrderConfirmation: View {
                     VStack {
                         HStack {
                             Text("Time-in-force")
-                                .foregroundColor(Color(.secondaryLabel))
+                                .foregroundColor(Color.white.opacity(0.7))
                                 .font(.system(size: 14))
                             
                             Spacer()
@@ -96,7 +96,7 @@ struct OrderConfirmation: View {
                         .padding(.horizontal)
                         HStack {
                             Text("Order originator")
-                                .foregroundColor(Color(.secondaryLabel))
+                                .foregroundColor(Color.white.opacity(0.7))
                                 .font(.system(size: 14))
                             
                             Spacer()
@@ -108,7 +108,6 @@ struct OrderConfirmation: View {
                         .padding(.horizontal)
                     }
                 }
-//                .frame(width: UIScreen.screenWidth, height: 100, alignment: .center)
                 
                 Divider()
                     .padding(.vertical)
@@ -134,5 +133,27 @@ struct OrderConfirmation: View {
             }
         }
         .background(CustomColor.darkBg)
+    }
+}
+
+struct OrderConfirmation_Peviews: PreviewProvider {
+    @State static var orderPlacedSuccessfully = false
+    @State static var placedOrder: Order? = Order(acctId: "222", conid: 1, secType: "STK", orderType: "GTC", side: "BUY", tif: "GRE", quantity: 2.53)
+    static var previews: some View {
+        let transactionViewModel = TransactionViewModel(repository: TransactionRepository(apiService: MockTransactionApiService(placeOrderResponse: nil, replyItemResponse: nil), accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)), orders: MockTransactionModels.placeOrderResponse)
+        
+        Group {
+            OrderConfirmation(placedOrder: $placedOrder, orderPlacedSuccessfully: $orderPlacedSuccessfully, transactionViewModel: transactionViewModel)
+                .onAppear(perform: {
+                    transactionViewModel.placeOrder(order: placedOrder ?? Order(acctId: "222", conid: 1, secType: "STK", orderType: "GTC", side: "BUY", tif: "GRE", quantity: 2.53)) {_ in }
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            OrderConfirmation(placedOrder: $placedOrder, orderPlacedSuccessfully: $orderPlacedSuccessfully, transactionViewModel: transactionViewModel)
+                .onAppear(perform: {
+                    transactionViewModel.placeOrder(order: placedOrder ?? Order(acctId: "222", conid: 1, secType: "STK", orderType: "GTC", side: "BUY", tif: "GRE", quantity: 2.53)) {_ in }
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
     }
 }

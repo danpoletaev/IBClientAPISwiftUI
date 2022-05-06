@@ -181,13 +181,27 @@ struct HomeView_Preview: PreviewProvider {
         
         let homeViewModel = HomeViewModel(homeRepository: HomeRepository(homeApiService: MockHomeApiService(scannerResponse: nil), portfolioApiService: nil, tickerApiService: nil, accountApiService: MockAccountApiService(accountTestData: nil, accountPerformanceTestData: nil, allocationTestResponse: nil, accountSummaryTest: nil, pnlModelResponseTest: nil, testTickleResponse: nil, paSummaryResponse: nil, iServerResponse: nil)))
         
-        HomeView(homeViewModel: homeViewModel)
-            .environmentObject(environmentModel)
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.lightBg)
-            .onAppear(perform: {
-                homeViewModel.onAppear()
-            })
+        Group {
+            
+            HomeView(homeViewModel: homeViewModel)
+                .environmentObject(environmentModel)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .onAppear(perform: {
+                    homeViewModel.onAppear()
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            HomeView(homeViewModel: homeViewModel)
+                .environmentObject(environmentModel)
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .onAppear(perform: {
+                    homeViewModel.onAppear()
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+            
+        }
     }
 }
 

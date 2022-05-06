@@ -45,10 +45,13 @@ class TicketView_Tests: XCTestCase {
         tickerElement.swipeUp()
         
         elementsQuery2.buttons["Submit"].tap()
-        sleep(1)
+        sleep(2)
+                
+        app.swipeUp()
+                        
+        sleep(2)
         elementsQuery2.buttons["Confirm"].tap()
         sleep(1)
-        elementsQuery.staticTexts["BIOL"].tap()
         
         let switchedToOrders = elementsQuery2.scrollViews.otherElements.staticTexts["BIOL"].waitForExistence(timeout: 2)
         

@@ -69,11 +69,23 @@ struct CustomScreenerItem_Preview: PreviewProvider {
     static var previews: some View {
         let ticketViewModel = TicketViewModel(repository: TicketRepository(apiService: MockTickerApiService(tickerInfo: nil, secDefResponse: nil, historyConidResponse: nil), acccountApiService: nil))
         
-        CustomScreenerItem(ticketViewModel: ticketViewModel, ticker: "BIOL", conid: 1, listingExchange: "NASDAQ", name: "BIOL")
-            .environment(\.colorScheme, .dark)
-            .background(CustomColor.lightBg)
-            .onAppear(perform: {
-                ticketViewModel.getTickerInfo(conid: 1)
-            })
+        
+        Group {
+            CustomScreenerItem(ticketViewModel: ticketViewModel, ticker: "BIOL", conid: 1, listingExchange: "NASDAQ", name: "BIOL")
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .onAppear(perform: {
+                    ticketViewModel.getTickerInfo(conid: 1)
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            
+            CustomScreenerItem(ticketViewModel: ticketViewModel, ticker: "BIOL", conid: 1, listingExchange: "NASDAQ", name: "BIOL")
+                .environment(\.colorScheme, .dark)
+                .background(CustomColor.lightBg)
+                .onAppear(perform: {
+                    ticketViewModel.getTickerInfo(conid: 1)
+                })
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (4th generation)"))
+        }
     }
 }
