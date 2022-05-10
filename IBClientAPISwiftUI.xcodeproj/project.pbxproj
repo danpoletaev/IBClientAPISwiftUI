@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		832533132829788E00E048E4 /* InstanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832533122829788E00E048E4 /* InstanceView.swift */; };
+		8325331528297F9900E048E4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8325331428297F9900E048E4 /* MainView.swift */; };
 		832A9B4827EA283800A48880 /* TransactionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9B4727EA283800A48880 /* TransactionApiService.swift */; };
 		832A9B4A27EA288000A48880 /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9B4927EA288000A48880 /* Transactions.swift */; };
 		832A9B4C27EA2E8B00A48880 /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9B4B27EA2E8B00A48880 /* TransactionRepository.swift */; };
@@ -144,7 +146,6 @@
 		83F56D812800AE0A009FCCCF /* HistoryConidResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 83F56D802800AE0A009FCCCF /* HistoryConidResponse.json */; };
 		83F56D822800AE30009FCCCF /* HistoryConidResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 83F56D802800AE0A009FCCCF /* HistoryConidResponse.json */; };
 		83F7C83E282556CB006B4CD4 /* AuthorizationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F7C83D282556CB006B4CD4 /* AuthorizationSheet.swift */; };
-		83F8B3BF27FE0ACA00E186D1 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3BE27FE0ACA00E186D1 /* WebView.swift */; };
 		83F8B3C6280067AF00E186D1 /* AccountInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3C5280067AF00E186D1 /* AccountInfoRow.swift */; };
 		83F8B3DA280084A400E186D1 /* AccountApiService_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3D9280084A400E186D1 /* AccountApiService_Tests.swift */; };
 		83F8B3DE2800857B00E186D1 /* MockAccountApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B3DD2800857B00E186D1 /* MockAccountApiService.swift */; };
@@ -177,6 +178,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		832533122829788E00E048E4 /* InstanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceView.swift; sourceTree = "<group>"; };
+		8325331428297F9900E048E4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		832A9B4727EA283800A48880 /* TransactionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionApiService.swift; sourceTree = "<group>"; };
 		832A9B4927EA288000A48880 /* Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
 		832A9B4B27EA2E8B00A48880 /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
@@ -297,7 +300,6 @@
 		83F56D792800AC57009FCCCF /* TickerInfoResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TickerInfoResponse.json; sourceTree = "<group>"; };
 		83F56D802800AE0A009FCCCF /* HistoryConidResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HistoryConidResponse.json; sourceTree = "<group>"; };
 		83F7C83D282556CB006B4CD4 /* AuthorizationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationSheet.swift; sourceTree = "<group>"; };
-		83F8B3BE27FE0ACA00E186D1 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		83F8B3C027FE109F00E186D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		83F8B3C5280067AF00E186D1 /* AccountInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoRow.swift; sourceTree = "<group>"; };
 		83F8B3CB28007F6100E186D1 /* IBClientAPISwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IBClientAPISwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -449,6 +451,8 @@
 				8366FE2C27E539EE00082C13 /* PortfolioView */,
 				8366FE2D27E539F500082C13 /* HomeView */,
 				8366FE2E27E539FC00082C13 /* AccountView */,
+				832533122829788E00E048E4 /* InstanceView.swift */,
+				8325331428297F9900E048E4 /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -631,7 +635,6 @@
 			isa = PBXGroup;
 			children = (
 				8366FE2227E5396E00082C13 /* NavigationBar */,
-				83F8B3BE27FE0ACA00E186D1 /* WebView.swift */,
 				836F0EF82801F127000D2F6D /* SFSafariViewWrapper.swift */,
 				83F7C83D282556CB006B4CD4 /* AuthorizationSheet.swift */,
 			);
@@ -921,7 +924,6 @@
 				8336527D27E9078500587323 /* TransactionNavBar.swift in Sources */,
 				8366FE7B27E53DB400082C13 /* SearchApiService.swift in Sources */,
 				8366FE5627E53C3900082C13 /* Portfolio.swift in Sources */,
-				83F8B3BF27FE0ACA00E186D1 /* WebView.swift in Sources */,
 				839A8FB22801A92800003158 /* MockTradesModels.swift in Sources */,
 				83F8B3C6280067AF00E186D1 /* AccountInfoRow.swift in Sources */,
 				8366FE2427E5398500082C13 /* NavigationBar.swift in Sources */,
@@ -955,6 +957,7 @@
 				8366FE3027E53A4E00082C13 /* AccountView.swift in Sources */,
 				832A9B4827EA283800A48880 /* TransactionApiService.swift in Sources */,
 				839A8F9828019E0100003158 /* MockSearchApiService.swift in Sources */,
+				832533132829788E00E048E4 /* InstanceView.swift in Sources */,
 				839A8FB02801A8C300003158 /* MockTradesApiService.swift in Sources */,
 				8366FE4527E53B7D00082C13 /* TicketGraph.swift in Sources */,
 				8366FE6A27E53D0700082C13 /* HomeRepository.swift in Sources */,
@@ -986,6 +989,7 @@
 				8336527B27E8FBCC00587323 /* TransactionView.swift in Sources */,
 				8366FE4227E53B5B00082C13 /* TicketView.swift in Sources */,
 				8366FE5D27E53C8600082C13 /* AccountViewModel.swift in Sources */,
+				8325331528297F9900E048E4 /* MainView.swift in Sources */,
 				8366FE7927E53DA100082C13 /* TickerApiService.swift in Sources */,
 				83F8B3E728008E0100E186D1 /* MockHomeModels.swift in Sources */,
 				8366FE3627E53AA900082C13 /* CustomerScreenItem.swift in Sources */,

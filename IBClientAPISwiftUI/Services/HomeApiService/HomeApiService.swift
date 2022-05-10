@@ -8,9 +8,12 @@
 import Foundation
 
 final class HomeApiService: DataManager, HomeApiServiceProtocol {
+    
     func getScannerConids(completion: @escaping ((ScannerResponse?, NetworkError?)) -> Void) {
-        guard let url = URL(string: self.API_URL.appending("/hmds/scanner")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/hmds/scanner")) else {
             return
         }
         

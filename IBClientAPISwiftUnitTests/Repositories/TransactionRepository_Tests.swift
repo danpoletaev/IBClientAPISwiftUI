@@ -53,7 +53,7 @@ class TransactionRepository_Tests: XCTestCase {
         
         var result: [ReplyItem]? = nil
         
-        transactionRepository.confirmOrder(id: "1") { response in
+        transactionRepository.confirmOrder(id: "1") { (response, error) in
             result = response
             expectation.fulfill()
         }

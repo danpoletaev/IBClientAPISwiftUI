@@ -14,9 +14,11 @@ struct AuthorizationSheet: View {
     
     @State var errorAgain = false
     
+    @StateObject var globalEnvironment = GlobalEnivronment.shared
+
     var body: some View {
-        if DataManager().API_URL.starts(with: "https") {
-            SFSafariViewWrapper(url: URL(string: "https://\(APIConstants.COMMON_BASE_URL)")!)
+        if globalEnvironment.instanceURL.starts(with: "https") {
+            SFSafariViewWrapper(url: URL(string: globalEnvironment.instanceURL)!)
         } else {
             VStack {
                 Image(systemName: "xmark.icloud.fill")
@@ -29,6 +31,7 @@ struct AuthorizationSheet: View {
                 Text("You are not logged in or server is not started. Please, login by going to:")
                     .font(.title2)
                     .padding(10)
+                    .foregroundColor(.white)
                     .accessibility(identifier: "loginErrorStaticText")
                 if errorAgain {
                     Text("Please, try again.")
@@ -36,7 +39,7 @@ struct AuthorizationSheet: View {
                         .padding(10)
                         .accessibilityIdentifier("errorLoginText")
                 }
-                Link("http://\(APIConstants.COMMON_BASE_URL)", destination: URL(string: "http://\(APIConstants.COMMON_BASE_URL)")!)
+                Link(globalEnvironment.instanceURL, destination: URL(string: globalEnvironment.instanceURL)!)
                     .padding(.bottom, 40)
                 
                 Button(action: {

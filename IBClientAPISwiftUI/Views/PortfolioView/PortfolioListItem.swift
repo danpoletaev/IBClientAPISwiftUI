@@ -37,7 +37,7 @@ struct PortfolioListItem: View {
                     .foregroundColor(Color(.secondaryLabel))
                     .font(.system(size: 10))
             }
-            .frame(minWidth: 100, maxWidth: .infinity)
+            .frame(minWidth: 100, maxWidth: .infinity, alignment: .leading)
             Text(ticketViewModel.tickerInfo?.bid ?? "\(last)")
                 .frame(minWidth: 100, maxWidth: .infinity)
             Text(ticketViewModel.tickerInfo?.changeFromLastPrice ?? changeFromLastPrice)

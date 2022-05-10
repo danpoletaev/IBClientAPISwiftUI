@@ -12,6 +12,8 @@ struct OrderConfirmation: View {
     @Binding var placedOrder: Order?
     @Binding var orderPlacedSuccessfully: Bool
     @StateObject var transactionViewModel: TransactionViewModel
+    @State private var showingErrorAlert = false
+    @State var replyError: ReplyItemError? = nil
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -94,18 +96,6 @@ struct OrderConfirmation: View {
                                 .font(.system(size: 16))
                         }
                         .padding(.horizontal)
-                        HStack {
-                            Text("Order originator")
-                                .foregroundColor(Color.white.opacity(0.7))
-                                .font(.system(size: 14))
-                            
-                            Spacer()
-                            
-                            Text("**Customer**")
-                                .foregroundColor(Color.white)
-                                .font(.system(size: 16))
-                        }
-                        .padding(.horizontal)
                     }
                 }
                 
@@ -113,12 +103,14 @@ struct OrderConfirmation: View {
                     .padding(.vertical)
                 
                 Button(action: {
-                    self.transactionViewModel.confirmOrder(id: self.transactionViewModel.orders[0].id) { replyResponse in
-                        print("reply response")
-                        print(replyResponse)
-                        print("reply response")
-                        self.orderPlacedSuccessfully = true
-                        dismiss()
+                    self.transactionViewModel.confirmOrder(id: self.transactionViewModel.orders[0].id) { (replyResponse, error) in
+                        if replyResponse != nil {
+                            self.orderPlacedSuccessfully = true
+                            dismiss()
+                        } else if error != nil {
+                            self.replyError = error
+                            self.showingErrorAlert = true
+                        }
                     }
                 }, label: {
                     Text("Confirm")
@@ -133,6 +125,9 @@ struct OrderConfirmation: View {
             }
         }
         .background(CustomColor.darkBg)
+        .alert(self.replyError?.error ?? "", isPresented: $showingErrorAlert) {
+                    Button("OK", role: .cancel) { }
+                }
     }
 }
 

@@ -21,6 +21,12 @@ class TicketView_Tests: XCTestCase {
         ]
         app.launch()
         
+        let instanceTextFields = app.textFields["Ex: https://localhost:5000"]
+        instanceTextFields.tap()
+        instanceTextFields.typeText("http://localhost:5000")
+        
+        app.buttons["Submit"].tap()
+        
         sleep(2)
         
         let scrollViewsQuery = app.scrollViews
@@ -37,10 +43,6 @@ class TicketView_Tests: XCTestCase {
         let quantityTextField = scrollViewsQuery.textFields["quanityTF"]
         quantityTextField.tap()
         quantityTextField.typeText("1")
-        
-        let limitPrice = scrollViewsQuery.textFields["limitPrice"]
-        limitPrice.tap()
-        limitPrice.typeText("1")
         
         tickerElement.swipeUp()
         
@@ -65,6 +67,12 @@ class TicketView_Tests: XCTestCase {
             "-UITest_mockService": "true",
         ]
         app.launch()
+        
+        let instanceTextFields = app.textFields["Ex: https://localhost:5000"]
+        instanceTextFields.tap()
+        instanceTextFields.typeText("http://localhost:5000")
+        
+        app.buttons["Submit"].tap()
         
         sleep(2)
         

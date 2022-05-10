@@ -9,51 +9,73 @@ import XCTest
 import IBClientAPISwiftUI
 
 class ContenView_Tests: XCTestCase {
-
+    
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
     func test_ContentView_unauthorizedSheet_shouldShowUnauthorizedSheet_HTTP() {
-            let app = XCUIApplication()
-            app.launchEnvironment = [
-                "-UITest_unauthorized": "true",
-                "-UITest_mockService": "true",
-                "-UITest_isHTTP": "true"
-            ]
-            app.launch()
-                    
-            
-            let errorText = app.staticTexts["loginErrorStaticText"]
-            let sheetOpened = errorText.waitForExistence(timeout: 1)
-            XCTAssertTrue(sheetOpened)
+        let app = XCUIApplication()
+        app.launchEnvironment = [
+            "-UITest_unauthorized": "true",
+            "-UITest_mockService": "true",
+        ]
+        app.launch()
+        
+        
+        let instanceTextFields = app.textFields["Ex: https://localhost:5000"]
+        instanceTextFields.tap()
+        instanceTextFields.typeText("http://localhost:5000")
+        
+        app.buttons["Submit"].tap()
+        
+        sleep(1)
+        
+        
+        let errorText = app.staticTexts["loginErrorStaticText"]
+        let sheetOpened = errorText.waitForExistence(timeout: 1)
+        XCTAssertTrue(sheetOpened)
     }
     
     func test_ContentView_unauthorizedSheet_shouldNotShowUnauthorizedSheet() {
         let app = XCUIApplication()
         app.launchEnvironment = [
             "-UITest_mockService": "true",
-            "-UITest_isHTTP": "true"
         ]
         app.launch()
+        
+        let instanceTextFields = app.textFields["Ex: https://localhost:5000"]
+        instanceTextFields.tap()
+        instanceTextFields.typeText("http://localhost:5000")
+        
+        app.buttons["Submit"].tap()
+        
+        sleep(1)
         
         let errorText = app.staticTexts["loginErrorStaticText"]
         let sheetOpened = errorText.waitForExistence(timeout: 1)
         XCTAssertFalse(sheetOpened)
     }
-
+    
     func test_ContentView_unauthorizedSheet_shouldShowErrorOnReconnectSheet_HTTP() {
         let app = XCUIApplication()
         app.launchEnvironment = [
             "-UITest_unauthorized": "true",
             "-UITest_mockService": "true",
-            "-UITest_isHTTP": "true"
         ]
         app.launch()
+        
+        let instanceTextFields = app.textFields["Ex: https://localhost:5000"]
+        instanceTextFields.tap()
+        instanceTextFields.typeText("http://localhost:5000")
+        
+        app.buttons["Submit"].tap()
+        
+        sleep(1)
         
         app.buttons["loginReconnectButton"].tap()
         
@@ -69,12 +91,20 @@ class ContenView_Tests: XCTestCase {
             "-UITest_mockService": "true",
         ]
         app.launch()
-
+        
+        let instanceTextFields = app.textFields["Ex: https://localhost:5000"]
+        instanceTextFields.tap()
+        instanceTextFields.typeText("http://localhost:5000")
+        
+        app.buttons["Submit"].tap()
+        
+        sleep(1)
+        
         let elementsQuery = app.scrollViews.otherElements
         let homeText = elementsQuery.staticTexts["Top Portfolio Positions"]
         let homeTextExists = homeText.waitForExistence(timeout: 3)
         XCTAssertTrue(homeTextExists)
-    
+        
         let tabBar = app.tabBars["Tab Bar"]
         tabBar.buttons["Portfolio"].tap()
         let portfolioText = elementsQuery.staticTexts["Cash Balances"]
@@ -88,6 +118,6 @@ class ContenView_Tests: XCTestCase {
         tabBar.buttons["Orders"].tap()
         let tradeViewTextExists = elementsQuery.scrollViews.otherElements.staticTexts["Trade Time"].waitForExistence(timeout: 3)
         
-        XCTAssertTrue(tradeViewTextExists)        
+        XCTAssertTrue(tradeViewTextExists)
     }
 }

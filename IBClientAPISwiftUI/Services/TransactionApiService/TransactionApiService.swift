@@ -12,8 +12,10 @@ import SwiftUI
 final class TransactionApiService: DataManager, TransactionApiServiceProtocol {
     
     func placeOrder(order: Order, accountId: String, completion: @escaping ([PlaceOrderResponse]) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/iserver/account/\(accountId)/orders")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/iserver/account/\(accountId)/orders")) else {
             return
         }
         
@@ -31,8 +33,6 @@ final class TransactionApiService: DataManager, TransactionApiServiceProtocol {
             return
         }
         
-        print(String(decoding: httpBody, as: UTF8.self))
-        
         request.httpBody = httpBody
         
         let task = self.session.dataTask(with: request) { data, _, error in
@@ -43,20 +43,20 @@ final class TransactionApiService: DataManager, TransactionApiServiceProtocol {
             do {
                 let foundTickets = try JSONDecoder().decode([PlaceOrderResponse].self, from: data)
                 DispatchQueue.main.async {
-                    print("decoded successfully")
                     completion(foundTickets)
                 }
             } catch {
-                print("here problem")
                 print(error)
             }
         }
         task.resume()
     }
     
-    func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("iserver/reply/\(id)")) else {
-            print("Problem here")
+    func confirmOrder(id: String, completion: @escaping (([ReplyItem]?, ReplyItemError?)) -> ()) {
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("iserver/reply/\(id)")) else {
             return
         }
         
@@ -79,21 +79,30 @@ final class TransactionApiService: DataManager, TransactionApiServiceProtocol {
             }
             
             do {
-                if let replyResponse = try JSONDecoder().decode([ReplyItem]?.self, from: data) {
+                if let replyResponse = try? JSONDecoder().decode([ReplyItem]?.self, from: data) {
                     DispatchQueue.main.async {
-                        completion(replyResponse)
+                        completion((replyResponse, nil))
                     }
-                }
-                if let placeOrderResponse = try JSONDecoder().decode([PlaceOrderResponse]?.self, from: data) {
-                    self.confirmOrder(id: placeOrderResponse[0].id) { replyResponse in
-                        DispatchQueue.main.async {
-                            completion(replyResponse)
-                        }
-                    }
+                    return;
                 }
                 
-            } catch {
-                print(error)
+                if let placeOrderResponse = try? JSONDecoder().decode([PlaceOrderResponse]?.self, from: data) {
+                    self.confirmOrder(id: placeOrderResponse[0].id) { (replyResponse, error) in
+                        DispatchQueue.main.async {
+                            completion((replyResponse, error))
+                        }
+                    }
+                    return;
+                }
+                
+                if let errorMessageResponse = try? JSONDecoder().decode(ReplyItemError?.self, from: data) {
+                    completion((nil, errorMessageResponse))
+                    return;
+                } else {
+                    completion((nil, ReplyItemError(error: "Unknown error")))
+                    return;
+                }
+                
             }
         }
         task.resume()

@@ -8,9 +8,12 @@
 import Foundation
 
 final class TradesApiService: DataManager, TradesApiServiceProtocol {
+    
     func getAllTrades(completion: @escaping (AllTradesResponse) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/iserver/account/orders?force=false")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/iserver/account/orders?force=false")) else {
             return
         }
         let task = self.session.dataTask(with: url) { data, _, error in
@@ -20,7 +23,6 @@ final class TradesApiService: DataManager, TradesApiServiceProtocol {
             do {
                 let allTradesResponse = try JSONDecoder().decode(AllTradesResponse.self, from: data)
                 DispatchQueue.main.async {
-                    print("decoded successfully")
                     completion(allTradesResponse)
                 }
             } catch {

@@ -90,7 +90,7 @@ class TransactionViewModel_Tests: XCTestCase {
         
         var result: [ReplyItem]? = nil
         
-        transactionViewModel.confirmOrder(id: "1") { replyItems in
+        transactionViewModel.confirmOrder(id: "1") { (replyItems, error) in
             result = replyItems
             expectation.fulfill()
         }

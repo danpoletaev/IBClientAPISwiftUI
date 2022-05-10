@@ -17,13 +17,15 @@ struct TransactionView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    @EnvironmentObject var environmentModel: EnvironmentViewModel
+    
     var buying: Bool = true
     var ticket: String
     var exchange: String
     
     @ObservedObject var ticketViewModel: TicketViewModel
     @StateObject private var transactionViewModel: TransactionViewModel
-    @State private var selection = OrderTypes.LMT
+    @State private var selection = OrderTypes.MKT
     @State private var timeInForce = TifTypes.DAY
     @Binding var orderPlacedSuccessfully: Bool
     
@@ -79,7 +81,7 @@ struct TransactionView: View {
                     HStack {
                         HStack {
                             Text("BID")
-                                .padding(.trailing, 30)
+                                Spacer()
                             Text("1,000 x \(ticketViewModel.tickerInfo?.bid ?? "0")")
                         }
                         .foregroundColor(Color.blue)
@@ -89,7 +91,7 @@ struct TransactionView: View {
                         
                         HStack {
                             Text("1,000 x \(ticketViewModel.tickerInfo?.ask ?? "0")")
-                                .padding(.trailing, 30)
+                                Spacer()
                             Text("ASK")
                         }
                         .foregroundColor(Color.red)
@@ -107,17 +109,9 @@ struct TransactionView: View {
                         Text("Account")
                             .foregroundColor(Color(.secondaryLabel))
                             .font(.system(size: 16))
-                        Text("U5625832")
+                        Text(environmentModel.accountViewModel.account?.accountId ?? "")
                     }
                     
-                    Spacer()
-                    
-                    VStack {
-                        Text("Available funds")
-                            .foregroundColor(Color(.secondaryLabel))
-                            .font(.system(size: 16))
-                        Text("252")
-                    }
                     Spacer()
                     
                     VStack {
@@ -177,6 +171,7 @@ struct TransactionView: View {
                         Picker("Order Type", selection: $selection) {
                             ForEach(OrderTypes.allCases, id: \.self) { value in
                                 Text(value.localizedName)
+                                    .disabled(true)
                                     .tag(value)
                                     .font(.title3)
                             }
@@ -188,29 +183,28 @@ struct TransactionView: View {
                         .padding(.vertical)
                     
                     
-                    if selection == OrderTypes.LMT {
-                        
-                        HStack {
-                            Text("Limit price")
-                                .font(.title3)
-                                .foregroundColor(Color(.secondaryLabel))
-                            
-                            Spacer()
-                            TextField("5", text: $limitPrice)
-                                .keyboardType(.numberPad)
-                                .padding(10)
-                                .frame(width: 200)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color(.secondaryLabel), lineWidth: 2)
-                                )
-                                .accessibility(identifier: "limitPrice")
-                        }
-                        .padding(.horizontal)
-                        
-                        Divider()
-                            .padding(.vertical)
-                    }
+//                    if selection == OrderTypes.LMT {
+//                        HStack {
+//                            Text("Limit price")
+//                                .font(.title3)
+//                                .foregroundColor(Color(.secondaryLabel))
+//
+//                            Spacer()
+//                            TextField("5", text: $limitPrice)
+//                                .keyboardType(.numberPad)
+//                                .padding(10)
+//                                .frame(width: 200)
+//                                .overlay(
+//                                    RoundedRectangle(cornerRadius: 8)
+//                                        .stroke(Color(.secondaryLabel), lineWidth: 2)
+//                                )
+//                                .accessibility(identifier: "limitPrice")
+//                        }
+//                        .padding(.horizontal)
+//
+//                        Divider()
+//                            .padding(.vertical)
+//                    }
                     
                     HStack {
                         Text("Time-in-force")
@@ -250,8 +244,8 @@ struct TransactionView: View {
                         .foregroundColor(Color.white)
                         .cornerRadius(8)
                 }
-                .opacity(quantity.length == 0 || (selection == OrderTypes.LMT && limitPrice.length == 0) ? 0.5 : 1)
-                .disabled(quantity.length == 0 || (selection == OrderTypes.LMT && limitPrice.length == 0))
+                .opacity(quantity.length == 0 ? 0.5 : 1)
+                .disabled(quantity.length == 0)
                 
             }
         }

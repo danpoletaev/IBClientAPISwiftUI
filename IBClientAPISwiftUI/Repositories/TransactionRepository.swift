@@ -9,7 +9,7 @@ import Foundation
 
 protocol TransactionRepositoryProtocol {
     func placeOrder(order: Order, completion: @escaping ([PlaceOrderResponse]) -> ())
-    func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ())
+    func confirmOrder(id: String, completion: @escaping (([ReplyItem]?, ReplyItemError?)) -> ())
 }
 
 final class TransactionRepository: TransactionRepositoryProtocol {
@@ -36,9 +36,9 @@ final class TransactionRepository: TransactionRepositoryProtocol {
         }
     }
     
-    func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ()) {
-        self.apiService.confirmOrder(id: id) { replyResponse in
-            completion(replyResponse)
+    func confirmOrder(id: String, completion: @escaping (([ReplyItem]?, ReplyItemError?)) -> ()) {
+        self.apiService.confirmOrder(id: id) { (replyResponse, error) in
+            completion((replyResponse, error))
         }
     }
 }

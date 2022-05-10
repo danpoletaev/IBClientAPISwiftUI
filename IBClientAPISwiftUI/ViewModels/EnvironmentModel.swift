@@ -12,6 +12,7 @@ class EnvironmentViewModel: ObservableObject {
     @Published var tagSelection = 1
     @Published var accountViewModel: AccountViewModel
     @Published var authorized = false
+    @Published var instanceURL: String = ""
     
     init(accountViewModel: AccountViewModel?) {
         self.accountViewModel = accountViewModel ?? AccountViewModel(repository: nil)

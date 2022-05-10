@@ -9,5 +9,5 @@ import Foundation
 
 protocol TransactionApiServiceProtocol {
     func placeOrder(order: Order, accountId: String, completion: @escaping ([PlaceOrderResponse]) -> ())
-    func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ())
+    func confirmOrder(id: String, completion: @escaping (([ReplyItem]?, ReplyItemError?)) -> ())
 }

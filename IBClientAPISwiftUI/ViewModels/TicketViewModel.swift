@@ -14,12 +14,15 @@ final class TicketViewModel: ObservableObject {
     
     @Published var isLoading = true
     
-    private let stream = WebSocketService(url: APIConstants.SOCKET_URL)
+    let socketURL = GlobalEnivronment.shared.instanceURL.replacingOccurrences(of: "https", with: "wss").replacingOccurrences(of: "http", with: "ws").appending("/v1/api/ws");
+    
+    private var stream: WebSocketService
     
     private let repository: TicketRepositoryProtocol
     
     init(repository: TicketRepositoryProtocol?) {
         self.repository = repository ?? TicketRepository(apiService: nil, acccountApiService: nil)
+        self.stream = WebSocketService(url: socketURL)
     }
     
     func getTickerInfo(conid: Int) {
@@ -59,7 +62,7 @@ final class TicketViewModel: ObservableObject {
                 }
             }
         } catch {
-            debugPrint("Oops something didn't go right")
+            debugPrint("Error whiling decoding message")
         }
     }
     

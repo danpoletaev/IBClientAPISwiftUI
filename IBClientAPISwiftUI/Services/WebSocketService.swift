@@ -44,8 +44,9 @@ class WebSocketService: AsyncSequence {
             case .success(let message):
                 continuation?.yield(message)
                 listenForMessages()
-            case .failure(let error):
-                continuation?.finish(throwing: error)
+            case .failure:
+                close()
+                continuation?.finish()
             }
         }
     }

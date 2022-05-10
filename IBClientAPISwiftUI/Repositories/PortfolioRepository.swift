@@ -35,18 +35,7 @@ final class PortfolioRepository: PortfolioRepositoryProtocol {
     func fetchPositions(completion: @escaping ([Position]) -> Void) {
         self.accountApiService.fetchAccount { accounts in
             self.portfolioApiService.fetchPositions(accountID: accounts[0].accountId) { positions in
-                var tempPositions: [Position] = []
-                if positions.count == 0 {
-                    completion(positions)
-                }
-                positions.forEach { position in
-                    var tempPosition = position
-                    self.tickerApiService.getTickerInfo(conid: position.conid) { tickerInfo in
-                        tempPosition.priceChange = tickerInfo[0].changeFromLastPrice
-                        tempPositions.append(tempPosition)
-                        completion(tempPositions)
-                    }
-                }
+                completion(positions)
             }
         }
     }

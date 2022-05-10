@@ -38,8 +38,6 @@ final class HomeViewModel: ObservableObject {
         self.homeRepository.fetchDailyGainers { (conidsSecDef, error) in
             if (conidsSecDef != nil) {
                 self.secDefConids = conidsSecDef!
-            } else {
-                print("There was an error")
             }
             DispatchQueue.main.async {
                 self.dailyGainersLoading = false
@@ -61,8 +59,6 @@ final class HomeViewModel: ObservableObject {
             
             if (accountPerformance != nil) {
                 self.accountPerformance = accountPerformance!
-            } else {
-                print("There was an error")
             }
         }
     }

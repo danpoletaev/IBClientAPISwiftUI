@@ -34,7 +34,7 @@ struct PortfolioView: View {
                                 Text("Instument")
                                     .foregroundColor(Color(.secondaryLabel))
                                     .font(.system(size: 14))
-                                    .frame(minWidth: 100, maxWidth: .infinity)
+                                    .frame(minWidth: 100, maxWidth: .infinity, alignment: .leading)
                                 Text("Last")
                                     .foregroundColor(Color(.secondaryLabel))
                                     .font(.system(size: 14))

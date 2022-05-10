@@ -6,6 +6,14 @@
 //
 
 import SwiftUI
+import Foundation
+
+class GlobalEnivronment: ObservableObject
+{
+    static let shared = GlobalEnivronment()
+
+    @Published var instanceURL: String = ""
+}
 
 @main
 struct IBClientAPISwiftUIApp: App {
@@ -14,9 +22,9 @@ struct IBClientAPISwiftUIApp: App {
             let environmentModel = EnvironmentViewModel(accountViewModel: AccountViewModel(repository: nil))
             
             ContentView().environmentObject(environmentModel)
-                .onAppear(perform: {
-                    environmentModel.fetchData()
-                })
+//                .onAppear(perform: {
+//                    environmentModel.fetchData()
+//                })
                 .environment(\.colorScheme, .dark)
         }
     }

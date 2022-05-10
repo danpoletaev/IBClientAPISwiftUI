@@ -25,6 +25,13 @@ class SearchView_Tests: XCTestCase {
         ]
         app.launch()
         
+        let instanceTextFields = app.textFields["Ex: https://localhost:5000"]
+        instanceTextFields.tap()
+        instanceTextFields.typeText("http://localhost:5000")
+        
+        app.buttons["Submit"].tap()
+        
+        
         sleep(2)
         let barNavigationBar = app.navigationBars["Bar"]
         barNavigationBar.buttons["Search"].tap()

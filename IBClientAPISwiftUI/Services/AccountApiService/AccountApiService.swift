@@ -8,10 +8,13 @@
 import Foundation
 
 final class AccountApiService: DataManager, AccountApiServiceProtocol {
+
     
     func fetchAccount(completion: @escaping ([Account]) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/portfolio/accounts")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/portfolio/accounts")) else {
             return
         }
         let task = self.session.dataTask(with: url) { data, _, error in
@@ -31,8 +34,10 @@ final class AccountApiService: DataManager, AccountApiServiceProtocol {
     }
     
     func getAccountPerformance(accountIds: [String], freq: String, completion: @escaping ((PerformanceResponse?, NetworkError?)) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/pa/performance")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/pa/performance")) else {
             return
         }
         
@@ -79,8 +84,10 @@ final class AccountApiService: DataManager, AccountApiServiceProtocol {
     }
     
     func getAccountAllocation(accountId: String, completion: @escaping (AllocationResponse) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/portfolio/\(accountId)/allocation")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/portfolio/\(accountId)/allocation")) else {
             return
         }
         let task = self.session.dataTask(with: url) { data, _, error in
@@ -100,8 +107,10 @@ final class AccountApiService: DataManager, AccountApiServiceProtocol {
     }
     
     func getAccountSummary(accountId: String, completion: @escaping (AccountSummary) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/portfolio/\(accountId)/summary")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/portfolio/\(accountId)/summary")) else {
             return
         }
         let task = self.session.dataTask(with: url) { data, _, error in
@@ -121,8 +130,10 @@ final class AccountApiService: DataManager, AccountApiServiceProtocol {
     }
     
     func getPnL(completion: @escaping (PnLModelResponseModel) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/iserver/account/pnl/partitioned")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/iserver/account/pnl/partitioned")) else {
             return
         }
         let task = self.session.dataTask(with: url) { data, _, error in
@@ -142,8 +153,10 @@ final class AccountApiService: DataManager, AccountApiServiceProtocol {
     }
     
     func getIServerAccount(completion: @escaping((IServerResponse?, NetworkError?)) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/iserver/accounts")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/iserver/accounts")) else {
             return
         }
         let task = self.session.dataTask(with: url) { data, response, error in
@@ -176,8 +189,10 @@ final class AccountApiService: DataManager, AccountApiServiceProtocol {
     }
     
     func tickle(completion: @escaping (TickleResponse) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/tickle")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/tickle")) else {
             return
         }
         let task = self.session.dataTask(with: url) { data, _, error in
@@ -197,8 +212,10 @@ final class AccountApiService: DataManager, AccountApiServiceProtocol {
     }
     
     func getCurrentBalance(acctIds: [String], completion: @escaping (PASummaryResponse) -> Void) {
-        guard let url = URL(string: self.API_URL.appending("/pa/summary")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/pa/summary")) else {
             return
         }
         
@@ -227,7 +244,6 @@ final class AccountApiService: DataManager, AccountApiServiceProtocol {
                     completion(paSummary)
                 }
             } catch {
-                print("here problem")
                 print(error)
             }
         }

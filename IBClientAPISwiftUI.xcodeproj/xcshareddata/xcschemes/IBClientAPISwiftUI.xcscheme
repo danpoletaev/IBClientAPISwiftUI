@@ -88,11 +88,6 @@
             isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "-UITest_isHTTP"
-            value = "true"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-         <EnvironmentVariable
             key = "-UITest_mockService"
             value = "true"
             isEnabled = "NO">

@@ -35,8 +35,8 @@ class TransactionApiService_Tests: XCTestCase {
         
         let transactionApiService: TransactionApiServiceProtocol = MockTransactionApiService(placeOrderResponse: nil, replyItemResponse: replyItemResponse)
         
-        transactionApiService.confirmOrder(id: "11") { response in
-            XCTAssertEqual(replyItemResponse.count, response.count)
+        transactionApiService.confirmOrder(id: "11") { (response, error) in
+            XCTAssertEqual(replyItemResponse.count, response?.count)
         }
     }
 }

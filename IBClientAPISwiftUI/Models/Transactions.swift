@@ -16,11 +16,7 @@ struct PlaceOrderResponse: Codable {
 
 
 enum OrderTypes: String, Equatable, CaseIterable, Encodable {
-    case LMT = "Limit"
     case MKT = "Market"
-    case STP = "Stop"
-    case STOP_LIMIT = "Stop Limit"
-    case MIDPRICE = "MidPrice"
     
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
@@ -31,8 +27,8 @@ enum SideTypes: String, Equatable, CaseIterable, Encodable {
 }
 
 enum TifTypes: String, Equatable, CaseIterable, Encodable {
-    case GTC = "Good till cancel"
-    case OPG = "OPG"
+    case GTC = "GTC"
+//    case OPG = "OPG"
     case DAY = "DAY"
     case IOC = "IOC"
     
@@ -55,4 +51,8 @@ struct ReplyItem: Codable {
     var warning_message: String?
     var text: String?
     var encrypt_message: String?
+}
+
+struct ReplyItemError: Codable {
+    var error: String?
 }

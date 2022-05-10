@@ -33,7 +33,6 @@ struct SearchView: View {
                     .onChange(of: searchText) { value in
                         if !value.isEmpty {
                             self.searchViewModel.searchForNameSymbol(value: searchText)
-                            print(self.searchViewModel.tickets)
                         } else {
                             searchViewModel.tickets.removeAll()
                         }

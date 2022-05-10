@@ -8,9 +8,12 @@
 import Foundation
 
 final class TickerApiService: DataManager, TickerApiServiceProtocol {
+    
     func getTickerInfo(conid: Int, completion: @escaping ([TickerInfo]) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/iserver/marketdata/snapshot?conids=\(conid)&fields=\(APIConstants.CONID_FIELDS)")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/iserver/marketdata/snapshot?conids=\(conid)&fields=\(APIConstants.CONID_FIELDS)")) else {
             return
         }
         let task = session.dataTask(with: url) { data, _, error in
@@ -31,8 +34,10 @@ final class TickerApiService: DataManager, TickerApiServiceProtocol {
     
     
     func getSecDefByConids(value: [Int], completion: @escaping (SecDefResponse) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/trsrv/secdef")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/trsrv/secdef")) else {
             return
         }
         
@@ -56,11 +61,9 @@ final class TickerApiService: DataManager, TickerApiServiceProtocol {
             do {
                 let secdefResponse = try JSONDecoder().decode(SecDefResponse.self, from: data)
                 DispatchQueue.main.async {
-                    print("decoded successfully")
                     completion(secdefResponse)
                 }
             } catch {
-                print("here problem")
                 print(error)
             }
         }
@@ -68,8 +71,10 @@ final class TickerApiService: DataManager, TickerApiServiceProtocol {
     }
     
     func getConidHistory(conid: Int, period: String, completion: @escaping (HistoryConidResponse) -> ()) {
-        guard let url = URL(string: self.API_URL.appending("/iserver/marketdata/history?conid=\(conid)&period=\(period)")) else {
-            print("Problem here")
+        
+        let apiUrl = GlobalEnivronment.shared.instanceURL.appending("/v1/api/")
+        
+        guard let url = URL(string: apiUrl.appending("/iserver/marketdata/history?conid=\(conid)&period=\(period)")) else {
             return
         }
         let task = session.dataTask(with: url) { data, _, error in
@@ -79,11 +84,10 @@ final class TickerApiService: DataManager, TickerApiServiceProtocol {
             do {
                 let historyConid = try JSONDecoder().decode(HistoryConidResponse.self, from: data)
                 DispatchQueue.main.async {
-                    print("decoded successfully")
                     completion(historyConid)
                 }
             } catch {
-                print("error here")
+                print(error)
             }
         }
         task.resume()

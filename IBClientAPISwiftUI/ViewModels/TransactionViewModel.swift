@@ -25,7 +25,7 @@ final class TransactionViewModel: ObservableObject {
         }
     }
     
-    func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ()) {
+    func confirmOrder(id: String, completion: @escaping (([ReplyItem]?, ReplyItemError?)) -> ()) {
         self.repository.confirmOrder(id: id) { replyResponse in
             completion(replyResponse)
         }

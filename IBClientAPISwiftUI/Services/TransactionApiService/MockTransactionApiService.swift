@@ -23,9 +23,9 @@ class MockTransactionApiService: TransactionApiServiceProtocol {
         }
     }
     
-    func confirmOrder(id: String, completion: @escaping ([ReplyItem]) -> ()) {
+    func confirmOrder(id: String, completion: @escaping (([ReplyItem]?, ReplyItemError?)) -> ()) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            completion(self.replyItemResponse)
+            completion((self.replyItemResponse, nil))
         }
     }
     
